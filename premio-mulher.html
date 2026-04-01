@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Prêmio Destaque Mulher Empreendedora 2025 — Prefeitura de Cajamar</title>
+    <meta name="description"
+        content="Prêmio Destaque Mulher Empreendedora 2025 — Celebrando as mulheres que movem Cajamar. Inscreva-se e participe." />
+    <link rel="canonical" href="https://cajamar.sp.gov.br/investe/premio-mulher/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#9c27b0" />
+    <meta name="keywords"
+        content="prêmio, mulher empreendedora, Cajamar, empreendedorismo feminino, desenvolvimento econômico" />
+    <meta name="author" content="Prefeitura de Cajamar" />
+
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prêmio Destaque Mulher Empreendedora 2025 — Cajamar" />
+    <meta property="og:description"
+        content="Celebrando as mulheres que movem Cajamar. Inscrições abertas até 03/12. Participe e mostre sua força!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cajamar.sp.gov.br/investe/premio-mulher/" />
+    <meta property="og:image" content="https://cajamar.sp.gov.br/investe/premio-mulher/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Prefeitura de Cajamar" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prêmio Destaque Mulher Empreendedora 2025" />
+    <meta name="twitter:description" content="Celebrando as mulheres que movem Cajamar. Inscrições até 03/12!" />
+    <meta name="twitter:image" content="https://cajamar.sp.gov.br/investe/premio-mulher/og-image.jpg" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Prêmio Destaque Mulher Empreendedora 2025",
+      "description": "Celebrando as mulheres que movem Cajamar. Prêmio oficial da Prefeitura de Cajamar para reconhecer mulheres empreendedoras.",
+      "startDate": "2025-12-17",
+      "endDate": "2025-12-17",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Cajamar",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Cajamar",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Prefeitura de Cajamar",
+        "url": "https://cajamar.sp.gov.br"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://docs.google.com/forms/d/e/1FAIpQLSeXfqJK-G0FQihauwygbH6HTOVvUTJqz9VO2acDxkz9mW3VKg/viewform",
+        "price": "0",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2025-11-24",
+        "validThrough": "2025-12-03"
+      }
+    }
+    </script>
+
+    <style>
+        /* ===========================
+           Prêmio Destaque Mulher Empreendedora 2025
+           Namespace: .premio-mulher
+           Based on: .investe-feira (Investe Cajamar)
+           =========================== */
+        .premio-mulher {
+            --brand: #1565c0;
+            /* Azul Institucional */
+            --brand-2: #0d47a1;
+            --accent: #9c27b0;
+            /* Roxo/Lilás para o tema Mulher */
+            --accent-light: #e1bee7;
+            --bg: #f6f8fb;
+            --text: #0f172a;
+            --muted: #475569;
+            --card: #ffffff;
+            --shadow: 0 10px 30px rgba(2, 12, 27, 0.08);
+            --radius: 16px;
+            --maxw: 1280px;
+
+            font-family: "Open Sans", "Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Arial", "sans-serif";
+        }
+
+        /* Reset suave dentro do namespace */
+        .premio-mulher * {
+            box-sizing: border-box;
+        }
+
+        .premio-mulher img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .premio-mulher a {
+            color: var(--brand);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .premio-mulher a:hover {
+            text-decoration: underline;
+        }
+
+        .premio-mulher .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .premio-mulher .header {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e5eaf2;
+        }
+
+        .premio-mulher .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0;
+        }
+
+        .premio-mulher .logo img {
+            width: 182px;
+            height: auto;
+        }
+
+        .premio-mulher .menu {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .premio-mulher .menu a {
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.9;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .premio-mulher .menu a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* Hero */
+        .premio-mulher .hero {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(74, 20, 140, 0.85) 100%),
+                url(https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600&q=80) no-repeat center 30%;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 80px 0 64px;
+            text-align: center;
+            position: relative;
+        }
+
+        .premio-mulher .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(156, 39, 176, 0.3) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .premio-mulher .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .premio-mulher .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1.1;
+            margin: 0 0 16px;
+            font-weight: 800;
+        }
+
+        .premio-mulher .hero .subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #e1bee7;
+            margin: 0 0 24px;
+            font-weight: 600;
+            display: block;
+        }
+
+        .premio-mulher .hero p {
+            font-size: clamp(16px, 2.2vw, 18px);
+            color: #f3e5f5;
+            margin: 0 0 32px;
+            line-height: 1.6;
+        }
+
+        .premio-mulher .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 700;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        .premio-mulher .btn-primary {
+            background: #fff;
+            color: var(--accent);
+        }
+
+        .premio-mulher .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            background: #f3e5f5;
+        }
+
+        /* Sections Generic */
+        .premio-mulher section {
+            padding: 64px 0;
+            background: #fff;
+        }
+
+        .premio-mulher section.alt {
+            background: var(--bg);
+        }
+
+        .premio-mulher h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            margin: 0 0 16px;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .premio-mulher .lead {
+            color: var(--muted);
+            margin: 0 auto 40px;
+            text-align: center;
+            max-width: 700px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .premio-mulher .foot {
+            text-align: center;
+            padding: 32px 0;
+            color: var(--muted);
+            font-size: 14px;
+            background: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Countdown Timer */
+        .premio-mulher .countdown {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .premio-mulher .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .premio-mulher .countdown-value {
+            font-size: 32px;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+        }
+
+        .premio-mulher .countdown-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .premio-mulher .animate-on-scroll {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .premio-mulher .animate-slide-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .premio-mulher .animate-slide-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .premio-mulher .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .premio-mulher .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .premio-mulher .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .premio-mulher .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .premio-mulher .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .premio-mulher .nav {
+                flex-direction: column;
+            }
+
+            .premio-mulher .menu {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            /* Como Participar - stack on mobile */
+            #como-participar .wrap>div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Countdown responsivo */
+            .premio-mulher .countdown {
+                gap: 12px;
+            }
+
+            .premio-mulher .countdown-item {
+                min-width: 70px;
+                padding: 12px 16px;
+            }
+
+            .premio-mulher .countdown-value {
+                font-size: 24px;
+            }
+
+            .premio-mulher .hero {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .premio-mulher section {
+                padding: 40px 0;
+            }
+
+            .premio-mulher .hero {
+                padding: 60px 0 48px;
+            }
+
+            .premio-mulher .btn {
+                padding: 14px 24px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="premio-mulher">
+        <!-- Header -->
+        <header class="header">
+            <div class="wrap nav">
+                <div class="logo">
+                    <img src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png"
+                        alt="Prefeitura de Cajamar" />
+                </div>
+                <nav class="menu">
+                    <a href="#proposito">O Prêmio</a>
+                    <a href="#quem-pode">Quem Pode</a>
+                    <a href="#categorias">Categorias</a>
+                    <a href="#como-participar">Como Participar</a>
+                    <a href="#cronograma">Cronograma</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="wrap hero-content" style="position: relative; z-index: 1;">
+                <span class="subtitle animate-on-scroll">🌟 Prêmio Destaque Mulher Empreendedora 2025</span>
+                <h1 class="animate-on-scroll delay-1">Celebrando as mulheres que movem Cajamar</h1>
+                <p class="animate-on-scroll delay-2">
+                    Elas inspiram. Elas inovam. Elas transformam.<br>
+                    O Prêmio Destaque Mulher Empreendedora 2025 é a homenagem oficial da Prefeitura de Cajamar às
+                    mulheres que fazem da nossa cidade um lugar mais criativo, humano e vibrante.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXfqJK-G0FQihauwygbH6HTOVvUTJqz9VO2acDxkz9mW3VKg/viewform"
+                    class="btn btn-primary animate-on-scroll delay-3" target="_blank">👉
+                    Inscreva-se agora</a>
+
+                <!-- Countdown Timer -->
+                <div class="countdown animate-on-scroll delay-4" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="days">00</span>
+                        <span class="countdown-label">Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-value" id="seconds">00</span>
+                        <span class="countdown-label">Segundos</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 8px; font-size: 14px; opacity: 0.9;" class="animate-on-scroll delay-5">Inscrições
+                    abertas até 03/12</p>
+            </div>
+        </section>
+
+        <!-- Seção 1: O Propósito -->
+        <section id="proposito" class="alt">
+            <div class="wrap">
+                <h2>O Propósito</h2>
+                <p class="lead">Reconhecer quem transforma vidas através do empreendedorismo.</p>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--text);">
+                    <p>Todos os dias, mulheres de Cajamar cuidam de pessoas, levantam negócios, criam oportunidades,
+                        geram renda, constroem novas perspectivas — e fazem tudo isso com coragem, talento e propósito.
+                    </p>
+                    <p><strong>O Prêmio Destaque Mulher Empreendedora celebra exatamente essas histórias.</strong></p>
+                    <p>Histórias reais. Histórias que representam a força da nossa cidade.<br>Histórias que precisam ser
+                        vistas, ouvidas e reconhecidas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 2: Quem Pode Participar -->
+        <section id="quem-pode">
+            <div class="wrap">
+                <h2>Quem Pode Participar</h2>
+                <p class="lead">Mulheres empreendedoras que:</p>
+
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 32px;">
+                    <div class="animate-on-scroll delay-1"
+                        style="background: var(--bg); padding: 24px; border-radius: var(--radius); border: 1px solid #e2e8f0;">
+                        <h3 style="color: var(--brand); font-size: 20px; margin-bottom: 12px;">📍 Residem em Cajamar
+                        </h3>
+                        <p style="color: var(--muted);">É necessário comprovar residência no município.</p>
+                    </div>
+                    <div class="animate-on-scroll delay-2"
+                        style="background: var(--bg); padding: 24px; border-radius: var(--radius); border: 1px solid #e2e8f0;">
+                        <h3 style="color: var(--brand); font-size: 20px; margin-bottom: 12px;">💼 Possuem Negócio Ativo
+                        </h3>
+                        <p style="color: var(--muted);">CNPJ ou atividade autônoma.<br>
+                            <span style="font-size: 0.9em; color: var(--brand);">*Para "Empreendedora do Ano" e
+                                "Consultora de Beleza", o CNPJ não é obrigatório.</span>
+                        </p>
+                    </div>
+                    <div class="animate-on-scroll delay-3"
+                        style="background: var(--bg); padding: 24px; border-radius: var(--radius); border: 1px solid #e2e8f0;">
+                        <h3 style="color: var(--brand); font-size: 20px; margin-bottom: 12px;">🚀 Têm uma História</h3>
+                        <p style="color: var(--muted);">Uma trajetória inspiradora para compartilhar com a cidade.</p>
+                    </div>
+                </div>
+
+                <div
+                    style="background: #e3f2fd; padding: 16px; border-radius: 8px; text-align: center; color: #0d47a1;">
+                    <strong>Nota:</strong> Não é necessário anexar documentos agora. RG, CPF, CNPJ (se aplicável) e
+                    endereço serão
+                    validados posteriormente pela equipe da Prefeitura.
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 3: Categorias -->
+        <section id="categorias" class="alt">
+            <div class="wrap">
+                <h2>Categorias da Edição 2025</h2>
+                <p class="lead">Escolha a categoria que melhor representa a sua jornada.</p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <!-- Card 1 -->
+                    <article class="animate-on-scroll delay-1"
+                        style="background: #fff; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--accent);">
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text);">🏆 Empreendedora do Ano
+                        </h3>
+                        <p style="color: var(--muted);">A história que mais inspira Cajamar — escolhida pelo voto
+                            popular.</p>
+                        <p style="color: var(--brand); font-size: 14px; margin-top: 8px; font-weight: 600;">* Não é
+                            necessário CNPJ</p>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="animate-on-scroll delay-2"
+                        style="background: #fff; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid #4caf50;">
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text);">🌱 Inovação e
+                            Sustentabilidade</h3>
+                        <p style="color: var(--muted);">Para quem cria soluções novas, conscientes e transformadoras.
+                        </p>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="animate-on-scroll delay-3"
+                        style="background: #fff; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid #ff9800;">
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text);">🤝 Impacto Social</h3>
+                        <p style="color: var(--muted);">Para quem usa o negócio como ferramenta de inclusão e mudança
+                            social.</p>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="animate-on-scroll delay-4"
+                        style="background: #fff; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid #e91e63;">
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text);">🎨 Negócios Criativos</h3>
+                        <p style="color: var(--muted);">Para quem produz com sensibilidade, cultura, identidade e
+                            criatividade.</p>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="animate-on-scroll delay-5"
+                        style="background: #fff; padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid #9c27b0;">
+                        <h3 style="font-size: 20px; margin-bottom: 12px; color: var(--text);">💄 Consultora de Beleza
+                        </h3>
+                        <p style="color: var(--muted);">Exclusiva para consultoras (Avon/Natura) que promovem autoestima
+                            e independência.</p>
+                        <p style="color: var(--brand); font-size: 14px; margin-top: 8px; font-weight: 600;">* Não é
+                            necessário CNPJ</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 4: Como Participar -->
+        <section id="como-participar">
+            <div class="wrap">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div>
+                        <h2>Como Participar</h2>
+                        <p class="lead" style="text-align: left; margin: 0 0 24px;">A inscrição é simples e cheia de
+                            significado:</p>
+
+                        <ol
+                            style="list-style: none; counter-reset: steps; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+                            <li style="display: flex; gap: 16px; align-items: flex-start;">
+                                <span
+                                    style="background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</span>
+                                <div><strong>Preencha o formulário oficial</strong> com seus dados básicos.</div>
+                            </li>
+                            <li style="display: flex; gap: 16px; align-items: flex-start;">
+                                <span
+                                    style="background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</span>
+                                <div><strong>Grave um vídeo</strong> de até 1 minuto no Instagram ou TikTok dizendo:
+                                    <em>“Eu estou inscrita no Prêmio Destaque Mulher Empreendedora de Cajamar
+                                        2025!”</em>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 16px; align-items: flex-start;">
+                                <span
+                                    style="background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</span>
+                                <div><strong>Conte sua história</strong>, fale sobre seu negócio e seu impacto.</div>
+                            </li>
+                            <li style="display: flex; gap: 16px; align-items: flex-start;">
+                                <span
+                                    style="background: var(--accent); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">4</span>
+                                <div><strong>Envie o link</strong> no formulário e pronto — sua inscrição estará
+                                    registrada.</div>
+                            </li>
+                        </ol>
+
+                        <div style="margin-top: 32px;">
+                            <a href="https://drive.google.com/file/d/1dAtL34hQAdKRwLZLLDzK4dm7qyptsKTt/view?usp=sharing"
+                                target="_blank"
+                                style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600;">
+                                📄 Leia o regulamento completo
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image Placeholder for 'How to Participate' -->
+                    <div class="animate-slide-right"
+                        style="background: #f0f0f0; border-radius: var(--radius); min-height: 300px; display: flex; align-items: center; justify-content: center; color: var(--muted); overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
+                            alt="Mulher empreendedora" loading="lazy"
+                            style="border-radius: var(--radius); width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 5: Cronograma -->
+        <section id="cronograma" class="alt">
+            <div class="wrap">
+                <h2>Cronograma Oficial</h2>
+                <div
+                    style="max-width: 600px; margin: 0 auto; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);">
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid #eee; font-weight: bold; background: #f8fafc;">
+                        <div>Etapa</div>
+                        <div style="text-align: right;">Data</div>
+                    </div>
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid #eee;">
+                        <div>Inscrições</div>
+                        <div style="text-align: right; color: var(--brand);">24/11 a 03/12</div>
+                    </div>
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid #eee;">
+                        <div>Votação Popular</div>
+                        <div style="text-align: right; color: var(--brand);">04/12 a 11/12</div>
+                    </div>
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; padding: 16px 24px; border-bottom: 1px solid #eee;">
+                        <div>Divulgação das Finalistas</div>
+                        <div style="text-align: right; color: var(--brand);">12/12</div>
+                    </div>
+                    <div
+                        style="display: grid; grid-template-columns: 1fr 1fr; padding: 16px 24px; background: #e3f2fd;">
+                        <div style="font-weight: bold; color: var(--brand);">Cerimônia de Premiação</div>
+                        <div style="text-align: right; font-weight: bold; color: var(--brand);">17/12</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção 6: Homenagem -->
+        <section id="homenagem" style="background: linear-gradient(135deg, #f3e5f5 0%, #fff 100%); text-align: center;">
+            <div class="wrap" style="max-width: 800px;">
+                <h2 style="color: var(--accent);">Uma Homenagem a Todas Nós</h2>
+                <p style="font-size: 20px; line-height: 1.6; color: var(--text);">
+                    Este prêmio é mais do que um reconhecimento.<br>
+                    É um abraço coletivo às mulheres que, mesmo diante de desafios, seguem em frente.
+                </p>
+                <div style="margin: 32px 0; font-size: 24px; font-weight: 700; color: var(--brand);">
+                    Que criam. Que lideram. Que cuidam.<br>
+                    Que inspiram outras mulheres a acreditarem em si mesmas.
+                </div>
+                <p>Se você é uma dessas mulheres — <strong>Cajamar quer te ver brilhar.</strong></p>
+            </div>
+        </section>
+
+        <!-- Seção 7: CTA Final -->
+        <section id="cta-final" class="alt">
+            <div class="wrap" style="text-align: center;">
+                <h2>Pronta para participar?</h2>
+                <p class="lead">Mostre sua força, sua história e sua dedicação à cidade.</p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXfqJK-G0FQihauwygbH6HTOVvUTJqz9VO2acDxkz9mW3VKg/viewform"
+                        class="btn btn-primary" target="_blank">👉 Inscreva-se
+                        agora!</a>
+                    <a href="https://wa.me/?text=Olha%20que%20incrível%20esse%20prêmio%20para%20mulheres%20empreendedoras%20de%20Cajamar!%20https://cajamar.sp.gov.br/investe/premio-mulher/"
+                        target="_blank" class="btn" style="background: #25d366; color: #fff;">Compartilhar no
+                        WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="foot">
+            <div class="wrap">
+                <p>© 2025 Prefeitura de Cajamar — Secretaria Municipal de Desenvolvimento Urbano e Econômico</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('.premio-mulher a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer para animações ao scroll
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.animation = entry.target.style.animation ||
+                            (entry.target.classList.contains('animate-slide-left') ? 'slideInLeft 0.8s ease-out forwards' :
+                                entry.target.classList.contains('animate-slide-right') ? 'slideInRight 0.8s ease-out forwards' :
+                                    'fadeIn 0.8s ease-out forwards');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todos os elementos com classes de animação
+            document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right').forEach(el => {
+                observer.observe(el);
+            });
+        } else {
+            // Fallback: mostrar todos os elementos imediatamente
+            document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right').forEach(el => {
+                el.style.opacity = '1';
+            });
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Data final: 03/12/2025 às 23:59:59
+            const endDate = new Date('2025-12-03T23:59:59-03:00').getTime();
+            const now = new Date().getTime();
+            const distance = endDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<p style="font-size: 18px; font-weight: 600;">Inscrições encerradas!</p>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Atualizar contador a cada segundo
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>

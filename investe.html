@@ -1,0 +1,1590 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Feira — Investe Cajamar: Visite e Invista em Cajamar</title>
+    <meta name="description"
+        content="Investe Cajamar — Localização estratégica, talentos qualificados e qualidade de vida. Visite e invista em Cajamar. Fale com nossa equipe." />
+    <link rel="canonical" href="https://cajamar.sp.gov.br/investe/feira/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://cajamar.sp.gov.br/investe/feira/" />
+    <meta name="robots" content="index,follow" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1565c0" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="dns-prefetch" href="https://cajamar.sp.gov.br" />
+    <link rel="preconnect" href="https://cajamar.sp.gov.br" crossorigin />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Investe Cajamar — Visite e Invista em Cajamar" />
+    <meta property="og:description"
+        content="Localização estratégica, talentos qualificados e qualidade de vida. Fale com nossa equipe e invista em Cajamar." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cajamar.sp.gov.br/investe/feira/" />
+    <meta property="og:image"
+        content="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/img615.jpg" />
+    <meta property="og:locale" content="pt_BR" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Investe Cajamar — Visite e Invista em Cajamar" />
+    <meta name="twitter:description"
+        content="Localização estratégica, talentos qualificados e qualidade de vida. Fale com nossa equipe e invista em Cajamar." />
+    <meta name="twitter:image"
+        content="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/img615.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Investe Cajamar — Visite e Invista em Cajamar",
+        "inLanguage": "pt-BR",
+        "url": "https://cajamar.sp.gov.br/investe/feira/",
+        "description": "Localização estratégica, talentos qualificados e qualidade de vida. Fale com nossa equipe e invista em Cajamar.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Investe Cajamar",
+          "url": "https://cajamar.sp.gov.br/investe/feira/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Prefeitura de Cajamar",
+          "url": "https://cajamar.sp.gov.br",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "desenvolvimento.economico@cajamar.sp.gov.br",
+            "contactType": "customer service",
+            "areaServed": "BR"
+          }
+        }
+      }
+    </script>
+    <style>
+        /* ===========================
+   Investe Cajamar — Feira (HTML único para Elementor)
+   Namespace: .investe-feira
+   Ajustes rápidos: edite as variáveis abaixo
+   =========================== */
+        .investe-feira {
+            --brand: #1565c0;
+            /* azul institucional aproximado */
+            --brand-2: #0d47a1;
+            --accent: #2e7d32;
+            /* verde de apoio */
+            --bg: #f6f8fb;
+            --text: #0f172a;
+            /* cinza-azulado escuro */
+            --muted: #475569;
+            --card: #ffffff;
+            --shadow: 0 10px 30px rgba(2, 12, 27, 0.08);
+            --radius: 16px;
+            --maxw: 1280px;
+
+            /* CTAs/contato: edite aqui */
+            --whatsapp-number: 5511950507271;
+            /* só dígitos com DDI/DDD */
+            --email-contato: desenvolvimento.economico @cajamar.sp.gov.br;
+            --utm-source: investe-cajamar;
+            --utm-medium: feira;
+            --utm-campaign: landing;
+            font-family:
+                "Open Sans", "Inter", "system-ui", "-apple-system", "Segoe UI",
+                "Roboto", "Arial", "sans-serif";
+        }
+
+        /* Reset suave dentro do namespace */
+        .investe-feira * {
+            box-sizing: border-box;
+        }
+
+        .investe-feira img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .investe-feira a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        .investe-feira a:hover {
+            text-decoration: underline;
+        }
+
+        .investe-feira .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .investe-feira .header {
+            position: sticky;
+            top: 0;
+            z-index: 9;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid #e5eaf2;
+        }
+
+        .investe-feira .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 0;
+        }
+
+        .investe-feira .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .investe-feira .logo img {
+            width: 182px;
+            height: auto;
+        }
+
+        .investe-feira .menu {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .investe-feira .menu a {
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.9;
+            text-transform: uppercase;
+        }
+
+        .investe-feira .menu a:hover {
+            opacity: 1;
+        }
+
+        .investe-feira .hero {
+            background:
+                linear-gradient(135deg,
+                    rgba(21, 101, 192, 0.65) 0%,
+                    rgba(13, 71, 161, 0.65) 100%),
+                url(https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/img615.jpg) no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            padding: 72px 0 56px;
+        }
+
+        .investe-feira .hero .grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .investe-feira .hero h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+        }
+
+        .investe-feira .hero p {
+            font-size: clamp(16px, 2.2vw, 18px);
+            color: #e6eefc;
+            margin: 0 0 20px;
+        }
+
+        .investe-feira .cta-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .investe-feira .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 18px;
+            border-radius: 999px;
+            font-weight: 700;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+        }
+
+        .investe-feira .btn-primary {
+            background: #fff;
+            color: var(--brand);
+        }
+
+        .investe-feira .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .investe-feira .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .investe-feira .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .investe-feira .hero-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: var(--radius);
+            padding: 16px;
+            color: #eaf2ff;
+        }
+
+        .investe-feira .hero small {
+            opacity: 0.85;
+        }
+
+        /* Seções genéricas */
+        .investe-feira section {
+            padding: 56px 0;
+            background: #fff;
+        }
+
+        .investe-feira section.alt {
+            background: var(--bg);
+        }
+
+        .investe-feira #institucional.alt {
+            background: #ffffff;
+        }
+
+        .investe-feira h2 {
+            font-size: clamp(22px, 3.6vw, 32px);
+            margin: 0 0 8px;
+            color: var(--text);
+        }
+
+        .investe-feira .lead {
+            color: var(--muted);
+            margin: 0 0 28px;
+        }
+
+        /* Pilares (cards) */
+        .investe-feira .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .investe-feira .card {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .investe-feira .card .thumb {
+            margin: 0 0 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e9eef6;
+            height: 160px;
+        }
+
+        .investe-feira .card .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .investe-feira .card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .investe-feira .card p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* KPIs e métricas */
+        .investe-feira .kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .investe-feira .kpi {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: var(--radius);
+            padding: 18px;
+            text-align: center;
+        }
+
+        .investe-feira .kpi .v {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--brand);
+        }
+
+        .investe-feira .kpi .k {
+            margin-top: 4px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        /* Cards métricos (principais KPIs) */
+        .investe-feira .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .investe-feira .metric-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .investe-feira .metric-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .investe-feira .metric-card {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .investe-feira .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .investe-feira .metric-card .metric-value {
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 800;
+            color: var(--brand);
+            line-height: 1;
+        }
+
+        .investe-feira .metric-card .title {
+            margin-top: 8px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .investe-feira .metric-card .desc {
+            margin-top: 8px;
+            color: var(--muted);
+        }
+
+        /* Indicadores de apoio */
+        .investe-feira .kpi-secondary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        @media (max-width: 800px) {
+            .investe-feira .kpi-secondary {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .investe-feira .kpi-secondary .item {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .investe-feira .kpi-secondary .item strong {
+            color: var(--text);
+        }
+
+        .investe-feira .kpi-secondary .item span {
+            color: var(--muted);
+        }
+
+        /* Estrutura econômica */
+        .investe-feira .econ {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+        }
+
+        .investe-feira .econ .bars {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .investe-feira .econ .bar {
+            background: #eef3fb;
+            border: 1px solid #e0e7f3;
+            border-radius: 999px;
+            overflow: hidden;
+            height: 14px;
+        }
+
+        .investe-feira .econ .fill {
+            height: 100%;
+            background: linear-gradient(135deg,
+                    var(--brand, #1565c0),
+                    var(--brand-2, #0d47a1));
+            width: 0;
+            transition: width 0.9s ease-out;
+        }
+
+        .investe-feira .econ .row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .investe-feira .econ .row .label {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .investe-feira .econ .row .pct {
+            font-weight: 800;
+            color: var(--brand);
+        }
+
+        /* Seção de setores (cards) */
+        .investe-feira .sector-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .investe-feira .sector-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .investe-feira .sector-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #setores .sector-cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 1024px) {
+            #setores .sector-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            #setores .sector-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #setores .sector-card {
+            background: var(--card);
+            border: 1px solid #dbe7fb;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #setores .sector-card .cta-row {
+            margin-top: auto;
+        }
+
+        .investe-feira .hl {
+            display: inline-block;
+            padding: 0 4px;
+            border: 1px solid #e0e7f3;
+            border-radius: 6px;
+            background: transparent;
+            color: inherit;
+            transition:
+                border-color 0.15s ease,
+                background 0.15s ease;
+        }
+
+        .investe-feira .hl:hover {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+        }
+
+        /* Seção institucional (cards/tabs) */
+        .investe-feira .inst {
+            background: #fff;
+        }
+
+        .investe-feira .inst .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 900px) {
+            .investe-feira .inst .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .investe-feira .inst-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            align-items: stretch;
+            margin-bottom: 32px;
+        }
+
+        .investe-feira .inst-card {
+            border-radius: 14px;
+            padding: 18px;
+            font-weight: 800;
+            box-shadow: none;
+            border: 2px solid transparent;
+            background: var(--card);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 84px;
+            transition: none;
+        }
+
+        .investe-feira .inst-card.dev {
+            border-color: #7fbef3;
+            color: #0c3a66;
+        }
+
+        .investe-feira .inst-card.trab {
+            border-color: #8fd9a7;
+            color: #135b2c;
+        }
+
+        .investe-feira .inst-card.cult {
+            border-color: #f9c74f;
+            color: #5b3d00;
+        }
+
+        .investe-feira .inst-card:hover,
+        .investe-feira .inst-card:focus-visible {
+            background: #f0f4f8;
+        }
+
+        /* Layout simultâneo dos setores (sem interação) */
+        .investe-feira .inst-all-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            align-items: stretch;
+            margin-top: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            .investe-feira .inst-all-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .investe-feira .inst-all-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .investe-feira .sector-card {
+            background: var(--card);
+            border: 1px solid #dbe7fb;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .investe-feira .sector-card .cta-row {
+            margin-top: auto;
+        }
+
+        .investe-feira .sector-card.dev {
+            border-color: #7fbef3;
+        }
+
+        .investe-feira .sector-card.trab {
+            border-color: #8fd9a7;
+        }
+
+        .investe-feira .sector-card.cult {
+            border-color: #f9c74f;
+        }
+
+        .investe-feira .inst-content h2 {
+            font-size: clamp(28px, 5vw, 44px);
+            line-height: 1.1;
+            margin: 0 0 12px;
+        }
+
+        .investe-feira .inst-content .lead {
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .investe-feira .inst-block {
+            background: var(--card);
+            border: 1px solid #e9eef6;
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin-top: 24px;
+        }
+
+        .investe-feira .inst-block h3 {
+            margin: 0 0 10px;
+            font-size: 22px;
+            color: var(--text);
+        }
+
+        .investe-feira .inst-block p {
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .investe-feira .inst-block ul {
+            margin: 16px 0 16px 18px;
+            color: var(--muted);
+        }
+
+        .investe-feira .inst-block .cta-row {
+            margin-top: 20px;
+        }
+
+        .investe-feira .inst-block[hidden] {
+            display: none !important;
+        }
+
+        /* Galeria/Slider */
+        .investe-feira .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid #e9eef6;
+            box-shadow: var(--shadow);
+        }
+
+        .investe-feira .track {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .investe-feira .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .investe-feira .slide img {
+            width: 100%;
+            max-height: 480px;
+            height: auto;
+        }
+
+        .investe-feira .slider .ctrl {
+            position: absolute;
+            inset: auto 10px 10px 10px;
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .investe-feira .ctrl button {
+            background: #ffffff;
+            border: 1px solid #e9eef6;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .investe-feira .ctrl button:hover {
+            transform: translateY(-1px);
+        }
+
+        /* CTA final */
+        .investe-feira .cta-final {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #e8f1ff 0%, #e7f6ea 100%);
+            border: 1px solid #dbe7fb;
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+
+        /* Rodapé */
+        .investe-feira .foot {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .investe-feira .foot a {
+            color: var(--muted);
+            text-decoration: underline;
+        }
+
+        /* Responsivo */
+        @media (max-width: 960px) {
+            .investe-feira .hero .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .investe-feira .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .investe-feira .kpis {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .investe-feira .menu {
+                display: none;
+            }
+
+            /* simplifica no mobile; se quiser, troque por hambúrguer */
+            .investe-feira .kpis {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Acessos Essenciais */
+        /* reutiliza .sector-cards e .sector-card da seção de setores */
+    </style>
+
+    <style>
+        /* Institutional Cards Section */
+        .inst-all-cards.sector-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+            /* Ensure cards have the same height */
+        }
+
+        .sector-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Pushes cta-row to the bottom */
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sector-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .sector-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .sector-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .sector-card ul {
+            list-style-type: '✓';
+            /* Using a checkmark for bullets */
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sector-card ul li {
+            padding-left: 0.8rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .sector-card .cta-row {
+            margin-top: auto;
+            /* Pushes the button to the bottom of the card */
+            text-align: center;
+        }
+
+        .sector-card .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .sector-card .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#conteudo" class="sr-only" style="position: absolute; left: -9999px">Ir para o conteúdo</a>
+    <div class="investe-feira" id="investe-feira">
+        <!-- Header -->
+        <header class="header">
+            <div class="wrap nav">
+                <div class="logo">
+                    <img src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png"
+                        alt="Prefeitura de Cajamar — Logomarca" />
+                </div>
+                <nav class="menu" aria-label="Navegação principal">
+                    <a href="#porque" data-smooth="true">Por que Cajamar</a>
+                    <a href="#numeros" data-smooth="true">Indicadores</a>
+                    <a href="#galeria" data-smooth="true">Galeria</a>
+                    <a href="#contato" data-smooth="true">Contato</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="hero-title" id="conteudo">
+            <div class="wrap">
+                <div class="grid">
+                    <div>
+                        <h1 id="hero-title">Visite e Invista em Cajamar</h1>
+                        <p>
+                            Aqui, negócios e qualidade de vida caminham juntos para
+                            valorizar o seu investimento.
+                        </p>
+                        <div class="cta-row">
+                            <a class="btn btn-primary" id="ctaWhats" href="#" target="_blank" rel="noopener">Agendar
+                                conversa</a>
+                            <a class="btn btn-ghost" href="#porque" data-smooth="true">Saiba mais</a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="hero-card">
+                            <strong>Foco do investidor</strong>
+                            <ul style="margin: 10px 0 0 18px; color: #e6eefc">
+                                <li>Localização estratégica (Anhanguera, Rodoanel, RMSP)</li>
+                                <li>Talentos e intermediação de mão de obra</li>
+                                <li>Qualidade de vida, cultura e turismo</li>
+                            </ul>
+                        </div>
+                        <!-- bloco de contato institucional removido -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por que Cajamar -->
+        <section id="porque" class="alt" aria-labelledby="pq-title">
+            <div class="wrap">
+                <h2 id="pq-title">Por que Cajamar</h2>
+                <p class="lead">
+                    Três pilares para acelerar sua decisão: localização, talentos e
+                    qualidade de vida.
+                </p>
+
+                <div class="cards" role="list">
+                    <article class="card" role="listitem">
+                        <div class="thumb">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/1-nova.jpg"
+                                alt="Localização estratégica — vias e conexões" />
+                        </div>
+                        <h3>Localização Estratégica</h3>
+                        <p>
+                            Conexão direta com a capital, Anhanguera e Rodoanel — ideal para
+                            operações logísticas e industriais.
+                        </p>
+                    </article>
+                    <article class="card" role="listitem">
+                        <div class="thumb">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/talentos.png"
+                                alt="Talentos e contratação — qualificação e mão de obra" />
+                        </div>
+                        <h3>Talentos & Contratação</h3>
+                        <p>
+                            Intermediação ativa de mão de obra e qualificação sob demanda em
+                            parceria com instituições e programas.
+                        </p>
+                    </article>
+                    <article class="card" role="listitem">
+                        <div class="thumb">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/parque-linear-cajamar-centro.jpg"
+                                alt="Qualidade de vida e turismo — parque linear" />
+                        </div>
+                        <h3>Qualidade de Vida & Turismo</h3>
+                        <p>
+                            Trilhas, parques, gastronomia e agenda cultural fortalecem a
+                            experiência de colaboradores e executivos.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPIs (cards com números animados) -->
+        <section id="numeros" aria-labelledby="kpi-title">
+            <div class="wrap">
+                <h2 id="kpi-title">Cajamar em números</h2>
+                <p class="lead">
+                    Indicadores de referência, com destaque para produtividade,
+                    crescimento e estrutura econômica.
+                </p>
+
+                <div class="metric-cards" role="list" aria-label="Indicadores principais">
+                    <article class="metric-card" role="listitem">
+                        <div class="metric-value" data-target="287.4" data-prefix="R$ " data-suffix=" mil"
+                            data-decimals="1"></div>
+                        <div class="title">PIB per capita</div>
+                        <p class="desc">
+                            Alta produtividade por habitante, indicando eficiência e renda
+                            acima da média regional.
+                        </p>
+                    </article>
+                    <article class="metric-card" role="listitem">
+                        <div class="metric-value" data-target="69.7" data-suffix="%" data-decimals="1" data-sign="+">
+                        </div>
+                        <div class="title">Crescimento do PIB (5 anos)</div>
+                        <p class="desc">
+                            Ritmo acelerado de expansão sustentada, reforçando potencial de
+                            retorno sobre investimentos.
+                        </p>
+                    </article>
+                    <article class="metric-card" role="listitem">
+                        <div class="metric-value" data-target="14421" data-prefix="~" data-decimals="0"></div>
+                        <div class="title">Empresas ativas</div>
+                        <p class="desc">
+                            Rede empresarial consolidada que facilita integração na cadeia
+                            produtiva e parcerias B2B.
+                        </p>
+                    </article>
+                    <article class="metric-card" role="listitem">
+                        <div class="metric-value" data-target="80.2" data-suffix="%" data-decimals="1"></div>
+                        <div class="title">Participação do setor de Serviços</div>
+                        <p class="desc">
+                            Predominância logística, transporte e armazenagem — vocação como
+                            hub regional.
+                        </p>
+                    </article>
+                </div>
+
+                <section aria-labelledby="kpi-apoio-title" style="margin-top: 18px">
+                    <h3 id="kpi-apoio-title">Indicadores de apoio</h3>
+                    <div class="kpi-secondary">
+                        <div class="item">
+                            <strong>~92,7 mil habitantes</strong>
+                            <span>→ Tamanho do mercado consumidor e força de trabalho.</span>
+                        </div>
+                        <div class="item">
+                            <strong>7º em crescimento regional</strong>
+                            <span>→ Reforço reputacional útil em materiais
+                                institucionais.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-labelledby="econ-title" style="margin-top: 22px">
+                    <h3 id="econ-title">Estrutura econômica</h3>
+                    <p class="lead" style="margin-bottom: 12px">
+                        Serviços é o principal componente do valor adicionado ao PIB,
+                        seguido por Indústria.
+                    </p>
+                    <div class="econ" role="group" aria-label="Participação setorial">
+                        <div class="bars" aria-hidden="true">
+                            <div class="bar">
+                                <div class="fill" data-target="80.2"></div>
+                            </div>
+                            <div class="bar">
+                                <div class="fill" data-target="16.9"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <span class="label">Serviços</span><span class="pct">80,2%</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Indústria</span><span class="pct">16,9%</span>
+                        </div>
+                        <p class="foot" style="margin-top: 10px">
+                            Logística, transporte e atividades diversas como motor da
+                            economia; indústria diversificada com grandes players.
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Seção institucional -->
+        <section id="setores" aria-labelledby="setores-title" style="scroll-margin-top: 80px">
+            <div class="wrap">
+                <h2 id="setores-title">Principais Setores</h2>
+                <div class="sector-cards">
+                    <article class="sector-card" aria-labelledby="sec-log-title">
+                        <h3 id="sec-log-title">Logística e E-commerce</h3>
+                        <p>
+                            Principal motor da economia, Cajamar é conhecida como a
+                            <strong><mark style="background: #ffeb3b">Faria Lima dos Galpões</mark></strong>,
+                            especialmente no distrito de Jordanésia. O setor é
+                            responsável pela
+                            <strong><mark style="background: #ffeb3b">maior parte dos empregos formais</mark></strong>,
+                            com destaque para transporte de carga e depósitos. A presença
+                            de
+                            <strong><mark style="background: #ffeb3b">gigantes como Amazon e Mercado
+                                    Livre</mark></strong>
+                            impulsiona
+                            <strong><mark style="background: #ffeb3b">investimentos recordes</mark></strong>
+                            e a geração contínua de vagas, solidificando a cidade como um
+                            <strong><mark style="background: #ffeb3b">centro logístico nacional</mark></strong>.
+                        </p>
+                    </article>
+                    <article class="sector-card" aria-labelledby="sec-ind-title">
+                        <h3 id="sec-ind-title">Indústria da Transformação</h3>
+                        <p>
+                            A indústria contribui significativamente para a
+                            <strong><mark style="background: #ffeb3b">diversificação econômica</mark></strong>. O
+                            município abriga
+                            <strong><mark style="background: #ffeb3b">indústrias de atuação global e
+                                    nacional</mark></strong>
+                            em ramos como cosméticos (Natura), química (Promax Bardahl,
+                            Sayerlack), eletroeletrônicos (TCL Semp), plásticos (Georg
+                            Fischer), metalurgia e alimentos, gerando
+                            <strong><mark style="background: #ffeb3b">empregos qualificados</mark></strong>
+                            e
+                            <strong><mark style="background: #ffeb3b">fortalecendo a cadeia produtiva
+                                    local</mark></strong>.
+                        </p>
+                    </article>
+                    <article class="sector-card" aria-labelledby="sec-com-title">
+                        <h3 id="sec-com-title">Comércio e Serviços</h3>
+                        <p>
+                            Com
+                            <strong><mark style="background: #ffeb3b">21% dos empregos formais</mark></strong>, o setor
+                            de comércio e serviços é expressivo e diversificado.
+                            Engloba desde
+                            <strong><mark style="background: #ffeb3b">grandes redes varejistas</mark></strong>
+                            de móveis (Marabraz) e supermercados até uma vasta gama de
+                            serviços como manutenção, saúde, alimentação e atividades
+                            administrativas. A cidade demonstra um
+                            <strong><mark style="background: #ffeb3b">alto potencial de consumo</mark></strong>,
+                            alimentando o
+                            <strong><mark style="background: #ffeb3b">crescimento contínuo</mark></strong>
+                            deste setor.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Força Institucional a Seu Favor -->
+        <section id="institucional" aria-labelledby="inst-title" class="alt" style="scroll-margin-top: 80px">
+            <div class="wrap">
+                <div class="inst grid">
+                    <div class="inst-content">
+                        <h2 id="inst-title">Força Institucional a Seu Favor</h2>
+                        <p class="lead">
+                            Redes de apoio que unem negócios, empregos e turismo
+                        </p>
+
+                        <p>
+                            <strong>Cajamar reúne uma rede sólida</strong> de secretarias e
+                            programas municipais comprometidos em transformar potencial em
+                            resultados reais. Aqui, setor público e iniciativa privada
+                            caminham lado a lado para gerar oportunidades, impulsionar
+                            negócios e fortalecer o turismo local.
+                        </p>
+                        <p>
+                            Conheça os órgãos que podem apoiar seu investimento e
+                            crescimento:
+                        </p>
+
+                        <div class="inst-all-cards sector-cards" aria-label="Órgãos e programas municipais">
+                            <article class="sector-card dev" aria-labelledby="inst-dev-title">
+                                <h3 id="inst-dev-title">Desenvolvimento Econômico</h3>
+                                <p>
+                                    Apoia investidores, empreendedores e empresas instaladas em
+                                    Cajamar, oferecendo:
+                                </p>
+                                <ul>
+                                    <li>Apoio à instalação e ampliação de empreendimentos;</li>
+                                    <li>Intermediação com o poder público;</li>
+                                    <li>
+                                        Parcerias estratégicas com o Sebrae, Senai e outras
+                                        instituições;
+                                    </li>
+                                    <li>Incentivos à inovação e sustentabilidade.</li>
+                                </ul>
+                                <div class="cta-row">
+                                    <a id="btnDevMail" class="btn btn-primary" href="#">📩 Fale com o Desenvolvimento
+                                        Econômico</a>
+                                </div>
+                            </article>
+
+                            <article class="sector-card trab" aria-labelledby="inst-trab-title">
+                                <h3 id="inst-trab-title">Trabalho e Emprego</h3>
+                                <p>
+                                    Conecta empresas que buscam talentos e moradores em busca de
+                                    oportunidades. Oferece:
+                                </p>
+                                <ul>
+                                    <li>Divulgação de vagas e encaminhamento de currículos;</li>
+                                    <li>Programas de qualificação profissional;</li>
+                                    <li>Apoio a estágios e programas de inclusão;</li>
+                                    <li>
+                                        Orientação trabalhista e intermediação de mão de obra.
+                                    </li>
+                                </ul>
+                                <div class="cta-row">
+                                    <a id="btnWorkMail" class="btn btn-primary" href="#">📩 Fale com Trabalho e
+                                        Emprego</a>
+                                </div>
+                            </article>
+
+                            <article class="sector-card cult" aria-labelledby="inst-cult-title">
+                                <h3 id="inst-cult-title">Cultura e Turismo</h3>
+                                <p>
+                                    Valoriza o patrimônio histórico e natural de Cajamar,
+                                    fortalecendo a identidade local e o turismo sustentável.
+                                    Entre suas ações:
+                                </p>
+                                <ul>
+                                    <li>Apoio a eventos, feiras e festivais;</li>
+                                    <li>
+                                        Incentivo ao turismo rural, ecológico e de negócios;
+                                    </li>
+                                    <li>Divulgação de atrativos culturais e gastronômicos;</li>
+                                    <li>
+                                        Parcerias com empreendedores locais do setor criativo.
+                                    </li>
+                                </ul>
+                                <div class="cta-row">
+                                    <a id="btnCultMail" class="btn btn-primary" href="#">📩 Fale com Cultura e
+                                        Turismo</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="cta-row" style="margin-top: 18px">
+                            <a id="ctaInst" class="btn btn-primary" href="#">📅 Agende uma conversa com nossa equipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria / Slider -->
+        <section id="galeria" class="alt" aria-labelledby="gal-title">
+            <div class="wrap">
+                <h2 id="gal-title">Onde negócios e turismo se encontram</h2>
+                <p class="lead">
+                    Registre sua visita técnica e conheça os polos logísticos, parques e
+                    atrativos locais.
+                </p>
+
+                <div class="slider" aria-roledescription="carousel" aria-label="Galeria de imagens">
+                    <div class="track" id="track">
+                        <!-- Imagens oficiais de Cajamar (carrossel) -->
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/whatsapp-image-2023-11-29-at-16-01-22.jpeg"
+                                alt="Feira municipal — palco e público" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/sitio-cacupe-pirapora-cajamar-jmarques-galeria-10.jpg"
+                                alt="Sítio Cacupé em Pirapora/Cajamar — paisagem" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/rodeio_1.jpg"
+                                alt="Rodeio — arena de eventos" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/parque-linear-cajamar-centro.jpg"
+                                alt="Parque Linear no Centro de Cajamar" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/museu-casa-da-memoria.jpg"
+                                alt="Museu Casa da Memória — cultura" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/boiodromo-1280x853-1.jpeg"
+                                alt="Boiódromo — infraestrutura de eventos" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/parque-cajamar-feliz-polvilho.jpg"
+                                alt="Parque Cajamar Feliz — Polvilho" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/parque-cajamar-feliz-jordanesia.jpg"
+                                alt="Parque Cajamar Feliz — Jordanésia" />
+                        </figure>
+                        <figure class="slide">
+                            <img src="https://cajamar.sp.gov.br/investe/wp-content/uploads/sites/37/2025/10/morro-da-placa.jpg"
+                                alt="Morro da Placa — vista" />
+                        </figure>
+                    </div>
+                    <div class="ctrl">
+                        <button type="button" id="prev" aria-label="Imagem anterior">
+                            ◀
+                        </button>
+                        <button type="button" id="next" aria-label="Próxima imagem">
+                            ▶
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Acessos Essenciais -->
+        <section id="acessos" aria-labelledby="access-title" style="scroll-margin-top: 80px">
+            <div class="wrap">
+                <h2 id="access-title">Acessos Essenciais</h2>
+                <div class="sector-cards">
+                    <article class="sector-card" aria-labelledby="acc-corredores">
+                        <h3 id="acc-corredores">Corredores estratégicos</h3>
+                        <p>
+                            Conexão direta com
+                            <strong><span class="hl">SP-330 (Anhanguera)</span></strong> e
+                            integração pelo
+                            <strong><span class="hl">Rodoanel (SP-021)</span></strong>, além de acessos a
+                            <strong><span class="hl">Castello Branco</span></strong>, <strong><span
+                                    class="hl">Bandeirantes</span></strong>, <strong><span
+                                    class="hl">Dutra</span></strong> e
+                            <strong><span class="hl">Anchieta/Imigrantes</span></strong>.
+                        </p>
+                    </article>
+                    <article class="sector-card" aria-labelledby="acc-vocacao">
+                        <h3 id="acc-vocacao">Vocação e polos</h3>
+                        <p>
+                            Jordanésia como
+                            <strong><span class="hl">polo logístico/industrial</span></strong>
+                            e Polvilho como
+                            <strong><span class="hl">serviços e varejo de apoio</span></strong>; um ecossistema que
+                            sustenta operações de
+                            <strong><span class="hl">grande escala</span></strong>.
+                        </p>
+                    </article>
+                    <article class="sector-card" aria-labelledby="acc-desloc">
+                        <h3 id="acc-desloc">Referências de deslocamento</h3>
+                        <p>
+                            <strong><span class="hl">Curto</span></strong>: São Paulo (Centro/Oeste), ABC Paulista.
+                            <strong><span class="hl">Curto/Médio</span></strong>: Guarulhos (GRU), Jundiaí.
+                            <strong><span class="hl">Médio/Estratégico</span></strong>: Santos (Porto), Viracopos (VCP),
+                            Vale do Paraíba.
+                        </p>
+                    </article>
+                    <article class="sector-card" aria-labelledby="acc-importa">
+                        <h3 id="acc-importa">Por que isso importa</h3>
+                        <p>
+                            Menos fricção na última milha,
+                            <strong><span class="hl">redundância operacional</span></strong>
+                            por múltiplas rotas,
+                            <strong><span class="hl">lead times previsíveis</span></strong>
+                            e proximidade de
+                            <strong><span class="hl">talentos e fornecedores</span></strong>. Cajamar é conhecida como a
+                            <strong><span class="hl">“Disney dos galpões”</span></strong>
+                            pela combinação única de localização e infraestrutura.
+                        </p>
+                    </article>
+                </div>
+                <p class="foot" style="margin-top: 10px">
+                    Classificações qualitativas podem variar conforme tráfego e janela
+                    horária.
+                </p>
+                <div class="cta-row" style="margin-top: 16px">
+                    <a class="btn btn-primary" id="ctaAccessWhats" href="#" target="_blank" rel="noopener">Falar com
+                        nossa equipe</a>
+                    <a class="btn btn-primary" id="ctaChannels" href="#contato" data-smooth="true">Canais oficiais</a>
+                </div>
+            </div>
+        </section>
+        <section id="contato" aria-labelledby="cta-title" class="alt" style="scroll-margin-top: 80px">
+            <div class="wrap">
+                <div class="cta-final">
+                    <h2 id="cta-title">Pronto para investir?</h2>
+                    <p class="lead" style="margin: 0">
+                        Fale com nossa equipe para visitas técnicas, agendas e informações
+                        específicas.
+                    </p>
+                    <div class="cta-row" style="justify-content: center">
+                        <a class="btn btn-primary" id="ctaWhats2" href="#" target="_blank" rel="noopener">Falar no
+                            WhatsApp</a>
+                        <a class="btn btn-danger" id="ctaEmail2" href="#">Enviar e-mail</a>
+                    </div>
+                </div>
+                <p class="foot" style="margin-top: 16px">
+                    © Prefeitura de Cajamar —
+                    <a href="https://cajamar.sp.gov.br" target="_blank" rel="noopener">Portal oficial</a>.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        /* ==========================================================
+     JS leve (sem dependências) — smooth scroll, slider e CTAs
+     ========================================================== */
+        (function () {
+            const root = document.querySelector(".investe-feira");
+            if (!root) return;
+
+            /* Smooth scroll para âncoras internas */
+            root.addEventListener("click", function (e) {
+                const a = e.target.closest('a[href^="#"][data-smooth="true"]');
+                if (!a) return;
+                const id = a.getAttribute("href");
+                const el = document.querySelector(id);
+                if (el) {
+                    e.preventDefault();
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            });
+
+            /* UTM helper e links de WhatsApp/E-mail */
+            const utm = new URLSearchParams({
+                utm_source: getCSS("--utm-source"),
+                utm_medium: getCSS("--utm-medium"),
+                utm_campaign: getCSS("--utm-campaign"),
+            }).toString();
+
+            const phone = getCSS("--whatsapp-number").replace(/"/g, "").trim();
+            const email = getCSS("--email-contato").replace(/"/g, "").trim();
+
+            const msg = encodeURIComponent(
+                "Olá, tenho interesse em investir/expandir operações em Cajamar.",
+            );
+            const waLink = `https://wa.me/${phone}?text=${msg}&${utm}`;
+            const mailLink = `mailto:${email}?subject=${encodeURIComponent("Investe Cajamar — Contato")}&body=${msg}&${utm}`;
+            const mailLinkWork = `mailto:secretaria.economico@cajamar.sp.gov.br?subject=${encodeURIComponent("Investe Cajamar — Contato Trabalho e Emprego")}&body=${msg}&${utm}`;
+            const mailLinkCult = `mailto:turismo@cajamar.sp.gov.br?subject=${encodeURIComponent("Investe Cajamar — Contato Cultura e Turismo")}&body=${msg}&${utm}`;
+
+            setHref("#ctaWhats", waLink);
+            setHref("#ctaWhats2", waLink);
+            setHref("#ctaAccessWhats", waLink);
+            setHref("#ctaEmail", mailLink);
+            setHref("#ctaEmail2", mailLink);
+            // novos CTAs institucionais
+            setHref("#btnDevMail", mailLink);
+            // removidos: seletores inexistentes para WhatsApp institucionais
+            setHref("#btnWorkMail", mailLinkWork);
+            setHref("#btnCultMail", mailLinkCult);
+            setHref("#ctaInst", waLink);
+
+            function setHref(sel, url) {
+                const el = document.querySelector(sel);
+                if (el) el.setAttribute("href", url);
+            }
+            function getCSS(varName) {
+                return getComputedStyle(root).getPropertyValue(varName).trim() || "";
+            }
+
+            // Inst cards/tabs: seleção rápida dos órgãos
+            (function () {
+                /* removido: seção agora exibe todos os setores simultaneamente */
+            })();
+
+            /* Slider simples */
+            const track = document.getElementById("track");
+            const slides = () => Array.from(track.children);
+            let idx = 0;
+
+            function go(n) {
+                const s = slides();
+                idx = (n + s.length) % s.length;
+                track.style.transform = `translateX(-${idx * 100}%)`;
+            }
+            document
+                .getElementById("prev")
+                .addEventListener("click", () => go(idx - 1));
+            document
+                .getElementById("next")
+                .addEventListener("click", () => go(idx + 1));
+
+            // Auto-play leve (opcional; com foco não avança)
+            let timer = setInterval(() => {
+                if (!document.hidden) go(idx + 1);
+            }, 6000);
+            root.addEventListener("mouseenter", () => clearInterval(timer));
+            root.addEventListener(
+                "mouseleave",
+                () =>
+                (timer = setInterval(() => {
+                    if (!document.hidden) go(idx + 1);
+                }, 6000)),
+            );
+
+            /* ==========================
+         Animação de números (KPIs)
+         ========================== */
+            function formatBr(value, decimals) {
+                try {
+                    return new Intl.NumberFormat("pt-BR", {
+                        minimumFractionDigits: decimals,
+                        maximumFractionDigits: decimals,
+                    }).format(value);
+                } catch (e) {
+                    return value.toFixed(decimals);
+                }
+            }
+            function renderValue(el, value) {
+                const prefix = el.getAttribute("data-prefix") || "";
+                const suffix = el.getAttribute("data-suffix") || "";
+                const sign =
+                    el.getAttribute("data-sign") === "+" && value > 0 ? "+" : "";
+                const decimals = parseInt(
+                    el.getAttribute("data-decimals") || "0",
+                    10,
+                );
+                el.textContent = `${prefix}${sign}${formatBr(value, decimals)}${suffix}`;
+            }
+            function animateCount(el) {
+                try {
+                    const target = parseFloat(el.getAttribute("data-target"));
+                    if (isNaN(target)) return;
+                    const duration = 1200; // ms
+                    const start = performance.now();
+                    const startVal = 0;
+                    function tick(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                        const current = startVal + (target - startVal) * eased;
+                        renderValue(el, current);
+                        if (progress < 1) requestAnimationFrame(tick);
+                        else el.classList.add("animated");
+                    }
+                    requestAnimationFrame(tick);
+                } catch (err) {
+                    renderValue(el, parseFloat(el.getAttribute("data-target")) || 0);
+                }
+            }
+            const counters = Array.from(
+                root.querySelectorAll(".metric-value[data-target]"),
+            );
+            if ("IntersectionObserver" in window) {
+                const io = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                const el = entry.target;
+                                if (!el.classList.contains("animated")) animateCount(el);
+                                obs.unobserve(el);
+                            }
+                        });
+                    },
+                    { threshold: 0.3 },
+                );
+                counters.forEach((el) => io.observe(el));
+            } else {
+                counters.forEach((el) => animateCount(el));
+            }
+
+            /* =============================
+         Animação das barras (Econ.)
+         ============================= */
+            function animateBars() {
+                root.querySelectorAll(".econ .fill[data-target]").forEach((fill) => {
+                    try {
+                        const pct = parseFloat(fill.getAttribute("data-target"));
+                        if (!isNaN(pct)) {
+                            fill.style.width = "0%";
+                            requestAnimationFrame(() => {
+                                fill.style.width = pct + "%";
+                            });
+                        }
+                    } catch (e) {
+                        /* noop */
+                    }
+                });
+            }
+            if ("IntersectionObserver" in window) {
+                const econTitle = document.getElementById("econ-title");
+                if (econTitle) {
+                    const io2 = new IntersectionObserver(
+                        (entries, obs) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    animateBars();
+                                    obs.disconnect();
+                                }
+                            });
+                        },
+                        { threshold: 0.2 },
+                    );
+                    io2.observe(econTitle);
+                } else {
+                    animateBars();
+                }
+            } else {
+                animateBars();
+            }
+        })();
+    </script>
+
+
+    <script>
+        (function () {
+            if (window.innerWidth > 768) {
+                var iframe = document.createElement('iframe');
+                iframe.src = "https://ara-bot-assistente-de-desenvolvimento-econ-mico-d-17443980032.us-west1.run.app?embed=1";
+                iframe.rel = "noopener";
+                iframe.style.position = "fixed";
+                iframe.style.right = "10px";
+                iframe.style.bottom = "10px";
+                iframe.style.width = "100%";
+                iframe.style.maxWidth = "300px";
+                iframe.style.height = "80%";
+                iframe.style.maxHeight = "70vh";
+                iframe.style.border = "none";
+                iframe.style.backgroundColor = "transparent";
+                iframe.style.zIndex = "99999";
+                iframe.style.overflow = "hidden";
+                iframe.title = "Araçá Bot - Assistente de Desenvolvimento Econômico de Cajamar";
+                document.body.appendChild(iframe);
+            }
+        })();
+    </script>
+</body>
+
+</html>

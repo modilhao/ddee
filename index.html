@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Desenvolvimento Econômico Cajamar — Portal de Iniciativas</title>
+    <meta name="description"
+        content="Departamento de Desenvolvimento Econômico e Empreendedorismo de Cajamar. Conectando pessoas, negócios e oportunidades." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#1565c0" />
+
+    <!-- Google Fonts: Mesmo padrão do Prêmio Mulher -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+           Desenvolvimento Econômico Cajamar — Home Portal
+           Namespace: .ddee-home
+           =========================== */
+        .ddee-home {
+            --brand: #1565c0;          /* Azul Institucional */
+            --brand-dark: #0d47a1;
+            --brand-light: #e3f2fd;
+            --accent: #2e7d32;         /* Verde Crescimento */
+            --accent-light: #e8f5e9;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --muted: #475569;
+            --card: #ffffff;
+            --shadow: 0 12px 40px rgba(2, 12, 27, 0.08);
+            --radius: 20px;
+            --maxw: 1200px;
+
+            font-family: "Open Sans", "Inter", "system-ui", sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .ddee-home * { box-sizing: border-box; }
+
+        .ddee-home .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Utility */
+        .ddee-home .section-padding { padding: 80px 0; }
+        .ddee-home .text-center { text-align: center; }
+        .ddee-home .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Header */
+        .ddee-home .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 16px 0;
+        }
+
+        .ddee-home .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ddee-home .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        /* Hero */
+        .ddee-home .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #1e293b 100%);
+            color: #fff;
+            padding: 120px 0 100px;
+            overflow: hidden;
+        }
+
+        .ddee-home .hero-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.2;
+            background-image: 
+                radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .ddee-home .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--bg);
+            transform: skewY(-2deg);
+        }
+
+        .ddee-home .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .ddee-home .hero h1 {
+            font-family: "Inter", sans-serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+        }
+
+        .ddee-home .hero .subtitle {
+            display: block;
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 400;
+            color: var(--brand-light);
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        .ddee-home .hero p {
+            font-size: clamp(16px, 2.2vw, 19px);
+            color: rgba(255,255,255,0.8);
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        /* Grid de cards "O que fazemos" */
+        .ddee-home .intro-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .ddee-home .point-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .ddee-home .point-card svg {
+            width: 24px;
+            height: 24px;
+            color: var(--brand);
+            flex-shrink: 0;
+        }
+
+        /* Initiatives Section */
+        .ddee-home .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .ddee-home .init-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .ddee-home .init-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(2, 12, 27, 0.12);
+        }
+
+        .ddee-home .init-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--brand);
+        }
+
+        .ddee-home .init-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ddee-home .init-body h3 {
+            font-size: 20px;
+            margin: 0 0 12px;
+            color: var(--brand-dark);
+            font-family: "Inter", sans-serif;
+        }
+
+        .ddee-home .init-body p {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .ddee-home .init-link {
+            margin-top: auto;
+            color: var(--brand);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        /* "Para quem é" Section */
+        .ddee-home .audience {
+            background: var(--brand-dark);
+            color: #fff;
+        }
+
+        .ddee-home .audience h2 { color: #fff; }
+        .ddee-home .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .ddee-home .audience-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        /* "Como participar" Section (Steps) */
+        .ddee-home .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .ddee-home .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .ddee-home .step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--brand);
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 8px 16px rgba(21, 101, 192, 0.3);
+        }
+
+        /* Footer / Contact */
+        .ddee-home .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .ddee-home .btn-whatsapp { background: #25d366; color: #fff; border: none; }
+        .ddee-home .btn-primary { background: var(--brand); color: #fff; border: none; }
+        .ddee-home .btn-outline { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+        .ddee-home .btn-secondary { background: var(--accent); color: #fff; border: none; }
+
+        /* Rodada de Negócios Highlight */
+        .ddee-home .event-banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 0;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .ddee-home .badge {
+            display: inline-block;
+            background: #ef4444;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* Animation Classes */
+        .ddee-home .animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ddee-home .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ddee-home .steps { grid-template-columns: 1fr; }
+            .ddee-home .hero h1 { font-size: 36px; }
+            .ddee-home .intro-points { margin-top: 20px; }
+            .ddee-home .section-padding { padding: 60px 0; }
+        }
+    </style>
+</head>
+
+<body>
+<div class="ddee-home">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="wrap nav">
+            <div class="logo">
+                <img src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png" alt="Prefeitura de Cajamar" />
+            </div>
+            <div class="action">
+                <a href="#como-participar" class="btn btn-outline" style="padding: 10px 20px; font-size: 12px;">Como Participar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero text-center">
+        <div class="hero-bg"></div>
+        <div class="wrap hero-content">
+            <span class="subtitle animate">Desenvolvimento Econômico e Empreendedorismo</span>
+            <h1 class="animate">Desenvolvimento Econômico Cajamar</h1>
+            <p class="animate">Conectando pessoas, negócios e oportunidades para gerar emprego, renda e desenvolvimento local.</p>
+            <div class="cta animate">
+                <a href="#iniciativas" class="btn btn-primary">Conhecer Iniciativas</a>
+            </div>
+            <p class="animate" style="margin-top: 40px; font-size: 15px; opacity: 0.7;">
+                O Departamento atua como facilitador entre o poder público, empreendedores e empresas, promovendo iniciativas práticas que fortalecem o ambiente de negócios em Cajamar.
+            </p>
+        </div>
+    </section>
+
+    <!-- O Que Fazemos -->
+    <section class="section-padding">
+        <div class="wrap">
+            <div class="intro-points">
+                <div class="point-card animate">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.45l8.1 14.05H3.9L12 5.45zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                    <div>
+                        <strong>Impulsionamos o empreendedorismo</strong>
+                        <p style="margin: 5px 0 0; font-size: 14px; color: var(--muted);">Foco no crescimento sustentável dos pequenos negócios locais.</p>
+                    </div>
+                </div>
+                <div class="point-card animate">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    <div>
+                        <strong>Facilitamos acesso e crédito</strong>
+                        <p style="margin: 5px 0 0; font-size: 14px; color: var(--muted);">Capacitação, formalização e conexões financeiras estratégicas.</p>
+                    </div>
+                </div>
+                <div class="point-card animate">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+                    <div>
+                        <strong>Dados e Demandas Reais</strong>
+                        <p style="margin: 5px 0 0; font-size: 14px; color: var(--muted);">Atuação baseada em inteligência territorial estratégica.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iniciativas -->
+    <section id="iniciativas" class="section-padding alt" style="background: #fff; border-top: 1px solid rgba(0,0,0,0.05);">
+        <div class="wrap">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 class="animate">Nossas Iniciativas</h2>
+                <p class="animate" style="color: var(--muted);">Explore os programas e projetos em andamento:</p>
+            </div>
+
+            <div class="initiatives-grid">
+                <!-- Iniciativa 1: Investe Cajamar -->
+                <a href="investe.html" class="init-card animate">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Investe Cajamar" />
+                    <div class="init-body">
+                        <h3>Atração de Investimentos</h3>
+                        <p>Articulação com empresas para geração de empregos, expansão industrial e desenvolvimento estratégico do município.</p>
+                        <span class="init-link">Conhecer ações &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Iniciativa 2: Empreendedorismo/Sebrae -->
+                <a href="#como-participar" class="init-card animate">
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=800&auto=format&fit=crop" alt="Capacitação" />
+                    <div class="init-body">
+                        <h3>Empreendedorismo e Capacitação</h3>
+                        <p>Apoio direto ao pequeno empreendedor, com orientação, cursos e trilhas práticas em parceria com instituições como Sebrae.</p>
+                        <span class="init-link">Ver iniciativas &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Iniciativa 3: Apresentação / Inclusão Produtiva -->
+                <a href="apresentacao.html" class="init-card animate">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=800&auto=format&fit=crop" alt="Inclusão Produtiva" />
+                    <div class="init-body">
+                        <h3>Inclusão Produtiva</h3>
+                        <p>Programa de apoio e oportunidade para pessoas em situação de vulnerabilidade com potencial produtivo.</p>
+                        <span class="init-link">Ver Proposta &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para quem é -->
+    <section class="section-padding audience">
+        <div class="wrap">
+            <div class="text-center">
+                <h2 class="animate">Atendimento no Prédio</h2>
+                <p class="animate" style="opacity: 0.8;">Unidades de serviço instaladas diretamente em nossa sede para facilitar seu acesso.</p>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-item animate">
+                    <strong>Sebrae Aqui</strong>
+                    <br><small>Orientação e cursos para MEIs</small>
+                    <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">Agendamento por telefone</p>
+                </div>
+                <div class="audience-item animate">
+                    <strong>Banco do Povo</strong>
+                    <br><small>Microcrédito e fomento local</small>
+                    <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">Agendamento por telefone</p>
+                </div>
+                <div class="audience-item animate" style="grid-column: span 1; background: rgba(255,255,255,0.15);">
+                    <strong>Horário de Funcionamento</strong>
+                    <br><small>Das 09:00 às 16:00</small>
+                    <p style="font-size: 11px; margin-top: 10px; opacity: 0.7;">Intervalo: 12:00 - 13:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodada de Negócios -->
+    <section id="eventos" class="section-padding">
+        <div class="wrap">
+            <div class="event-banner animate">
+                <span class="badge">Vagas Limitadas</span>
+                <h2 style="font-size: clamp(28px, 5vw, 48px); margin-bottom: 10px; color: #fff;">Rodada de Negócios</h2>
+                <p style="font-size: 20px; color: var(--brand-light); margin-bottom: 30px;">Construção Civil — Metodologia Sebrae</p>
+                <div style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8); margin-bottom: 40px;">
+                    Oportunidade exclusiva para empresas da vertical de Construção Civil se conectarem, gerarem novos negócios e fortalecerem parcerias estratégicas.
+                </div>
+                <a href="https://wa.me/5511950507271?text=Ol%C3%A1!%20Gostaria%20de%20me%20inscrever%20na%20Rodada%20de%20Neg%C3%B3cios%20da%20Constru%C3%A7%C3%A3o%20Civil." class="btn btn-secondary">Quero me Cadastrar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como participar -->
+    <section id="como-participar" class="section-padding">
+        <div class="wrap">
+            <div class="text-center">
+                <h2 class="animate">Como participar</h2>
+                <p class="animate" style="color: var(--muted);">O primeiro passo para transformar seu futuro é simples.</p>
+            </div>
+            <div class="steps">
+                <div class="step animate">
+                    <div class="step-num">1</div>
+                    <h3>Cadastre-se Conosco</h3>
+                    <p style="font-size: 14px; color: var(--muted);">Registre seu perfil e suas necessidades para que possamos apoiar sua jornada.</p>
+                </div>
+                <div class="step animate">
+                    <div class="step-num">2</div>
+                    <h3>Acesse os programas</h3>
+                    <p style="font-size: 14px; color: var(--muted);">Explore os cursos, mentorias e oportunidades de crédito disponíveis no momento.</p>
+                </div>
+                <div class="step animate">
+                    <div class="step-num">3</div>
+                    <h3>Participe e cresça</h3>
+                    <p style="font-size: 14px; color: var(--muted);">Acompanhe as iniciativas e conecte-se com a rede de economia local de Cajamar.</p>
+                </div>
+            </div>
+            <div class="text-center animate" style="margin-top: 50px;">
+                <a href="https://wa.me/5511950507271?text=Ol%C3%A1!%20Gostaria%20de%20iniciar%20meu%20cadastro%20no%20Departamento%20de%20Desenvolvimento%20Econ%C3%B4mico." class="btn btn-primary">Fazer meu cadastro</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados -->
+    <section class="section-padding" style="background: rgba(46, 125, 50, 0.03);">
+        <div class="wrap text-center">
+            <h2 class="animate">Resultados que buscamos</h2>
+            <div style="max-width: 800px; margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <div class="animate">
+                    <strong style="font-size: 32px; color: var(--accent);">+Fortalecimento</strong>
+                    <p style="font-size: 14px; color: var(--muted);">Economia local estruturada</p>
+                </div>
+                <div class="animate">
+                    <strong style="font-size: 32px; color: var(--accent);">+Emprego</strong>
+                    <p style="font-size: 14px; color: var(--muted);">Geração de renda direta</p>
+                </div>
+                <div class="animate">
+                    <strong style="font-size: 32px; color: var(--accent);">+Eficiência</strong>
+                    <p style="font-size: 14px; color: var(--muted);">Ambiente de negócios acessível</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fale com o Departamento -->
+    <section class="section-padding" style="border-top: 1px solid rgba(0,0,0,0.05);">
+        <div class="wrap text-center">
+            <h2 class="animate">Fale com o Departamento</h2>
+            <p class="animate" style="color: var(--muted);">Atendimento: 09:00 - 16:00 (Intervalo 12h-13h)</p>
+            <div style="margin: 20px 0; color: var(--muted); font-size: 15px;">
+                <strong>Endereço:</strong> Rua José Marques Ribeiro, 7195 - Guaturinho, Cajamar - SP, 07750-000<br>
+                <strong>Telefone:</strong> 11 2663-9400 — Ramal 1014<br>
+                <strong>E-mail:</strong> desenvolvimento.economico@cajamar.sp.gov.br
+            </div>
+            <div class="contact-links animate">
+                <a href="mailto:desenvolvimento.economico@cajamar.sp.gov.br" class="btn btn-primary">Enviar E-mail</a>
+                <a href="https://maps.app.goo.gl/YourGoogleMapsLink" target="_blank" class="btn btn-outline">Como Chegar</a>
+                <a href="https://wa.me/5511950507271?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20o%20Desenvolvimento%20Econ%C3%B4mico%20de%20Cajamar." target="_blank" class="btn btn-whatsapp">Falar pelo WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <footer class="section-padding text-center" style="background: #fff;">
+        <div class="wrap">
+            <p class="animate" style="font-size: 24px; font-weight: 800; color: var(--brand-dark);">Cajamar está em movimento. Participe.</p>
+            <p style="margin-top: 40px; font-size: 14px; color: var(--muted);">© 2025 Prefeitura de Cajamar — Desenvolvimento Econômico e Empreendedorismo</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    // Smooth scroll
+    document.querySelectorAll('.ddee-home a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+
+</html>
