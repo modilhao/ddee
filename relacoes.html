@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Relações Empresariais Cajamar — Proposta Estratégica</title>
+    <meta name="description"
+        content="Proposta de implementação da nova interface entre a Prefeitura de Cajamar e o setor produtivo." />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#1565c0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+           Relações Empresariais Cajamar — Executive Presentation
+           Namespace: .ddee-relacoes
+           =========================== */
+        :root {
+            --brand: #1565c0;          /* Azul Institucional */
+            --brand-dark: #0d47a1;
+            --brand-light: #e3f2fd;
+            --accent: #2e7d32;         /* Verde Crescimento */
+            --accent-light: #e8f5e9;
+            --exec-dark: #1e293b;      /* Cinza Executivo */
+            --exec-light: #f1f5f9;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --muted: #64748b;
+            --card: #ffffff;
+            --shadow: 0 12px 40px rgba(2, 12, 27, 0.08);
+            --radius: 24px;
+            --maxw: 1100px;
+        }
+
+        .ddee-relacoes {
+            font-family: "Open Sans", "Inter", sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .ddee-relacoes * { box-sizing: border-box; }
+
+        .ddee-relacoes .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        .ddee-relacoes h1, .ddee-relacoes h2, .ddee-relacoes h3 {
+            font-family: "Inter", sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Utility */
+        .ddee-relacoes .section-padding { padding: 80px 0; }
+        .ddee-relacoes .text-center { text-align: center; }
+        .ddee-relacoes .badge {
+            display: inline-block;
+            background: var(--brand-light);
+            color: var(--brand);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        /* Header / Hero */
+        .ddee-relacoes .hero {
+            position: relative;
+            min-height: 500px;
+            background: var(--exec-dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+
+        .ddee-relacoes .hero-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .ddee-relacoes .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(20%);
+        }
+
+        .ddee-relacoes .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 30%, rgba(15, 23, 42, 0.4) 100%);
+        }
+
+        .ddee-relacoes .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+        }
+
+        .ddee-relacoes .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .ddee-relacoes .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            opacity: 0.9;
+            margin-bottom: 0;
+            color: var(--exec-light);
+        }
+
+        /* Top Bar */
+        .ddee-relacoes .topbar {
+            background: var(--exec-dark);
+            color: #fff;
+            padding: 12px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ddee-relacoes .topbar .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ddee-relacoes .prefeitura-logo {
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Executive Overview Section */
+        .ddee-relacoes .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .ddee-relacoes .overview-card {
+            background: #fff;
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--exec-light);
+            transition: transform 0.3s ease;
+        }
+
+        .ddee-relacoes .overview-card:hover { transform: translateY(-5px); }
+
+        .ddee-relacoes .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--exec-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--brand);
+        }
+
+        .ddee-relacoes .card-icon svg { width: 24px; height: 24px; }
+
+        .ddee-relacoes .overview-card h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+
+        .ddee-relacoes .overview-card p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Comparison Section */
+        .ddee-relacoes .compare {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: var(--shadow);
+        }
+
+        .ddee-relacoes .compare-col {
+            padding: 40px;
+        }
+
+        .ddee-relacoes .compare-col.negative {
+            background: #fef2f2;
+            border-right: 1px solid #fee2e2;
+        }
+
+        .ddee-relacoes .compare-col.positive {
+            background: #f0fdf4;
+        }
+
+        .ddee-relacoes .compare h3 {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ddee-relacoes .compare ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ddee-relacoes .compare li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 15px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .ddee-relacoes .compare li:last-child { border-bottom: none; }
+
+        .ddee-relacoes .compare-icon {
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        /* Hub Section */
+        .ddee-relacoes .hub-visual {
+            background: var(--exec-dark);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 60px;
+            text-align: center;
+        }
+
+        .ddee-relacoes .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .ddee-relacoes .hub-step {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ddee-relacoes .step-circle {
+            width: 60px;
+            height: 60px;
+            background: var(--brand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-weight: 800;
+            font-size: 20px;
+            box-shadow: 0 0 0 10px rgba(21, 101, 192, 0.1);
+        }
+
+        .ddee-relacoes .hub-step p {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Impact Section */
+        .ddee-relacoes .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .ddee-relacoes .impact-stat {
+            text-align: left;
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--exec-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .ddee-relacoes .impact-stat:hover {
+            transform: scale(1.02);
+            border-color: var(--brand-light);
+        }
+
+        .ddee-relacoes .impact-stat::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 6px; height: 100%;
+            background: var(--brand);
+        }
+
+        .ddee-relacoes .stat-val {
+            display: block;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 15px;
+            letter-spacing: -0.05em;
+        }
+
+        .ddee-relacoes .stat-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand);
+            margin-bottom: 8px;
+        }
+
+        .ddee-relacoes .stat-desc {
+            font-size: 15px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .ddee-relacoes .footer {
+            background: #fff;
+            border-top: 1px solid var(--exec-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        .ddee-relacoes .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ddee-relacoes .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .ddee-relacoes .compare { grid-template-columns: 1fr; }
+            .ddee-relacoes .compare-col.negative { border-right: none; border-bottom: 1px solid #fee2e2; }
+            .ddee-relacoes .hub-grid { grid-template-columns: 1fr; gap: 40px; }
+            .ddee-relacoes .hub-visual { padding: 40px 20px; }
+            .ddee-relacoes .hero { min-height: 400px; text-align: center; }
+            .ddee-relacoes .hero h1 { font-size: 32px; }
+            .ddee-relacoes .impact-grid { grid-template-columns: 1fr; }
+            .ddee-relacoes .section-padding { padding: 60px 0; }
+        }
+    </style>
+</head>
+
+<body class="ddee-relacoes">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="wrap">
+            <div>Prefeitura de Cajamar &bull; Departamento de Desenvolvimento Econômico</div>
+            <img src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png" alt="Cajamar" class="prefeitura-logo">
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-image">
+            <img src="hero-relacoes.png" alt="Setor Produtivo Cajamar">
+        </div>
+        <div class="wrap">
+            <div class="hero-content">
+                <span class="badge animate">Proposta Estratégica</span>
+                <h1 class="animate">Relações Empresariais Cajamar</h1>
+                <p class="animate">Uma nova interface entre a Prefeitura e as empresas para promover proximidade, agilidade e desenvolvimento.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: Executive Overview -->
+    <section class="section-padding" style="background: var(--exec-light);">
+        <div class="wrap">
+            <div class="text-center animate">
+                <span class="badge" style="background: #fff;">Resumo Executivo</span>
+                <h2>Visão Geral do Projeto</h2>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--muted);">Uma interface única e estratégica para conectar o setor produtivo ao poder público de forma resolutiva.</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card animate">
+                    <div class="card-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3>Objetivo</h3>
+                    <p>Criar um canal direto e organizado para facilitar o relacionamento e resolver demandas empresariais.</p>
+                </div>
+                <div class="overview-card animate">
+                    <div class="card-icon" style="color: #ef4444;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3>Problema</h3>
+                    <p>Falta de clareza nos canais de acesso e atendimento fragmentado, gerando perda de oportunidades.</p>
+                </div>
+                <div class="overview-card animate">
+                    <div class="card-icon" style="color: var(--accent);">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3>Solução</h3>
+                    <p>Implantação de um Hub de Relações com curadoria, mediação e atendimento ativo às empresas.</p>
+                </div>
+                <div class="overview-card animate">
+                    <div class="card-icon" style="color: #f59e0b;">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3>Atendimento</h3>
+                    <p>Focado em pequenas, médias e grandes empresas já instaladas ou com interesse em Cajamar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Diagnosis -->
+    <section class="section-padding">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 50px;">
+                <h2>A Virada no Relacionamento</h2>
+                <p style="color: var(--muted);">De uma prefeitura reativa para uma prefeitura parceira.</p>
+            </div>
+
+            <div class="compare animate">
+                <div class="compare-col negative">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="#ef4444" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Cenário Atual
+                    </h3>
+                    <ul>
+                        <li><span class="compare-icon">&bull;</span> Dificuldade em saber com quem falar</li>
+                        <li><span class="compare-icon">&bull;</span> Fragmentação entre secretarias</li>
+                        <li><span class="compare-icon">&bull;</span> Atendimento apenas em situações de crise</li>
+                        <li><span class="compare-icon">&bull;</span> Falta de acompanhamento das demandas</li>
+                    </ul>
+                </div>
+                <div class="compare-col positive">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="var(--accent)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Nova Interface
+                    </h3>
+                    <ul>
+                        <li><span class="compare-icon">&bull;</span> Ponto de contato único e claro</li>
+                        <li><span class="compare-icon">&bull;</span> Equipe que entende a linguagem empresarial</li>
+                        <li><span class="compare-icon">&bull;</span> Atuação ativa e preventiva</li>
+                        <li><span class="compare-icon">&bull;</span> Fluxo organizado com retorno garantido</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: How it Works (Hub) -->
+    <section class="section-padding">
+        <div class="wrap">
+            <div class="hub-visual animate">
+                <h2>Como Funciona na Prática</h2>
+                <p style="opacity: 0.8;">O fluxo estruturado que garante eficiência e resolução.</p>
+                
+                <div class="hub-grid">
+                    <div class="hub-step">
+                        <div class="step-circle">1</div>
+                        <p>Entrada da<br>Demanda</p>
+                    </div>
+                    <div class="hub-step">
+                        <div class="step-circle">2</div>
+                        <p>Triagem e<br>Curadoria</p>
+                    </div>
+                    <div class="hub-step">
+                        <div class="step-circle">3</div>
+                        <p>Direcionamento<br>Interno</p>
+                    </div>
+                    <div class="hub-step">
+                        <div class="step-circle">4</div>
+                        <p>Monitoramento e<br>Mediação</p>
+                    </div>
+                    <div class="hub-step">
+                        <div class="step-circle">5</div>
+                        <p>Retorno<br>Estruturado</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Benefits -->
+    <section class="section-padding" style="background: #fff;">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 50px;">
+                <h2>Impacto Compartilhado</h2>
+                <p style="color: var(--muted);">Benefícios estratégicos para todos os envolvidos.</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card animate" style="border-top: 4px solid var(--brand);">
+                    <h3>Para as Empresas</h3>
+                    <ul style="padding-left: 18px; color: var(--text); font-size: 14px;">
+                        <li style="margin-bottom: 10px;">Menos burocracia percebida</li>
+                        <li style="margin-bottom: 10px;">Mais agilidade nas respostas</li>
+                        <li style="margin-bottom: 10px;">Acesso direto a oportunidades</li>
+                        <li>Segurança no relacionamento</li>
+                    </ul>
+                </div>
+                <div class="overview-card animate" style="border-top: 4px solid var(--accent);">
+                    <h3>Para a Prefeitura</h3>
+                    <ul style="padding-left: 18px; color: var(--text); font-size: 14px;">
+                        <li style="margin-bottom: 10px;">Redução de conflitos</li>
+                        <li style="margin-bottom: 10px;">Melhor imagem institucional</li>
+                        <li style="margin-bottom: 10px;">Mais parcerias estratégicas</li>
+                        <li>Inteligência sobre o setor produtivo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Indicators -->
+    <section class="section-padding" style="background: var(--exec-light);">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 50px;">
+                <span class="badge" style="background: #fff;">Métricas de Sucesso</span>
+                <h2>Indicadores Planejados (6 meses)</h2>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-stat animate">
+                    <span class="stat-label">Eficiência</span>
+                    <span class="stat-val">Resolutividade</span>
+                    <p class="stat-desc">% de demandas empresariais concluídas com sucesso.</p>
+                </div>
+                <div class="impact-stat animate" style="border-color: var(--accent-light);">
+                    <span class="stat-label" style="color: var(--accent);">Agilidade</span>
+                    <span class="stat-val" style="color: var(--accent);">Tempo Resposta</span>
+                    <p class="stat-desc">Redução drástica no tempo médio de retorno estruturado.</p>
+                    <style>.ddee-relacoes .impact-stat[style*="var(--accent-light)"]::before { background: var(--accent); }</style>
+                </div>
+                <div class="impact-stat animate">
+                    <span class="stat-label">Alcance</span>
+                    <span class="stat-val">Empresas</span>
+                    <p class="stat-desc">Volume de empresas atendidas e fidelizadas pelo canal.</p>
+                </div>
+                <div class="impact-stat animate" style="border-color: var(--accent-light);">
+                    <span class="stat-label" style="color: var(--accent);">Qualidade</span>
+                    <span class="stat-val" style="color: var(--accent);">Satisfação</span>
+                    <p class="stat-desc">NPS (Net Promoter Score) médio das empresas do município.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wrap">
+            <h2 class="animate">Relações Empresariais Cajamar</h2>
+            <p class="animate" style="font-size: 18px; color: var(--muted); margin-bottom: 40px;">Cajamar mais próxima de quem gera emprego, renda e desenvolvimento.</p>
+            <div class="animate" style="opacity: 0.6; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+                &copy; 2025 Prefeitura de Cajamar &bull; Desenvolvimento Econômico e Empreendedorismo
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
