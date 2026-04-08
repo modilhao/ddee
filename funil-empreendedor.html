@@ -1,0 +1,918 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Programa Cajamar Empreendedora 2026 — Funil de Desenvolvimento</title>
+    <meta name="description"
+        content="Programa Cajamar Empreendedora 2026. Desenvolvimento econômico com foco em resultado em parceria com o Sebrae." />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#1565c0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+           Design System — DDEE / Sebrae
+           =========================== */
+        :root {
+            --brand: #1565c0;          /* Azul Institucional */
+            --brand-dark: #0d47a1;
+            --brand-light: #e3f2fd;
+            --accent: #2e7d32;         /* Verde Crescimento */
+            --accent-light: #e8f5e9;
+            --exec-dark: #1e293b;      /* Cinza Executivo */
+            --exec-light: #f1f5f9;
+            --sebrae-blue: #005A9C;
+            --sebrae-light: #e6f3ff;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --muted: #64748b;
+            --card: #ffffff;
+            --shadow: 0 12px 40px rgba(2, 12, 27, 0.08);
+            --radius: 24px;
+            --maxw: 1100px;
+        }
+
+        .ddee-relacoes {
+            font-family: "Open Sans", "Inter", sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .ddee-relacoes * { box-sizing: border-box; }
+
+        .ddee-relacoes .wrap {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        .ddee-relacoes h1, .ddee-relacoes h2, .ddee-relacoes h3, .ddee-relacoes h4 {
+            font-family: "Inter", sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Utility */
+        .ddee-relacoes .section-padding { padding: 80px 0; }
+        .ddee-relacoes .text-center { text-align: center; }
+        .ddee-relacoes .badge {
+            display: inline-block;
+            background: var(--brand-light);
+            color: var(--brand);
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        /* Hero */
+        .ddee-relacoes .hero {
+            position: relative;
+            min-height: 500px;
+            background: var(--exec-dark);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+
+        .ddee-relacoes .hero-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .ddee-relacoes .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            filter: grayscale(20%);
+        }
+
+        .ddee-relacoes .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 30%, rgba(15, 23, 42, 0.4) 100%);
+        }
+
+        .ddee-relacoes .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .ddee-relacoes .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .ddee-relacoes .hero p {
+            font-size: clamp(16px, 2vw, 20px);
+            opacity: 0.9;
+            margin-bottom: 0;
+            color: var(--exec-light);
+        }
+
+        /* Top Bar */
+        .ddee-relacoes .topbar {
+            background: var(--exec-dark);
+            color: #fff;
+            padding: 12px 0;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ddee-relacoes .topbar .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ddee-relacoes .prefeitura-logo {
+            height: 32px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Feature Cards */
+        .ddee-relacoes .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .ddee-relacoes .overview-card {
+            background: #fff;
+            padding: 32px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--exec-light);
+            transition: transform 0.3s ease;
+        }
+
+        .ddee-relacoes .overview-card:hover { transform: translateY(-5px); }
+        .ddee-relacoes .overview-card h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--muted);
+            margin-bottom: 12px;
+        }
+        .ddee-relacoes .overview-card p {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Comparison Section */
+        .ddee-relacoes .compare {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: var(--shadow);
+        }
+
+        .ddee-relacoes .compare-col {
+            padding: 40px;
+        }
+
+        .ddee-relacoes .compare-col.negative {
+            background: #fef2f2;
+            border-right: 1px solid #fee2e2;
+        }
+
+        .ddee-relacoes .compare-col.positive {
+            background: var(--sebrae-light);
+        }
+
+        .ddee-relacoes .compare h3 {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ddee-relacoes .compare ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ddee-relacoes .compare li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            font-size: 15px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .ddee-relacoes .compare li:last-child { border-bottom: none; }
+        .ddee-relacoes .compare-icon { flex-shrink: 0; margin-top: 4px; }
+
+        /* Impact Section */
+        .ddee-relacoes .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .ddee-relacoes .impact-stat {
+            text-align: left;
+            background: #fff;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--exec-light);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .ddee-relacoes .impact-stat:hover {
+            transform: scale(1.02);
+            border-color: var(--brand-light);
+        }
+
+        .ddee-relacoes .impact-stat::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 6px; height: 100%;
+            background: var(--brand);
+        }
+
+        .ddee-relacoes .stat-val {
+            display: block;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 15px;
+            letter-spacing: -0.05em;
+        }
+
+        .ddee-relacoes .stat-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand);
+            margin-bottom: 8px;
+        }
+
+        .ddee-relacoes .stat-desc {
+            font-size: 15px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Funnel Timeline */
+        .ddee-relacoes .hub-visual {
+            background: var(--exec-dark);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 60px;
+            text-align: center;
+        }
+        
+        .ddee-relacoes .funnel-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .ddee-relacoes .funnel-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .ddee-relacoes .funnel-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 28px;
+            top: 60px;
+            bottom: 0;
+            width: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+        }
+
+        .ddee-relacoes .funnel-num {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--sebrae-blue);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            box-shadow: 0 0 0 8px rgba(0, 90, 156, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .ddee-relacoes .funnel-info h3 {
+            margin: 0 0 8px;
+            font-size: 20px;
+            color: #fff;
+        }
+        .ddee-relacoes .funnel-info p {
+            margin: 0 0 10px;
+            color: var(--exec-light);
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        .ddee-relacoes .funnel-info ul {
+            padding-left: 20px;
+            margin: 0;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        /* Strategic Table */
+        .ddee-relacoes .strategy-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        .ddee-relacoes .strategy-table th, 
+        .ddee-relacoes .strategy-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--exec-light);
+        }
+
+        .ddee-relacoes .strategy-table th {
+            background: var(--exec-dark);
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        .ddee-relacoes .strategy-table tr:hover {
+            background: #f8fafc;
+        }
+
+        /* ROI Premium Styles (Imported from MD) */
+        .roi-premium {
+            padding: 80px 24px;
+            background:
+            radial-gradient(circle at top left, rgba(245, 158, 11, 0.10), transparent 32%),
+            radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.12), transparent 28%),
+            linear-gradient(180deg, #fffdf7 0%, #fff8e8 100%);
+        }
+
+        .roi-shell {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 50px;
+            border: 1px solid rgba(146, 64, 14, 0.08);
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(120, 53, 15, 0.08);
+        }
+
+        .roi-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(245, 158, 11, 0.12);
+            color: #9a3412;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .roi-shell h2 {
+            margin: 0 0 18px;
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+            color: #1f2937;
+            max-width: 980px;
+        }
+
+        .roi-shell h2 span {
+            color: #b45309;
+        }
+
+        .roi-lead {
+            margin: 0 0 36px;
+            max-width: 860px;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        .roi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .roi-card {
+            padding: 24px;
+            border-radius: 22px;
+            background: #ffffff;
+            border: 1px solid rgba(120, 53, 15, 0.08);
+            box-shadow: 0 10px 30px rgba(31, 41, 55, 0.05);
+        }
+
+        .roi-card-highlight {
+            background: linear-gradient(180deg, #fff8e7 0%, #ffffff 100%);
+            border-color: rgba(245, 158, 11, 0.18);
+        }
+
+        .roi-kicker {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #9a3412;
+            margin-bottom: 10px;
+        }
+
+        .roi-value {
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 14px;
+        }
+
+        .roi-card p,
+        .roi-panel li,
+        .roi-panel p {
+            color: #4b5563;
+            line-height: 1.65;
+            font-size: 0.98rem;
+        }
+
+        .roi-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .roi-panel {
+            padding: 24px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid rgba(120, 53, 15, 0.08);
+        }
+
+        .roi-panel h3 {
+            margin: 0 0 14px;
+            font-size: 1.15rem;
+            color: #1f2937;
+            letter-spacing: -0.02em;
+        }
+
+        .roi-panel ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .roi-panel li + li {
+            margin-top: 8px;
+        }
+
+        .roi-quote {
+            margin-top: 22px;
+            padding: 24px 28px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
+            box-shadow: 0 18px 40px rgba(146, 64, 14, 0.18);
+        }
+
+        .roi-quote p {
+            margin: 0;
+            color: #fff7ed;
+            font-size: 1.06rem;
+            line-height: 1.75;
+        }
+
+        /* Footer */
+        .ddee-relacoes .footer {
+            background: #fff;
+            border-top: 1px solid var(--exec-light);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        .ddee-relacoes .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .ddee-relacoes .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .ddee-relacoes .compare { grid-template-columns: 1fr; }
+            .ddee-relacoes .compare-col.negative { border-right: none; border-bottom: 1px solid #fee2e2; }
+            .ddee-relacoes .hero { min-height: 400px; text-align: center; }
+            .ddee-relacoes .hero h1 { font-size: 32px; }
+            .ddee-relacoes .section-padding { padding: 60px 0; }
+            
+            .roi-grid,
+            .roi-columns { grid-template-columns: 1fr; }
+            .roi-shell { padding: 28px 20px; border-radius: 24px; }
+            .ddee-relacoes .strategy-table { display: block; overflow-x: auto; }
+        }
+    </style>
+</head>
+
+<body class="ddee-relacoes">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="wrap">
+            <div>Prefeitura de Cajamar &bull; Desenvolvimento Econômico e Empreendedorismo</div>
+            <img src="https://cajamar.sp.gov.br/wp-content/uploads/2020/01/logo2019.png" alt="Cajamar" class="prefeitura-logo">
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-image">
+            <!-- Using an abstract tech/business placeholder style or keep existing image flow if available -->
+            <img src="hero-relacoes.png" alt="Programa Cajamar Empreendedora 2026">
+        </div>
+        <div class="wrap">
+            <div class="hero-content">
+                <span class="badge animate" style="background: var(--sebrae-blue); color: #fff;">Parceria Estratégica: Sebrae</span>
+                <h1 class="animate">Programa Cajamar Empreendedora 2026</h1>
+                <p class="animate">Desenvolvimento econômico com foco em resultado estruturando a jornada dos pequenos e médios negócios do município.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section 1: O Desafio vs Solução -->
+    <section class="section-padding">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 50px;">
+                <span class="badge">Contexto</span>
+                <h2>Transformando Desafios em Soluções</h2>
+                <p style="color: var(--muted); max-width: 700px; margin: 0 auto;">Deixamos de oferecer ações isoladas para entregar uma jornada completa de evolução para o empreendedor local.</p>
+            </div>
+
+            <div class="compare animate">
+                <div class="compare-col negative">
+                    <h3>
+                        <svg width="24" height="24" fill="none" stroke="#ef4444" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        O Desafio Atual
+                    </h3>
+                    <ul>
+                        <li><span class="compare-icon">&bull;</span> Dificuldade na gestão financeira</li>
+                        <li><span class="compare-icon">&bull;</span> Baixa presença digital e comercial</li>
+                        <li><span class="compare-icon">&bull;</span> Falta de acesso a mercados e oportunidades</li>
+                        <li><span class="compare-icon">&bull;</span> Pouco suporte estruturado para crescimento</li>
+                    </ul>
+                </div>
+                <div class="compare-col positive">
+                    <h3 style="color: var(--sebrae-blue);">
+                        <svg width="24" height="24" fill="none" stroke="var(--sebrae-blue)" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        A Solução Estruturada
+                    </h3>
+                    <p style="font-size: 15px; margin-bottom: 20px;">O Programa organiza todas as ações formacionais em um funil contínuo:</p>
+                    <div style="background: #fff; padding: 15px; border-radius: 12px; font-weight: 700; color: var(--text); border-left: 4px solid var(--sebrae-blue);">
+                        Atração &rarr; Capacitação &rarr; Aprofundamento &rarr; Mercado &rarr; Resultado
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Resumo de Impacto -->
+    <section class="section-padding" style="background: var(--exec-light);">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 50px;">
+                <span class="badge" style="background: #fff;">Visão Macro</span>
+                <h2>Alcance e Impacto Estimado</h2>
+                <p style="color: var(--muted); max-width: 700px; margin: 0 auto;">O programa atua para garantir escala na capacitação e profundidade no acompanhamento, gerando conexões reais.</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-stat animate" style="border-color: var(--sebrae-light);">
+                    <span class="stat-label" style="color: var(--sebrae-blue);">Empresas Inseridas</span>
+                    <span class="stat-val" style="color: var(--sebrae-blue);">+300</span>
+                    <p class="stat-desc">Empresas locais impactadas diretamente com conteúdo e apoio focado.</p>
+                    <style>.ddee-relacoes .impact-stat[style*="var(--sebrae-light)"]::before { background: var(--sebrae-blue); }</style>
+                </div>
+                <div class="impact-stat animate">
+                    <span class="stat-label">Capacitações</span>
+                    <span class="stat-val">+500</span>
+                    <p class="stat-desc">Pessoas formadas em cursos, trilhas, oficinas e eventos práticos de gestão e liderança.</p>
+                </div>
+                <div class="impact-stat animate">
+                    <span class="stat-label">Aprofundamento</span>
+                    <span class="stat-val">+50</span>
+                    <p class="stat-desc">Negócios locais com acompanhamento e consultorias contínuas individuais.</p>
+                </div>
+                <div class="impact-stat animate">
+                    <span class="stat-label">Mercado e Ecossistema</span>
+                    <span class="stat-val">+200</span>
+                    <p class="stat-desc">Conexões de negócios geradas por Missões, Encontros e rodadas empresariais. (100+ em inovação).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Funil Passo a Passo -->
+    <section class="section-padding">
+        <div class="wrap">
+            <div class="hub-visual animate">
+                <h2>Como Funciona: A Jornada do Empreendedor</h2>
+                <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">A lógica para não permitir que o participante realize apenas ações isoladas, garantindo que ele tenha um itinerário focado em transformação e maturidade contínua.</p>
+                
+                <div class="funnel-track">
+                    <div class="funnel-step animate">
+                        <div class="funnel-num">1</div>
+                        <div class="funnel-info">
+                            <h3>Atração e Engajamento</h3>
+                            <p>Conectar empreendedores ao ecossistema local do DDEE.</p>
+                            <ul>
+                                <li>Encontros de negócios e Eventos.</li>
+                                <li>Ideathon com grandes empresas e Cajamar Experience.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-step animate">
+                        <div class="funnel-num">2</div>
+                        <div class="funnel-info">
+                            <h3>Capacitação</h3>
+                            <p>Desenvolver as competências de base e gestão fundamentais.</p>
+                            <ul>
+                                <li>Cursos de Gestão Financeira.</li>
+                                <li>Marketing Digital, Posicionamento e Vendas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-step animate">
+                        <div class="funnel-num">3</div>
+                        <div class="funnel-info">
+                            <h3>Aprofundamento</h3>
+                            <p>Atuar diretamente sobre os maiores gargalos específicos do negócio.</p>
+                            <ul>
+                                <li>Consultorias individuais.</li>
+                                <li>Diagnósticos avançados e personalizados.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-step animate">
+                        <div class="funnel-num">4</div>
+                        <div class="funnel-info">
+                            <h3>Inovação</h3>
+                            <p>Elevar o nível competitivo e modernizar processos estáticos.</p>
+                            <ul>
+                                <li>Design Thinking e IA aplicada aos negócios locais.</li>
+                                <li>Programas do edital de inovação.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="funnel-step animate">
+                        <div class="funnel-num">5</div>
+                        <div class="funnel-info">
+                            <h3>Conexão com Mercado</h3>
+                            <p>Finalizar a trilha conectando a empresa a quem vai comprar ou viabilizar dinheiro.</p>
+                            <ul>
+                                <li>Mapeamento comercial para grandes indústrias (+200 conexões de negócio).</li>
+                                <li>Rodadas robustas de negócio.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Estruturação / Tabela -->
+    <section class="section-padding" style="background: #fff;">
+        <div class="wrap">
+            <div class="text-center animate" style="margin-bottom: 40px;">
+                <h2>Estrutura Macro do Funil de Desenvolvimento</h2>
+                <p style="color: var(--muted);">Resumo Analítico 2026</p>
+            </div>
+
+            <div class="animate">
+                <table class="strategy-table">
+                    <thead>
+                        <tr>
+                            <th>Etapa do Funil</th>
+                            <th>Objetivo Primário</th>
+                            <th>Resultado Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Atração / Engajamento</strong></td>
+                            <td>Trazer empreendedores para o ecossistema (Missões, Encontros).</td>
+                            <td>Nova base ativa de contatos conectados ao DDEE.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Capacitação Média</strong></td>
+                            <td>Desenvolver de forma macro com workshops práticos.</td>
+                            <td>Empreendedores estruturandos.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Aprofundamento / Qualificação</strong></td>
+                            <td>Resolver o GAP da empresa individualmente.</td>
+                            <td>Negócios mais perenes e lucrativos localmente.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. Inovação e Diferenciação</strong></td>
+                            <td>Tirar o pensamento analógico empresarial (ex: Inova Cajamar).</td>
+                            <td>Novas margens de atuação modernas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. Conexão e Match</strong></td>
+                            <td>Transformar horas de instrução em receita B2B ou B2C.</td>
+                            <td>Contratos gerados ou parcerias estratégicas.</td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: var(--accent);">6. Resultado Final / Impacto</strong></td>
+                            <td>Consolidação dos dados pela equipe estratégica.</td>
+                            <td>Criação de Empregos diretos, Receitas Fiscais e Formalizações.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="overview-grid" style="margin-top: 40px;">
+                <div class="overview-card animate" style="border-top: 4px solid var(--sebrae-blue);">
+                    <h3 style="color: var(--sebrae-blue);">Atuação do Sebrae</h3>
+                    <p style="font-size: 14px;">Domínio contundente na execução técnica: <strong>Capacitação (2)</strong>, <strong>Aprofundamento (3)</strong> e <strong>Inovação (4)</strong>.</p>
+                </div>
+                <div class="overview-card animate" style="border-top: 4px solid var(--brand);">
+                    <h3 style="color: var(--brand);">Atuação do DDEE Cajamar</h3>
+                    <p style="font-size: 14px;">Inteligência de tração e gestão de dados: <strong>Atração (1)</strong>, <strong>Conexão com mercado (5)</strong> e <strong>Impacto/Acompanhamento (6)</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: ROI PREMIUM (Importado do Markdown) -->
+    <section class="roi-premium">
+        <div class="roi-shell animate">
+            <div class="roi-badge">Impacto Econômico Estimado</div>
+
+            <h2>
+                Um investimento público de aproximadamente
+                <span>R$ 125 mil</span>
+                com potencial de gerar
+                <span>R$ 3 milhões a R$ 6,6 milhões</span>
+                em faturamento adicional para empresas locais.
+            </h2>
+
+            <p class="roi-lead">
+                Considerando a jornada proposta para 2026, com capacitação, consultorias,
+                inovação e conexão com mercado, a expectativa conservadora é de que o programa
+                produza retorno econômico muito superior ao valor investido, fortalecendo
+                negócios já existentes e ampliando a circulação de riqueza no município.
+            </p>
+
+            <div class="roi-grid">
+                <div class="roi-card roi-card-highlight">
+                    <div class="roi-kicker">Investimento estimado</div>
+                    <div class="roi-value">R$ 124,8 mil</div>
+                    <p>
+                        Valor aproximado da proposta com desconto, estruturado para atender
+                        empresas locais com foco em gestão, vendas, inovação e mercado.
+                    </p>
+                </div>
+
+                <div class="roi-card">
+                    <div class="roi-kicker">Impacto econômico potencial</div>
+                    <div class="roi-value">R$ 3 mi a R$ 6,6 mi</div>
+                    <p>
+                        Faixa estimada de aumento de faturamento das empresas beneficiadas ao longo
+                        de 12 meses, considerando cenários conservador e ampliado.
+                    </p>
+                </div>
+
+                <div class="roi-card">
+                    <div class="roi-kicker">Retorno estimado</div>
+                    <div class="roi-value">24x a 52x</div>
+                    <p>
+                        Para cada R$ 1 investido no programa, a economia local pode receber de volta
+                        entre R$ 24 e R$ 52 em geração adicional de receita empresarial.
+                    </p>
+                </div>
+            </div>
+
+            <div class="roi-columns">
+                <div class="roi-panel">
+                    <h3>Como essa estimativa foi construída</h3>
+                    <ul>
+                        <li>Empresas atendidas em diferentes níveis de profundidade</li>
+                        <li>Ganhos modestos e progressivos em gestão, vendas e marketing</li>
+                        <li>Maior impacto nas empresas com consultoria e ações de inovação</li>
+                        <li>Horizonte de análise de 12 meses após a execução das ações</li>
+                    </ul>
+                </div>
+
+                <div class="roi-panel">
+                    <h3>O que isso representa para Cajamar</h3>
+                    <ul>
+                        <li>Mais faturamento para os negócios locais</li>
+                        <li>Maior capacidade de reinvestimento das empresas</li>
+                        <li>Ambiente mais favorável à geração de empregos</li>
+                        <li>Fortalecimento do ecossistema empreendedor do município</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="roi-quote">
+                <p>
+                    “Mais do que custear cursos e ações pontuais, o município passa a investir
+                    em uma jornada estruturada de desenvolvimento econômico, com potencial real
+                    de ampliar receita, competitividade e dinamismo empresarial em Cajamar.”
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="wrap">
+            <h2 class="animate">Programa Cajamar Empreendedora</h2>
+            <p class="animate" style="font-size: 18px; color: var(--muted); margin-bottom: 40px;">Mais estruturado, estratégico e orientado a resultados reais.</p>
+            <div class="animate" style="opacity: 0.6; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
+                &copy; 2026 Prefeitura de Cajamar &bull; Departamento de Desenvolvimento Econômico e Empreendedorismo
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
