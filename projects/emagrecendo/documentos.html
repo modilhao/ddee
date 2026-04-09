@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Documentos Executivos — Emagrecendo Cajamar</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-dark: #0d1b35;
+      --brand: #1565c0;
+      --accent: #00a8e8;
+      --accent-health: #00D4B1;
+      --bg: #070f1f;
+      --card: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --muted: rgba(255,255,255,0.45);
+      --error: #f87171;
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Background Glow ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 20%, rgba(0,168,232,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(21,101,192,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+
+    /* ── Tela de Login ── */
+    #login-screen {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 440px;
+      padding: 24px;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .login-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 48px 40px;
+      backdrop-filter: blur(20px);
+      text-align: center;
+    }
+
+    .logo-wrap {
+      margin-bottom: 28px;
+    }
+
+    .logo-wrap img {
+      height: 56px;
+      width: auto;
+      filter: drop-shadow(0 0 20px rgba(0,168,232,0.4));
+    }
+
+    .login-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,212,177,0.1);
+      border: 1px solid rgba(0,212,177,0.25);
+      color: var(--accent-health);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+    }
+
+    .login-badge svg {
+      width: 12px; height: 12px;
+    }
+
+    .login-card h1 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .login-card p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .field-wrap {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .field-wrap svg.field-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    #senha-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 14px 50px 14px 46px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #fff;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    #senha-input::placeholder { color: var(--muted); letter-spacing: 0; }
+    #senha-input:focus {
+      border-color: var(--accent-health);
+      background: rgba(0,212,177,0.05);
+    }
+
+    #senha-input.error {
+      border-color: var(--error);
+      background: rgba(248,113,113,0.05);
+      animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+    }
+
+    .toggle-senha {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      transition: color 0.2s ease;
+    }
+
+    .toggle-senha:hover { color: var(--accent-health); }
+    .toggle-senha svg { width: 18px; height: 18px; }
+
+    .error-msg {
+      display: none;
+      color: var(--error);
+      font-size: 12px;
+      margin: -8px 0 12px;
+      text-align: left;
+      padding-left: 4px;
+    }
+
+    .error-msg.visible { display: block; }
+
+    .btn-acessar {
+      width: 100%;
+      background: linear-gradient(135deg, var(--accent-health), #00a89a);
+      color: var(--brand-dark);
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-acessar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,212,177,0.3);
+    }
+
+    .btn-acessar svg { width: 16px; height: 16px; }
+
+    .back-link {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover { color: var(--accent-health); }
+    .back-link svg { width: 14px; height: 14px; }
+
+    /* ── Tela de Documentos ── */
+    #docs-screen {
+      display: none;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 860px;
+      padding: 24px;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    #docs-screen.visible { display: block; }
+    #login-screen.hidden { display: none; }
+
+    .docs-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .docs-header .logo-wrap {
+      margin-bottom: 20px;
+    }
+
+    .docs-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0,212,177,0.1);
+      border: 1px solid rgba(0,212,177,0.25);
+      color: var(--accent-health);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+    }
+
+    .docs-header h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .docs-header p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .doc-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .doc-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,212,177,0.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,212,177,0.1);
+    }
+
+    .doc-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(0,212,177,0.1);
+      border: 1px solid rgba(0,212,177,0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .doc-icon svg { width: 24px; height: 24px; color: var(--accent-health); }
+
+    .doc-info {
+      flex: 1;
+    }
+
+    .doc-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent-health);
+      margin-bottom: 6px;
+    }
+
+    .doc-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .doc-meta span { display: flex; align-items: center; gap: 4px; }
+    .doc-meta svg { width: 12px; height: 12px; }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(0,212,177,0.1);
+      border: 1px solid rgba(0,212,177,0.25);
+      color: var(--accent-health);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .doc-card:hover .btn-download {
+      background: var(--accent-health);
+      color: var(--brand-dark);
+      border-color: var(--accent-health);
+    }
+
+    .btn-download svg { width: 14px; height: 14px; }
+
+    .docs-footer {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .sair-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .sair-btn:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+    .sair-btn svg { width: 14px; height: 14px; }
+
+    .copyright {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── Animações ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shake {
+      10%, 90% { transform: translateX(-2px); }
+      20%, 80% { transform: translateX(4px); }
+      30%, 50%, 70% { transform: translateX(-6px); }
+      40%, 60% { transform: translateX(6px); }
+    }
+
+    /* ── Spinner ── */
+    .spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(13,27,53,0.4);
+      border-top-color: var(--brand-dark);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading .spinner { display: block; }
+    .loading .btn-text { display: none; }
+    .loading .btn-icon { display: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .login-card { padding: 36px 24px; }
+      .docs-grid { grid-template-columns: 1fr; }
+      .docs-header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       TELA DE LOGIN
+  ══════════════════════════════════════ -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="logo-wrap">
+        <img src="../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Prefeitura de Cajamar" />
+      </div>
+
+      <div class="login-badge">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+        </svg>
+        Acesso Restrito
+      </div>
+
+      <h1>Sala de Documentos<br>Executivos</h1>
+      <p>Área reservada para gestores e parceiros autorizados do<br><strong style="color: rgba(255,255,255,0.7);">Programa Emagrecendo Cajamar</strong>.</p>
+
+      <div class="field-wrap">
+        <svg class="field-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+        </svg>
+        <input
+          type="password"
+          id="senha-input"
+          placeholder="Senha de acesso"
+          autocomplete="current-password"
+          onkeydown="if(event.key==='Enter') validar()"
+        />
+        <button class="toggle-senha" onclick="toggleSenha()" type="button" title="Mostrar/ocultar senha">
+          <svg id="eye-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="error-msg" id="error-msg">
+        Senha incorreta. Tente novamente.
+      </p>
+
+      <button class="btn-acessar" id="btn-acessar" onclick="validar()">
+        <div class="spinner"></div>
+        <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
+        </svg>
+        <span class="btn-text">Acessar Documentos</span>
+      </button>
+
+      <a href="index.html" class="back-link">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        Voltar ao Portal
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       TELA DE DOCUMENTOS
+  ══════════════════════════════════════ -->
+  <div id="docs-screen">
+    <div class="docs-header">
+      <div class="logo-wrap">
+        <img src="../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Prefeitura de Cajamar" />
+      </div>
+      <div class="docs-badge">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:12px;height:12px">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        Acesso Autorizado
+      </div>
+      <h1>Documentos Executivos</h1>
+      <p>Programa Emagrecendo Cajamar · Versão Revisada · Abril 2026</p>
+    </div>
+
+    <div class="docs-grid">
+
+      <!-- Documento 1: Minuta de Gamificação -->
+      <div class="doc-card">
+        <div class="doc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-tag">Documento 01</div>
+          <div class="doc-name">Minuta Preliminar de Gamificação e Créditos</div>
+          <div class="doc-meta">
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Rev. 09/04/26
+            </span>
+            <span>·</span>
+            <span>~446 KB</span>
+          </div>
+        </div>
+        <a class="btn-download"
+           href="../../assets/docs/7c0de2f5-5913-45bb-a0b9-69967c540657_v2_Minuta_Preliminar_de_Gamificao_e_Crditos_(revisada_090426).pdf"
+           download="Minuta_de_Gamificacao_Emagrecendo_Cajamar_v2.pdf">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Baixar PDF
+        </a>
+      </div>
+
+      <!-- Documento 2: Pitch Deck -->
+      <div class="doc-card">
+        <div class="doc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"/>
+          </svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-tag">Documento 02</div>
+          <div class="doc-name">Minuta de Pitch Deck para Empresas</div>
+          <div class="doc-meta">
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Rev. 09/04/26
+            </span>
+            <span>·</span>
+            <span>~443 KB</span>
+          </div>
+        </div>
+        <a class="btn-download"
+           href="../../assets/docs/85636404-f508-4d1c-bb8e-bc0bdbd53e1e_v2_Minuta_de_Pitch_Deck_para_Empresas_(revisada_090426).pdf"
+           download="Pitch_Deck_Empresas_Emagrecendo_Cajamar_v2.pdf">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Baixar PDF
+        </a>
+      </div>
+
+      <!-- Documento 3: Mapa de Segmentos -->
+      <div class="doc-card">
+        <div class="doc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+          </svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-tag">Documento 03</div>
+          <div class="doc-name">Mapa de Segmentos e Parceiros Potenciais</div>
+          <div class="doc-meta">
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Rev. 09/04/26
+            </span>
+            <span>·</span>
+            <span>~441 KB</span>
+          </div>
+        </div>
+        <a class="btn-download"
+           href="../../assets/docs/9dbfd1ac-eed5-4595-a4f6-b6cece6d64fa_v2_Mapa_de_Segmentos_e_Parceiros_Potenciais_(revisado_090426).pdf"
+           download="Mapa_Segmentos_Parceiros_Emagrecendo_Cajamar_v2.pdf">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Baixar PDF
+        </a>
+      </div>
+
+      <!-- Documento 4: Proposta Preliminar -->
+      <div class="doc-card">
+        <div class="doc-icon">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="doc-info">
+          <div class="doc-tag">Documento 04</div>
+          <div class="doc-name">Proposta Preliminar — Projeto Emagrecendo Cajamar</div>
+          <div class="doc-meta">
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              Rev. 09/04/26
+            </span>
+            <span>·</span>
+            <span>~465 KB</span>
+          </div>
+        </div>
+        <a class="btn-download"
+           href="../../assets/docs/1fa1a61f-add0-44f6-acab-e0b3d4a965b6_v2_Proposta_Preliminar__Projeto_Emagrecendo_Cajamar_(revisada_090426).pdf"
+           download="Proposta_Preliminar_Emagrecendo_Cajamar_v2.pdf">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Baixar PDF
+        </a>
+      </div>
+
+    </div>
+
+    <div class="docs-footer">
+      <button class="sair-btn" onclick="sair()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+        </svg>
+        Encerrar Sessão
+      </button>
+      <p class="copyright">© 2026 Prefeitura de Cajamar · DDEE · Acesso Restrito</p>
+    </div>
+  </div>
+
+  <script>
+    // Hash SHA-256 da senha "ddee+saude=3m4gr3c3"
+    const HASH_CORRETO = 'a9b572d39f176a40252f0b208b3fe0df06755a46bc4402776cc4df55349fc376';
+
+    async function sha256(str) {
+      const buffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function validar() {
+      const input = document.getElementById('senha-input');
+      const btn   = document.getElementById('btn-acessar');
+      const erro  = document.getElementById('error-msg');
+
+      // Estado de carregamento
+      btn.classList.add('loading');
+      input.classList.remove('error');
+      erro.classList.remove('visible');
+
+      const hash = await sha256(input.value.trim());
+
+      // Delay mínimo para UX (evita validação instantânea que parece suspeita)
+      await new Promise(r => setTimeout(r, 400));
+
+      btn.classList.remove('loading');
+
+      if (hash === HASH_CORRETO) {
+        // Autenticado — guarda sessão e exibe documentos
+        sessionStorage.setItem('ec_auth', '1');
+        document.getElementById('login-screen').classList.add('hidden');
+        document.getElementById('docs-screen').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Erro
+        input.classList.add('error');
+        erro.classList.add('visible');
+        input.value = '';
+        input.focus();
+        setTimeout(() => input.classList.remove('error'), 500);
+      }
+    }
+
+    function sair() {
+      sessionStorage.removeItem('ec_auth');
+      document.getElementById('docs-screen').classList.remove('visible');
+      document.getElementById('login-screen').classList.remove('hidden');
+      document.getElementById('senha-input').value = '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleSenha() {
+      const input = document.getElementById('senha-input');
+      const icon  = document.getElementById('eye-icon');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
+        `;
+      } else {
+        input.type = 'password';
+        icon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        `;
+      }
+    }
+
+    // Verificar se já autenticado na sessão atual
+    if (sessionStorage.getItem('ec_auth') === '1') {
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('docs-screen').classList.add('visible');
+    }
+
+    // Focar no campo de senha automaticamente
+    window.addEventListener('load', () => {
+      document.getElementById('senha-input').focus();
+    });
+  </script>
+</body>
+</html>
