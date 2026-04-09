@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitch Deck — Emagrecendo Cajamar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #1565C0;
+    --brand-dark: #0D47A1;
+    --accent-health: #00A8E8;
+    --accent-health-light: #E6F6FD;
+    --verde-saude: #1B8A4E;
+    --verde-saude-light: #E8F5EE;
+    --notificacao: #E63329;
+    --alerta: #F5A623;
+    --alerta-light: #FFF8EC;
+    --off-white: #F5F7FA;
+    --text-main: #1A2535;
+    --text-muted: #4A5568;
+    --border-light: #E2E8F2;
+    --shadow-premium: 0 4px 20px rgba(0,0,0,0.08);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: #CBD5E0;
+    color: var(--text-main);
+  }
+
+  /* ── Página A4 ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #FFF;
+    margin: 12mm auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Botão Imprimir ── */
+  .print-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    background: var(--brand-dark); padding: 10px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .print-bar span { color: rgba(255,255,255,.6); font-size: 13px; font-weight: 500; }
+  .btn-print {
+    background: var(--accent-health); color: var(--brand-dark); border: none;
+    padding: 8px 22px; font-family: 'Inter', sans-serif; font-size: 13px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    cursor: pointer; border-radius: var(--radius-sm);
+    text-decoration: none; display: inline-block; transition: all 0.2s ease;
+  }
+  .btn-print:hover { background: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+  @media print {
+    body { background: white; }
+    .print-bar { display: none; }
+    .page { margin: 0; box-shadow: none; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+
+  /* ════════════════════════════════════════
+     ELEMENTOS COMUNS
+  ════════════════════════════════════════ */
+
+  /* Header de página */
+  .ph {
+    background: var(--brand-dark);
+    padding: 6mm 8mm;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .ph-left { display: flex; align-items: center; gap: 4mm; }
+  .ph-brasao { width: 12mm; height: 12mm; display: flex; align-items: center; justify-content: center; }
+  .ph-brasao img { max-height: 100%; width: auto; }
+  .ph-title { font-family: 'Inter', sans-serif; font-size: 12pt; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: .5px; line-height: 1; }
+  .ph-sub { font-size: 7pt; color: rgba(255,255,255,.55); margin-top: 1mm; letter-spacing: .3px; }
+  .ph-badge {
+    background: var(--accent-health); color: var(--brand-dark); padding: 1.5mm 4mm;
+    font-size: 7pt; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: var(--radius-sm);
+  }
+  .ph-strip { height: 1.5mm; background: var(--accent-health); flex-shrink: 0; }
+
+  /* Footer de página */
+  .pf {
+    background: var(--brand-dark); padding: 3.2mm 8mm;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: auto; flex-shrink: 0;
+  }
+  .pf span { font-size: 6.5pt; color: rgba(255,255,255,.45); }
+  .pf-page { font-family: 'JetBrains Mono', monospace; font-size: 7pt; color: rgba(255,255,255,.4); }
+
+  /* Corpo da página */
+  .pb { padding: 7mm 8mm 5mm; flex: 1; display: flex; flex-direction: column; gap: 5mm; }
+
+  /* Título de seção */
+  .sec-title {
+    display: flex; align-items: center; gap: 3mm; margin-bottom: 3mm;
+  }
+  .sec-title .bar { width: 2mm; height: 7mm; background: var(--accent-health); border-radius: 1mm; flex-shrink: 0; }
+  .sec-title h2 { font-family: 'Inter', sans-serif; font-size: 13pt; font-weight: 800; text-transform: uppercase; color: var(--brand-dark); letter-spacing: .3px; }
+  .sec-divider { height: .5mm; background: var(--border-light); margin-bottom: 3mm; }
+
+  /* Grid 2 colunas */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; }
+  .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 3mm; }
+
+  /* Stat card */
+  .stat {
+    background: var(--brand-dark); border-radius: var(--radius-sm); padding: 5mm 4mm; text-align: center;
+  }
+  .stat .n { font-family: 'Inter', sans-serif; font-size: 26pt; font-weight: 900; color: var(--accent-health); line-height: 1; }
+  .stat .l { font-size: 7pt; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .8px; margin-top: 1.5mm; line-height: 1.3; }
+  .stat.white { background: var(--off-white); border: .3mm solid var(--border-light); }
+  .stat.white .n { color: var(--brand); }
+  .stat.white .l { color: var(--text-muted); }
+
+  /* Card info */
+  .card {
+    background: var(--off-white); border-radius: var(--radius-sm); padding: 4mm;
+    border-left: 1.5mm solid var(--accent-health);
+  }
+  .card.verde { border-left-color: var(--verde-saude); }
+  .card.amarelo { border-left-color: var(--alerta); }
+  .card.vermelho { border-left-color: var(--notificacao); }
+  .card h4 { font-family: 'Inter', sans-serif; font-size: 9.5pt; font-weight: 800; text-transform: uppercase; color: var(--brand-dark); margin-bottom: 1.5mm; }
+  .card p { font-size: 8pt; color: var(--text-muted); line-height: 1.55; }
+
+  /* Tabela */
+  .tbl { width: 100%; border-collapse: collapse; font-size: 8pt; }
+  .tbl thead tr { background: var(--brand-dark); }
+  .tbl thead th { padding: 3mm; text-align: left; font-family: 'Inter', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--accent-health); }
+  .tbl tbody tr:nth-child(even) { background: var(--off-white); }
+  .tbl tbody tr:hover { background: var(--accent-health-light); }
+  .tbl tbody td { padding: 2.5mm 3mm; border-bottom: .2mm solid var(--border-light); color: var(--text-main); }
+  .tbl tbody td strong { color: var(--brand); }
+  .tbl .pts { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--brand); font-size: 9pt; }
+
+  /* Badge inline */
+  .badge { display: inline-block; padding: .8mm 2.5mm; border-radius: 20mm; font-size: 6pt; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .badge.azul { background: #DBEAFE; color: var(--brand); }
+  .badge.verde { background: var(--verde-saude-light); color: var(--verde-saude); }
+  .badge.vermelho { background: #FEE2E2; color: #991B1B; }
+  .badge.amarelo { background: var(--alerta-light); color: #7A4100; }
+  .badge.ciano { background: var(--accent-health-light); color: #005A8A; }
+
+  /* Quote */
+  .quote {
+    border-left: 2mm solid var(--accent-health); padding: 4mm 5mm;
+    background: var(--accent-health-light); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic; line-height: 1.6;
+  }
+
+  /* Nota */
+  .nota {
+    background: var(--accent-health-light); border: .3mm solid rgba(0,168,232,.25);
+    border-radius: var(--radius-sm); padding: 3mm 4mm;
+    font-size: 7.5pt; color: var(--text-muted); line-height: 1.5;
+  }
+  .nota strong { color: var(--brand-dark); }
+
+  /* Chip */
+  .chips { display: flex; flex-wrap: wrap; gap: 1.5mm; }
+  .chip { padding: .8mm 2.5mm; border-radius: 20mm; font-size: 6.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+  .chip.azul { background: #DBEAFE; color: var(--brand); }
+  .chip.verde { background: var(--verde-saude-light); color: var(--verde-saude); }
+  .chip.ciano { background: var(--accent-health-light); color: #005A8A; }
+  .chip.amarelo { background: var(--alerta-light); color: #7A4100; }
+
+  /* ════ PÁGINA 1 — CAPA ════ */
+  .pg-capa {
+    background: linear-gradient(155deg, var(--brand-dark) 0%, var(--brand) 55%, #1E4FA3 100%);
+    min-height: 297mm;
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 20mm 16mm;
+  }
+  .capa-pattern {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(55deg, rgba(255,255,255,.025) 0, rgba(255,255,255,.025) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(-55deg, rgba(255,255,255,.025) 0, rgba(255,255,255,.025) 1px, transparent 1px, transparent 32px);
+  }
+  .capa-glow { position: absolute; width: 120mm; height: 120mm; background: radial-gradient(circle, rgba(0,168,232,0.18) 0%, transparent 70%); right: -20mm; top: -20mm; pointer-events: none; }
+  .capa-glow2 { position: absolute; width: 80mm; height: 80mm; background: radial-gradient(circle, rgba(255,255,255,.06) 0%, transparent 70%); left: 5mm; bottom: 30mm; pointer-events: none; }
+  .capa-accent { position: absolute; left: 0; top: 0; bottom: 0; width: 3mm; background: linear-gradient(to bottom, var(--verde-saude), var(--accent-health)); }
+
+  .capa-eyebrow { font-size: 8pt; font-weight: 700; letter-spacing: 3px; color: var(--accent-health); text-transform: uppercase; margin-bottom: 8mm; opacity: .9; }
+  .capa-h1 { font-family: 'Inter', sans-serif; font-size: 46pt; font-weight: 900; color: white; text-transform: uppercase; line-height: .95; margin-bottom: 6mm; }
+  .capa-h1 span { color: var(--accent-health); }
+  .capa-tag { display: inline-block; background: rgba(255,255,255,.1); border: .3mm solid rgba(255,255,255,.25); padding: 2.5mm 6mm; border-radius: var(--radius-sm); font-size: 9pt; color: rgba(255,255,255,.8); margin-bottom: 14mm; letter-spacing: .5px; }
+
+  .capa-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 3mm; width: 100%; max-width: 160mm; margin-bottom: 14mm; }
+  .capa-stat { background: rgba(255,255,255,.08); border: .3mm solid rgba(255,255,255,.12); padding: 5mm 2mm; text-align: center; border-radius: var(--radius-sm); }
+  .capa-stat .cn { font-family: 'Inter', sans-serif; font-size: 24pt; font-weight: 900; color: var(--accent-health); line-height: 1; }
+  .capa-stat .cl { font-size: 6pt; color: rgba(255,255,255,.45); text-transform: uppercase; letter-spacing: .8px; margin-top: 2mm; }
+
+  .capa-sep { width: 20mm; height: .5mm; background: rgba(255,255,255,.2); margin: 0 auto 6mm; }
+  .capa-sub { font-size: 9pt; color: rgba(255,255,255,.65); max-width: 120mm; line-height: 1.6; margin-bottom: 14mm; }
+
+  .capa-footer { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,.3); padding: 3mm 8mm; display: flex; justify-content: space-between; align-items: center; }
+  .capa-footer span { font-size: 6pt; color: rgba(255,255,255,.35); }
+
+  /* Tier cards */
+  .tier-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3mm; }
+  .tier-card { border-radius: var(--radius-sm); overflow: hidden; box-shadow: var(--shadow-premium); }
+  .tier-hd { padding: 4mm; }
+  .tier-hd.t1 { background: var(--brand-dark); }
+  .tier-hd.t2 { background: linear-gradient(135deg,#5a3c00,#8B6000); }
+  .tier-hd.t3 { background: var(--verde-saude); }
+  .tier-tag { font-size: 6.5pt; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .tier-name { font-family: 'Inter', sans-serif; font-size: 13pt; font-weight: 900; color: white; text-transform: uppercase; line-height: 1; margin-top: .5mm; }
+  .tier-sub { font-size: 7pt; color: rgba(255,255,255,.55); margin-top: 1mm; }
+  .tier-bd { background: var(--off-white); padding: 4mm; }
+  .tier-bd ul { list-style: none; }
+  .tier-bd li { font-size: 7.5pt; padding: 1.5mm 0; border-bottom: .2mm solid var(--border-light); color: var(--text-main); display: flex; gap: 2mm; align-items: flex-start; line-height: 1.35; }
+  .tier-bd li:last-child { border-bottom: none; }
+  .tier-bd li::before { content: '✓'; color: var(--verde-saude); font-weight: 900; flex-shrink: 0; font-size: 8pt; margin-top: .1mm; }
+  .tier-nota { font-size: 7pt; color: var(--text-muted); margin-top: 2mm; padding: 2.5mm 3.5mm; background: var(--accent-health-light); border-radius: var(--radius-sm); line-height: 1.4; }
+
+  /* CTA box */
+  .cta-box {
+    background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+    border-radius: var(--radius-md); padding: 7mm; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-box::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 20px); }
+  .cta-box h3 { font-family: 'Inter', sans-serif; font-size: 20pt; font-weight: 900; color: white; text-transform: uppercase; margin-bottom: 2mm; position: relative; }
+  .cta-box p { font-size: 9.5pt; color: rgba(255,255,255,.7); margin-bottom: 6mm; position: relative; line-height: 1.55; }
+  .cta-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 3mm; position: relative; }
+  .cta-step { background: rgba(255,255,255,.08); border: .3mm solid rgba(255,255,255,.15); padding: 3.5mm 2mm; text-align: center; border-radius: var(--radius-sm); }
+  .cta-step .cs-n { font-size: 6.5pt; color: var(--accent-health); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.5mm; }
+  .cta-step .cs-l { font-size: 7.5pt; color: rgba(255,255,255,.8); font-weight: 600; line-height: 1.3; }
+  .cta-step.last { background: rgba(0,168,232,0.25); border-color: var(--accent-health); }
+
+  .contato-box { background: var(--off-white); border: .3mm solid var(--border-light); border-radius: var(--radius-sm); padding: 4mm 5mm; margin-top: 4mm; }
+  .contato-box h4 { font-family: 'Inter', sans-serif; font-size: 9.5pt; font-weight: 800; color: var(--brand-dark); text-transform: uppercase; margin-bottom: 2mm; }
+  .contato-row { display: flex; gap: 6mm; flex-wrap: wrap; }
+  .contato-item { font-size: 8pt; color: var(--text-muted); }
+  .contato-item strong { color: var(--brand); }
+
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="../index.html" style="color:var(--accent-health);text-decoration:none;font-weight:700;font-size:13px;display:flex;align-items:center;gap:4px;">← Início</a>
+    <span style="color:rgba(255,255,255,.3);">|</span>
+    <span style="color:rgba(255,255,255,.7);font-size:13px;font-weight:500;">Emagrecendo Cajamar — Pitch Deck para Empresas</span>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <select onchange="if(this.value) window.location.href=this.value" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;border-radius:4px;font-size:12px;font-family:'Inter',sans-serif;outline:none;cursor:pointer;">
+      <option value="" disabled selected>Navegar para...</option>
+      <option value="01-proposta-preliminar.html">01 - Proposta Preliminar</option>
+      <option value="02-minuta-gamificacao.html">02 - Minuta Gamificação</option>
+      <option value="03-mapa-segmentos-parceiros.html">03 - Mapa de Parceiros</option>
+      <option value="04-pitch-deck-empresas.html">04 - Pitch Deck Empresas</option>
+    </select>
+    <a class="btn-print" href="../../../assets/pdf/Pitch Deck — Emagrecendo Cajamar.pdf" download>Baixar PDF</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PÁGINA 1 — CAPA
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="pg-capa">
+    <div class="capa-pattern"></div>
+    <div class="capa-glow"></div>
+    <div class="capa-glow2"></div>
+    <div class="capa-accent"></div>
+
+    <img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Brasão de Cajamar" style="max-height: 40mm; margin-bottom: 12mm; filter: drop-shadow(0 0 20px rgba(0,168,232,0.3));">
+
+    <div class="capa-eyebrow">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div>
+    <h1 class="capa-h1">Pitch Deck<br><span>para Empresas</span></h1>
+    <div class="capa-tag">Parcerias empresariais · Saúde pública · Impacto local</div>
+
+    <div class="capa-stats">
+      <div class="capa-stat"><div class="cn">6.928</div><div class="cl">Diagnosticados</div></div>
+      <div class="capa-stat"><div class="cn">350</div><div class="cl">No Piloto</div></div>
+      <div class="capa-stat"><div class="cn">4</div><div class="cl">UBS</div></div>
+      <div class="capa-stat"><div class="cn">7</div><div class="cl">Meses</div></div>
+    </div>
+
+    <div class="capa-sep"></div>
+    <p class="capa-sub">Como sua empresa pode participar de um programa municipal de saúde pública com impacto concreto, governança sólida e visibilidade institucional.</p>
+
+    <div class="capa-footer">
+      <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — DDEE</span>
+      <span>cajamar.sp.gov.br · @prefeituradecajamar</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PÁGINA 2 — O DESAFIO + O PROGRAMA
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-left">
+      <div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div>
+      <div>
+        <div class="ph-title">Emagrecendo Cajamar</div>
+        <div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div>
+      </div>
+    </div>
+    <div class="ph-badge">Empresas</div>
+  </div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <!-- SEÇÃO: DESAFIO -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>01 · O Desafio — Cajamar Precisa Agir</h2></div>
+      <div class="sec-divider"></div>
+      <div class="g4" style="margin-bottom:4mm">
+        <div class="stat"><div class="n">6.928</div><div class="l">Adultos diagnosticados<br>com obesidade (SISVAN)</div></div>
+        <div class="stat"><div class="n">978</div><div class="l">Obesidade<br>Grau 3</div></div>
+        <div class="stat"><div class="n">57%</div><div class="l">Brasileiros acima<br>do peso (Vigitel/MS)</div></div>
+        <div class="stat"><div class="n">2×</div><div class="l">Obesidade dobrou<br>em 20 anos no Brasil</div></div>
+      </div>
+      <div class="g3">
+        <div class="card"><h4>Comorbidades</h4><p>Hipertensão e diabetes associadas à obesidade pressionam a rede pública e aumentam o custo assistencial por paciente.</p></div>
+        <div class="card verde"><h4>Saúde Mental</h4><p>Impacto direto em autoestima, ansiedade e depressão. O programa integra psicologia como frente essencial do cuidado.</p></div>
+        <div class="card amarelo"><h4>Produtividade</h4><p>Trabalhadores com obesidade têm maior absenteísmo — dado relevante para empresas do polo logístico e industrial de Cajamar.</p></div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO: O PROGRAMA -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>02 · O Programa — Não é Campanha, é Política Pública</h2></div>
+      <div class="sec-divider"></div>
+      <div class="g4" style="margin-bottom:4mm">
+        <div class="stat white"><div class="n">350</div><div class="l">Participantes<br>no piloto</div></div>
+        <div class="stat white"><div class="n">4</div><div class="l">UBS de<br>referência</div></div>
+        <div class="stat white"><div class="n">7</div><div class="l">Meses de<br>piloto</div></div>
+        <div class="stat white"><div class="n">3</div><div class="l">Ciclos de<br>90 dias</div></div>
+      </div>
+
+      <div class="quote" style="margin-bottom:3.5mm">"Não é campanha. Não é palestra. É o primeiro programa intersetorial de Cajamar com fluxo clínico, dados, metas e parceiros — com potencial de virar política pública permanente."</div>
+
+      <div class="g2">
+        <div>
+          <div style="font-size:7.5pt;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2mm">Equipe Multiprofissional</div>
+          <div class="chips">
+            <span class="chip azul">Enfermagem</span><span class="chip azul">Medicina da Família</span>
+            <span class="chip verde">Nutrição</span><span class="chip verde">Psicologia</span>
+            <span class="chip ciano">Fisioterapia</span><span class="chip ciano">Farmácia</span>
+            <span class="chip amarelo">Fonoaudiologia</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:7.5pt;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2mm">Unidades Envolvidas</div>
+          <div class="chips">
+            <span class="chip azul">UBS Parque São Roberto</span>
+            <span class="chip azul">UBS Jordanésia</span>
+            <span class="chip azul">UBS Polvilho</span>
+            <span class="chip azul">ESF Manoel Inácio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span>
+    <span class="pf-page">02 / 05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PÁGINA 3 — TIERS DE PARTICIPAÇÃO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-left">
+      <div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div>
+      <div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div>
+    </div>
+    <div class="ph-badge">Empresas</div>
+  </div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>03 · Tiers de Participação — Modelos e Benefícios</h2></div>
+      <div class="sec-divider"></div>
+      <p style="font-size:7.5pt;color:var(--cinza-t);margin-bottom:4mm;line-height:1.55">Há espaço para diferentes perfis de empresa — do parceiro âncora com naming rights à academia local que integra a rede de créditos. Cada tier tem uma proposta de valor específica e contrapartidas claras.</p>
+
+      <div class="tier-grid">
+        <!-- TIER 1 -->
+        <div class="tier-card">
+          <div class="tier-hd t1">
+            <div class="tier-tag">Tier 1 — Máxima Visibilidade</div>
+            <div class="tier-name">Parceiro Âncora</div>
+            <div class="tier-sub">Grandes empresas · ESG · Logística · Suplementação</div>
+          </div>
+          <div class="tier-bd">
+            <ul>
+              <li>Apoio à academia funcional (equipamentos ou estrutura)</li>
+              <li>Naming associado ao programa ou ao espaço físico</li>
+              <li>Presença em 100% dos materiais oficiais (7 meses)</li>
+              <li>Destaque no portal da Prefeitura de Cajamar</li>
+              <li>Reuniões institucionais com secretarias</li>
+              <li>Relatório de impacto ao final do piloto</li>
+              <li>Selo "Parceiro Âncora Emagrecendo Cajamar"</li>
+            </ul>
+            <div class="tier-nota"><strong>Investimento:</strong> equipamentos, estrutura ou créditos de engajamento — a definir conforme escopo pactuado.</div>
+          </div>
+        </div>
+
+        <!-- TIER 2 -->
+        <div class="tier-card">
+          <div class="tier-hd t2">
+            <div class="tier-tag">Tier 2 — Engajamento de Marca</div>
+            <div class="tier-name">Parceiro de Engajamento</div>
+            <div class="tier-sub">Suplementação · Nutrição · Bem-estar</div>
+          </div>
+          <div class="tier-bd">
+            <ul>
+              <li>Presença nos kits de premiação dos 3 ciclos (D+30/60/90)</li>
+              <li>Destaque em campanhas de engajamento do programa</li>
+              <li>Inclusão nos materiais de comunicação</li>
+              <li>Créditos patrocinados vinculados à marca</li>
+              <li>Associação a resultados reais de saúde pública</li>
+              <li>Selo de Parceiro de Engajamento</li>
+            </ul>
+            <div class="tier-nota"><strong>Investimento:</strong> fornecimento de produtos ou créditos para as premiações de cada ciclo.</div>
+          </div>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="tier-card">
+          <div class="tier-hd t3">
+            <div class="tier-tag">Tier 3 — Rede Parceira</div>
+            <div class="tier-name">Empresa da Rede</div>
+            <div class="tier-sub">Academias · Comércio · Serviços de bem-estar</div>
+          </div>
+          <div class="tier-bd">
+            <ul>
+              <li>Inclusão na rede oficial de aceite de créditos</li>
+              <li>Fluxo de participantes ativos com crédito disponível</li>
+              <li>Divulgação nos canais do projeto</li>
+              <li>Competição Municipal entre Academias (troféu + certificado)</li>
+              <li>Selo de Empresa Parceira Emagrecendo Cajamar</li>
+            </ul>
+            <div class="tier-nota"><strong>Custo:</strong> próximo de zero — a empresa oferece seus serviços como benefício, recebendo fluxo qualificado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrapartidas -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>04 · Contrapartidas Mensuradas</h2></div>
+      <div class="sec-divider"></div>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:55%">Indicador</th>
+            <th style="width:25%">Referência</th>
+            <th style="width:20%">Tiers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Participantes diretos expostos à marca durante o piloto</td><td><strong>350 pessoas</strong></td><td><span class="badge azul">T1 T2 T3</span></td></tr>
+          <tr><td>Unidades de saúde com presença do programa</td><td><strong>4 UBS em Cajamar</strong></td><td><span class="badge azul">T1 T2</span></td></tr>
+          <tr><td>Duração da exposição contínua</td><td><strong>7 meses</strong></td><td><span class="badge azul">T1</span></td></tr>
+          <tr><td>Ciclos de premiação e ativação de marca</td><td><strong>3 ciclos (D+30/60/90)</strong></td><td><span class="badge azul">T1 T2</span></td></tr>
+          <tr><td>Relatório de impacto ao final do piloto</td><td><strong>Incluso</strong></td><td><span class="badge verde">T1 T2</span></td></tr>
+          <tr><td>Comunicação digital (redes / portal Prefeitura)</td><td>A definir</td><td><span class="badge ciano">T1 T2 T3</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span>
+    <span class="pf-page">03 / 05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PÁGINA 4 — CRÉDITOS + SEGURANÇA
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-left">
+      <div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div>
+      <div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div>
+    </div>
+    <div class="ph-badge">Empresas</div>
+  </div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <!-- Créditos -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>05 · Sistema de Créditos Patrocinados</h2></div>
+      <div class="sec-divider"></div>
+      <p style="font-size:7.5pt;color:var(--cinza-t);margin-bottom:3.5mm;line-height:1.55">Os participantes acumulam créditos conforme adesão e evolução. Esses créditos só podem ser usados na rede parceira oficial — criando fluxo qualificado para sua empresa.</p>
+
+      <div class="g2">
+        <div>
+          <div style="font-size:7pt;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2mm">Como o Participante Acumula</div>
+          <table class="tbl">
+            <thead><tr><th>Ação</th><th style="width:20%">Pts</th></tr></thead>
+            <tbody>
+              <tr><td>Presença em atividade física</td><td class="pts">10</td></tr>
+              <tr><td>Meta semanal (150 min)</td><td class="pts">10</td></tr>
+              <tr><td>Participação em grupo quinzenal</td><td class="pts">10</td></tr>
+              <tr><td>Comparecimento a avaliações</td><td class="pts">10</td></tr>
+               <tr><td>Redução de 2 cm de cintura</td><td class="pts">20</td></tr>
+              <tr><td>Perda de 5% do peso</td><td class="pts">30</td></tr>
+              <tr><td>Perda de 10% do peso</td><td class="pts">60</td></tr>
+              <tr><td>Perda de 20% do peso</td><td class="pts">100</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div style="font-size:7pt;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2mm">Como o Participante Usa (na Sua Empresa)</div>
+          <table class="tbl">
+            <thead><tr><th>Benefício</th><th style="width:24%">Créditos</th></tr></thead>
+            <tbody>
+              <tr><td>Sorteio de kit esportivo</td><td class="pts">30</td></tr>
+              <tr><td>Voucher em comércio aderente</td><td class="pts">100–150</td></tr>
+              <tr><td>1 mês de academia parceira</td><td class="pts">200</td></tr>
+              <tr><td>3 meses de academia parceira</td><td class="pts">500</td></tr>
+              <tr><td>Bicicleta (Faixa 4)</td><td class="pts">700</td></tr>
+            </tbody>
+          </table>
+          <div class="nota" style="margin-top:2.5mm"><strong>Para a empresa da rede:</strong> cada participante com crédito ativo é um cliente potencial — motivado, em jornada de transformação e com subsídio do programa.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segurança Institucional -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>06 · Segurança Institucional e Governança</h2></div>
+      <div class="sec-divider"></div>
+      <div class="g2">
+        <div class="g2" style="grid-column:1/-1">
+          <div class="card"><h4>Instrumento Jurídico</h4><p>Formato de parceria definido pela Procuradoria Municipal. Limites claros de exposição de marca, contrapartidas e compliance para todas as partes.</p></div>
+          <div class="card verde"><h4>Finalidade Pública Preservada</h4><p>Empresas não influenciam critérios clínicos, pontuação ou decisões do programa. Separação clara entre apoio e gestão técnica.</p></div>
+          <div class="card"><h4>Prestação de Contas</h4><p>Relatório de impacto ao final do piloto. Transparência sobre resultados, adesão e uso dos créditos patrocinados.</p></div>
+          <div class="card amarelo"><h4>Prevenção de Conflito</h4><p>Empresas da rede parceira não acessam dados individuais nem participam de decisões sobre elegibilidade dos participantes.</p></div>
+        </div>
+      </div>
+
+      <div class="quote" style="margin-top:3.5mm">"O projeto não busca patrocínio desordenado. Busca parceria séria, organizada e legitimada pelo poder público — com regras claras para todos os envolvidos."</div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span>
+    <span class="pf-page">04 / 05</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PÁGINA 5 — CTA + CONTATO
+════════════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="ph-left">
+      <div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div>
+      <div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div>
+    </div>
+    <div class="ph-badge">Empresas</div>
+  </div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <!-- Por que agora -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>07 · Por que Agir Agora</h2></div>
+      <div class="sec-divider"></div>
+      <div class="g2" style="margin-bottom:4mm">
+        <div class="card"><h4>Parceiras Fundadoras</h4><p>Empresas que entram agora tornam-se parceiras fundadoras do programa. Visibilidade máxima antes do lançamento oficial — quando a narrativa ainda está sendo construída.</p></div>
+        <div class="card vermelho"><h4>Janela de Entrada</h4><p>Início das abordagens em 20/04/2026. Cajamar está finalizando a linha de cuidado municipal — o Emagrecendo Cajamar é o ponto de partida dessa política.</p></div>
+      </div>
+
+      <!-- Tabela de parceiros prioritários -->
+      <div style="font-size:7pt;font-weight:700;color:var(--azul);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2mm">Segmentos com Maior Aderência</div>
+      <table class="tbl" style="margin-bottom:4mm">
+        <thead>
+          <tr><th>Segmento</th><th>Tipo de Apoio</th><th>Perfil</th><th>Prioridade</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>New Millen (Cajamar)</strong></td><td>Créditos, kits, premiações</td><td><span class="badge verde">Suplementação</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--notificacao)">RANK 1</td></tr>
+          <tr><td><strong>Max Titanium / Integral / Growth</strong></td><td>Créditos, kits, campanhas ESG</td><td><span class="badge verde">Suplementação</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--alerta)">RANK 2</td></tr>
+          <tr><td><strong>Grandes CDs Logísticos</strong></td><td>Estrutura física, saúde do trabalhador</td><td><span class="badge azul">Logística / e-commerce</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--alerta)">RANK 3</td></tr>
+          <tr><td><strong>Academias locais</strong></td><td>Aceite de créditos, rede parceira</td><td><span class="badge ciano">Atividade física</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--verde-saude)">RANK 4</td></tr>
+          <tr><td><strong>Lojas esportivas / bem-estar</strong></td><td>Vouchers, rede de resgate</td><td><span class="badge amarelo">Comércio</span></td><td style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--verde-saude)">RANK 5</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3>Vamos Conversar</h3>
+      <p>Reunião de apresentação: 30 minutos, sem compromisso.<br>Mostramos os dados, o projeto e como sua empresa pode participar.</p>
+      <div class="cta-steps">
+        <div class="cta-step"><div class="cs-n">Passo 1</div><div class="cs-l">Reunião de apresentação</div></div>
+        <div class="cta-step"><div class="cs-n">Passo 2</div><div class="cs-l">Definição de tier e escopo</div></div>
+        <div class="cta-step"><div class="cs-n">Passo 3</div><div class="cs-l">Alinhamento jurídico</div></div>
+        <div class="cta-step last"><div class="cs-n">Passo 4</div><div class="cs-l">Parceria ativa</div></div>
+      </div>
+    </div>
+
+    <!-- Contato -->
+    <div class="contato-box">
+      <h4>Contato — DDEE · Prefeitura de Cajamar</h4>
+      <div class="contato-row">
+        <div class="contato-item"><strong>Órgão:</strong> Departamento de Desenvolvimento Econômico e Empreendedorismo</div>
+        <div class="contato-item"><strong>Telefone:</strong> (11) 4446-7699</div>
+        <div class="contato-item"><strong>Endereço:</strong> Praça José Rodrigues do Nascimento, 30 — Centro, Cajamar/SP</div>
+        <div class="contato-item"><strong>Site:</strong> cajamar.sp.gov.br</div>
+        <div class="contato-item"><strong>Redes:</strong> @prefeituradecajamar</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf">
+    <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span>
+    <span class="pf-page">05 / 05</span>
+  </div>
+</div>
+
+</body>
+</html>

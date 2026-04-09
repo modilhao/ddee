@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emagrecendo Cajamar — Plano Piloto 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brand: #1565C0;
+  --brand-dark: #0D47A1;
+  --brand-light: #E3F2FD;
+  --accent-health: #00A8E8;
+  --accent-health-light: #E1F5FE;
+  --vermelho: #E63329;
+  --branco: #FFFFFF;
+  --off-white: #F8FAFC;
+  --cinza-claro: #E2E8F0;
+  --cinza-texto: #64748B;
+  --grafite: #0F172A;
+  --verde-saude: #2E7D32;
+  --verde-claro: #E8F5E9;
+  --amarelo: #F59E0B;
+  --amarelo-claro: #FEF3C7;
+  --shadow-premium: 0 12px 40px rgba(2, 12, 27, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+}
+
+.ddee-emagrecendo {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--grafite);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.ddee-emagrecendo * { margin: 0; padding: 0; box-sizing: border-box; }
+
+.ddee-emagrecendo h1, 
+.ddee-emagrecendo h2, 
+.ddee-emagrecendo h3, 
+.ddee-emagrecendo .sidebar-title,
+.ddee-emagrecendo .hero-title,
+.ddee-emagrecendo .secao h2 { 
+  font-family: 'Inter', sans-serif; 
+  letter-spacing: -0.02em;
+}
+
+/* ===== TELA DE ENTRADA ===== */
+.ddee-emagrecendo #entrada {
+  position: fixed; inset: 0; z-index: 1000;
+  background: var(--brand-dark);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ddee-emagrecendo #entrada.saindo { opacity: 0; transform: scale(1.05); pointer-events: none; }
+
+.ddee-emagrecendo .entrada-logo { display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.ddee-emagrecendo .entrada-logo .city { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-health); margin-bottom: 8px; }
+.ddee-emagrecendo .entrada-logo h1 { font-family: 'Inter', sans-serif; font-size: clamp(36px,6vw,64px); font-weight: 900; color: var(--branco); line-height: 1.1; text-transform: uppercase; letter-spacing: -0.04em; }
+.ddee-emagrecendo .entrada-logo .sub { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.6); margin-top: 12px; letter-spacing: 1px; }
+
+.entrada-pergunta {
+  font-size: 15px; color: rgba(255,255,255,0.5); margin-bottom: 20px; text-align: center;
+  opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+}
+
+.entrada-btns {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+}
+
+.ddee-emagrecendo .btn-entrada {
+  padding: 20px 40px; border-radius: 999px; border: 2px solid transparent;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 800;
+  cursor: pointer; transition: all 0.25s; text-transform: uppercase; letter-spacing: 0.1em;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  min-width: 240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.ddee-emagrecendo .btn-entrada .btn-icon { font-size: 28px; }
+.ddee-emagrecendo .btn-entrada.empresas { background: var(--accent-health); color: var(--brand-dark); border-color: var(--accent-health); }
+.ddee-emagrecendo .btn-entrada.empresas:hover { background: var(--branco); border-color: var(--branco); transform: translateY(-4px); }
+.ddee-emagrecendo .btn-entrada.institucional { background: rgba(255,255,255,0.1); color: var(--branco); border-color: rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
+.ddee-emagrecendo .btn-entrada.institucional:hover { background: rgba(255,255,255,0.2); border-color: var(--branco); transform: translateY(-4px); }
+
+.entrada-stats {
+  margin-top: 56px; display: flex; gap: 40px; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.8s 1s forwards;
+}
+.e-stat { text-align: center; }
+.e-stat .n { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; color: var(--accent-health); letter-spacing: -0.05em; }
+.e-stat .l { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* ===== APP SHELL ===== */
+#app { display: none; min-height: 100vh; }
+#app.visivel { display: flex; }
+
+/* ===== SIDEBAR ===== */
+.ddee-emagrecendo #sidebar {
+  width: 280px; min-height: 100vh; background: var(--brand-dark);
+  position: fixed; left: 0; top: 0; z-index: 100;
+  display: flex; flex-direction: column;
+  transition: transform 0.3s ease;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.ddee-emagrecendo .sidebar-header {
+  padding: 40px 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ddee-emagrecendo .sidebar-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 10px;
+  font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px;
+}
+.ddee-emagrecendo .sidebar-badge.empresas { background: var(--accent-health); color: var(--brand-dark); }
+.ddee-emagrecendo .sidebar-badge.institucional { background: var(--verde-saude); color: var(--branco); }
+
+.ddee-emagrecendo .sidebar-title { font-size: 22px; font-weight: 800; color: var(--branco); text-transform: uppercase; line-height: 1.1; letter-spacing: -0.03em; }
+.ddee-emagrecendo .sidebar-sub { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+
+.ddee-emagrecendo .nav-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 24px; cursor: pointer;
+  color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 600;
+  transition: all 0.2s; border-left: 4px solid transparent;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.ddee-emagrecendo .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--branco); }
+.ddee-emagrecendo .nav-item.ativo { background: rgba(255,255,255,0.08); color: var(--accent-health); border-left-color: var(--accent-health); }
+
+.ddee-emagrecendo #main {
+  margin-left: 280px; flex: 1; min-height: 100vh;
+}
+
+/* Barra de progresso */
+#progresso-bar {
+  position: fixed; top: 0; left: 260px; right: 0; height: 3px; z-index: 200;
+  background: rgba(0,0,0,0.1);
+}
+#progresso-fill { height: 100%; background: var(--accent-health); width: 0%; transition: width 0.2s; }
+
+/* ===== SEÇÕES ===== */
+.ddee-emagrecendo .secao {
+  padding: 100px 80px; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.ddee-emagrecendo .secao.visivel { opacity: 1; transform: translateY(0); }
+
+.ddee-emagrecendo .secao-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 20px; display: inline-block;
+  padding: 6px 16px; border-radius: 999px;
+  background: var(--brand-light); color: var(--brand);
+}
+.ddee-emagrecendo .secao-label.verde { background: var(--verde-claro); color: var(--verde-saude); }
+
+.ddee-emagrecendo .secao h2 {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 800; text-transform: none; line-height: 1.1;
+  color: var(--grafite); margin-bottom: 16px;
+  letter-spacing: -0.04em;
+}
+.ddee-emagrecendo .secao .secao-desc {
+  font-size: 18px; color: var(--cinza-texto); max-width: 720px; line-height: 1.6; margin-bottom: 48px;
+}
+
+/* ===== HERO ===== */
+.ddee-emagrecendo .hero-secao {
+  background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+  position: relative; overflow: hidden; padding: 80px;
+  min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+}
+
+.ddee-emagrecendo .hero-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.2em; color: var(--accent-health); text-transform: uppercase; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s 0.1s forwards; }
+.ddee-emagrecendo .hero-title { font-size: clamp(48px,8vw,100px); font-weight: 900; color: var(--branco); text-transform: uppercase; line-height: 0.95; margin-bottom: 32px; letter-spacing: -0.05em; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+.ddee-emagrecendo .hero-title span { color: var(--accent-health); }
+.ddee-emagrecendo .hero-subtitle { font-size: clamp(18px, 2.5vw, 22px); color: rgba(255,255,255,0.7); max-width: 600px; line-height: 1.5; margin-bottom: 60px; opacity: 0; animation: fadeUp 0.8s 0.5s forwards; }
+
+.ddee-emagrecendo .hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap; max-width: 900px;
+  opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+}
+.ddee-emagrecendo .hero-stat {
+  background: rgba(255,255,255,0.05); backdrop-filter: blur(12px);
+  padding: 24px 32px; text-align: left; border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md); border-left: 4px solid var(--accent-health);
+}
+.ddee-emagrecendo .hero-stat .hn { font-family: 'Inter', sans-serif; font-size: 48px; font-weight: 900; color: var(--branco); line-height: 1; letter-spacing: -0.05em; }
+.ddee-emagrecendo .hero-stat .hl { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; font-weight: 700; }
+
+.ddee-emagrecendo .hero-msg {
+  margin-top: 60px; padding: 32px; border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+  max-width: 640px; font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6;
+  opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+}
+
+/* ===== CARDS GRID ===== */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; }
+
+.ddee-emagrecendo .card {
+  background: var(--branco); border-radius: var(--radius-md); padding: 40px 32px;
+  border: 1px solid var(--cinza-claro); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-premium);
+  position: relative; overflow: hidden;
+}
+.ddee-emagrecendo .card::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 100%; background: var(--brand); }
+.ddee-emagrecendo .card:hover { transform: translateY(-8px); border-color: var(--brand-light); }
+.ddee-emagrecendo .card.verde::before { background: var(--verde-saude); }
+.ddee-emagrecendo .card.vermelho::before { background: var(--vermelho); }
+.ddee-emagrecendo .card.amarelo::before { background: var(--amarelo); }
+
+.ddee-emagrecendo .card-icon { font-size: 40px; margin-bottom: 24px; opacity: 0.8; }
+.ddee-emagrecendo .card h3 { font-size: 20px; font-weight: 800; color: var(--grafite); margin-bottom: 12px; letter-spacing: -0.02em; }
+.ddee-emagrecendo .card p { font-size: 15px; color: var(--cinza-texto); line-height: 1.6; }
+
+/* ===== STATS BLOCK ===== */
+.stats-block { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 16px; margin-bottom: 40px; }
+.ddee-emagrecendo .stat-card {
+  background: var(--brand-dark); border-radius: var(--radius-md); padding: 40px 32px; text-align: left;
+  box-shadow: var(--shadow-premium); border: 1px solid rgba(255,255,255,0.05);
+}
+.ddee-emagrecendo .stat-card .sn { font-family: 'Inter', sans-serif; font-size: 64px; font-weight: 900; color: var(--accent-health); line-height: 1; letter-spacing: -0.05em; }
+.ddee-emagrecendo .stat-card .sl { font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 12px; font-weight: 700; line-height: 1.4; }
+.ddee-emagrecendo .stat-card.branco { background: var(--branco); border: 1px solid var(--cinza-claro); }
+.ddee-emagrecendo .stat-card.branco .sn { color: var(--brand); }
+.ddee-emagrecendo .stat-card.branco .sl { color: var(--cinza-texto); }
+
+/* ===== ACCORDION ===== */
+.ddee-emagrecendo .accordion { border: 1px solid var(--cinza-claro); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 12px; background: var(--branco); box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+.ddee-emagrecendo .acc-header {
+  padding: 24px 32px; background: var(--branco); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.2s;
+}
+.ddee-emagrecendo .acc-header:hover { background: var(--off-white); }
+.ddee-emagrecendo .acc-header.aberto { background: var(--brand-dark); color: var(--branco); }
+.ddee-emagrecendo .acc-title { font-size: 18px; font-weight: 700; color: inherit; letter-spacing: -0.01em; }
+.ddee-emagrecendo .acc-badge { padding: 4px 12px; border-radius: 999px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; }
+.ddee-emagrecendo .acc-badge.t1 { background: var(--accent-health); color: var(--brand-dark); }
+.ddee-emagrecendo .acc-badge.t2 { background: var(--amarelo); color: var(--branco); }
+.ddee-emagrecendo .acc-badge.t3 { background: var(--verde-saude); color: var(--branco); }
+.ddee-emagrecendo .acc-badge.t4 { background: var(--vermelho); color: var(--branco); }
+.ddee-emagrecendo .acc-arrow { font-size: 20px; transition: transform 0.3s; }
+.ddee-emagrecendo .acc-header.aberto .acc-arrow { transform: rotate(180deg); }
+.ddee-emagrecendo .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.ddee-emagrecendo .acc-body.aberto { max-height: 800px; }
+.ddee-emagrecendo .acc-content { padding: 32px; background: var(--off-white); border-top: 1px solid var(--cinza-claro); line-height: 1.7; }
+
+/* ===== TABELA ===== */
+.ddee-emagrecendo .tabela-wrapper { overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--cinza-claro); box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.ddee-emagrecendo table { width: 100%; border-collapse: collapse; background: var(--branco); }
+.ddee-emagrecendo thead { background: var(--brand-dark); }
+.ddee-emagrecendo thead th { padding: 20px 24px; text-align: left; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-health); }
+.ddee-emagrecendo tbody td { padding: 18px 24px; font-size: 15px; border-bottom: 1px solid var(--cinza-claro); color: var(--grafite); }
+.ddee-emagrecendo tbody tr:hover { background: var(--off-white); }
+.ddee-emagrecendo .td-pts { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: var(--brand); }
+.ddee-emagrecendo .td-badge { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.td-badge.alto { background: rgba(230,51,41,0.1); color: var(--vermelho); }
+.td-badge.medio { background: rgba(245,166,35,0.15); color: #8a5d00; }
+.td-badge.baixo { background: rgba(27,138,78,0.1); color: var(--verde-saude); }
+
+/* ===== TIMELINE ===== */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: var(--cinza-claro); }
+.tl-item { position: relative; margin-bottom: 8px; }
+.tl-dot {
+  position: absolute; left: -28px; top: 18px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--brand); border: 2px solid var(--branco);
+  box-shadow: 0 0 0 2px var(--brand);
+}
+.tl-header {
+  background: var(--branco); border: 1px solid var(--cinza-claro); border-radius: 4px;
+  padding: 14px 20px; cursor: pointer; display: flex; align-items: center; gap: 16px;
+  transition: all 0.2s;
+}
+.tl-header:hover { border-color: var(--brand); }
+.tl-mes { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800; color: var(--accent-health); text-transform: uppercase; min-width: 50px; }
+.tl-titulo { font-size: 14px; font-weight: 700; color: var(--brand-dark); flex: 1; }
+.tl-body { display: none; background: var(--off-white); border: 1px solid var(--cinza-claro); border-top: none; border-radius: 0 0 4px 4px; padding: 16px 20px; }
+.tl-body.aberto { display: block; }
+.tl-body ul { list-style: none; }
+.tl-body li { padding: 5px 0; font-size: 13px; color: var(--cinza-texto); display: flex; align-items: flex-start; gap: 8px; }
+.tl-body li::before { content: '→'; color: var(--accent-health); font-weight: 700; flex-shrink: 0; }
+
+/* ===== FLUXO ===== */
+.fluxo-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); gap: 0; }
+.fluxo-step {
+  background: var(--branco); border: 1px solid var(--cinza-claro);
+  padding: 24px 16px; text-align: center; position: relative;
+}
+.fluxo-step::after {
+  content: '→'; position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+  font-size: 20px; color: var(--accent-health); z-index: 1; font-weight: 700;
+}
+.fluxo-step:last-child::after { display: none; }
+.fs-num { font-family: 'Inter', sans-serif; font-size: 32px; font-weight: 900; color: var(--cinza-claro); line-height: 1; letter-spacing: -0.05em; }
+.fs-icon { font-size: 28px; margin: 8px 0; }
+.fs-title { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--brand-dark); letter-spacing: 0.5px; }
+.fs-desc { font-size: 11px; color: var(--cinza-texto); margin-top: 4px; line-height: 1.4; }
+
+/* ===== SECRETARIAS ===== */
+.sec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; }
+.sec-card {
+  border-radius: 4px; padding: 24px; border-left: 4px solid;
+  background: var(--branco); border-color: var(--cinza-claro);
+}
+.sec-card.s1 { border-left-color: var(--vermelho); }
+.sec-card.s2 { border-left-color: var(--accent-health); }
+.sec-card.s3 { border-left-color: var(--amarelo); }
+.sec-card.s4 { border-left-color: var(--verde-saude); }
+.sec-card h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 800; text-transform: none; margin-bottom: 12px; color: var(--brand-dark); letter-spacing: -0.02em; }
+.sec-card ul { list-style: none; }
+.sec-card li { font-size: 12px; color: var(--cinza-texto); padding: 3px 0; line-height: 1.4; display: flex; gap: 6px; }
+.sec-card li::before { content: '·'; color: var(--accent-health); font-weight: 900; flex-shrink: 0; }
+
+/* ===== TIERS ===== */
+.tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 16px; }
+.tier-card {
+  border-radius: 4px; overflow: hidden; border: 1px solid var(--cinza-claro);
+  transition: all 0.25s;
+}
+.tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(21,101,192,0.12); }
+.tier-header { padding: 20px 24px; }
+.tier-header.t1 { background: var(--brand-dark); }
+.tier-header.t2 { background: linear-gradient(135deg, #6b4400, #a06800); }
+.tier-header.t3 { background: linear-gradient(135deg, var(--verde-saude), #2ea868); }
+.tier-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+.tier-name { font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 900; color: var(--branco); text-transform: uppercase; letter-spacing: -0.03em; }
+.tier-sub { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.tier-body { padding: 20px 24px; background: var(--branco); }
+.tier-body ul { list-style: none; }
+.tier-body li { font-size: 13px; padding: 6px 0; border-bottom: 1px solid var(--cinza-claro); display: flex; gap: 10px; align-items: flex-start; color: var(--grafite); }
+.tier-body li:last-child { border-bottom: none; }
+.tier-body li::before { content: '✓'; color: var(--verde-saude); font-weight: 900; flex-shrink: 0; }
+
+/* ===== CTA ===== */
+.cta-secao {
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+  padding: 80px 64px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 60vh;
+}
+.cta-secao h2 { font-family:'Inter',sans-serif;font-size:clamp(32px,6vw,80px);font-weight:900;color:var(--brand); text-transform: uppercase; margin-bottom: 16px; }
+.cta-secao p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 500px; margin-bottom: 40px; line-height: 1.6; }
+.cta-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.btn-cta { padding: 16px 32px; border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.25s; border: 2px solid transparent; }
+.btn-cta.primario { background: var(--accent-health); color: var(--brand-dark); }
+.btn-cta.primario:hover { background: var(--branco); }
+.btn-cta.secundario { background: transparent; color: var(--branco); border-color: rgba(255,255,255,0.4); }
+.btn-cta.secundario:hover { border-color: var(--branco); background: rgba(255,255,255,0.1); }
+
+/* ===== MODAL ===== */
+#modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 1500;
+  background: rgba(10,25,48,0.85); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+#modal-overlay.aberto { display: flex; }
+.modal {
+  background: var(--branco); border-radius: 4px; padding: 40px; max-width: 480px; width: 90%;
+  border-top: 4px solid var(--accent-health); position: relative;
+  animation: fadeUp 0.3s ease forwards;
+}
+.modal h3 { font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 800; text-transform: none; color: var(--brand-dark); margin-bottom: 8px; letter-spacing: -0.03em; }
+.modal p { font-size: 14px; color: var(--cinza-texto); margin-bottom: 24px; line-height: 1.6; }
+.modal-contato { background: var(--off-white); border-radius: 4px; padding: 20px; margin-bottom: 24px; }
+.modal-contato div { font-size: 13px; color: var(--cinza-texto); padding: 5px 0; }
+.modal-contato strong { color: var(--brand-dark); }
+.modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--cinza-texto); }
+.modal-close:hover { color: var(--vermelho); }
+
+/* ===== CTA FLUTUANTE ===== */
+#cta-flutuante {
+  position: fixed; bottom: 24px; right: 24px; z-index: 300;
+  background: var(--accent-health); color: var(--brand-dark);
+  padding: 14px 22px; border-radius: 4px; border: none;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,168,232,0.4); transition: all 0.25s;
+  display: none;
+}
+#cta-flutuante:hover { background: var(--branco); transform: translateY(-2px); }
+
+/* ===== DIVISOR ===== */
+.divisor { height: 1px; background: var(--cinza-claro); margin: 48px 0; }
+
+/* ===== CHIPS ===== */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.chip.azul { background: rgba(21,101,192,0.1); color: var(--brand); }
+.chip.verde { background: var(--verde-claro); color: var(--verde-saude); }
+.chip.amarelo { background: var(--amarelo-claro); color: #7a5200; }
+.chip.vermelho { background: rgba(230,51,41,0.08); color: var(--vermelho); }
+.chip.ciano { background: rgba(0,168,232,0.1); color: #005a8a; }
+
+/* ===== DESTAQUE QUOTE ===== */
+.quote-block {
+  border-left: 4px solid var(--accent-health); padding: 16px 24px;
+  background: var(--branco); border-radius: 0 4px 4px 0;
+  font-size: 15px; font-style: italic; color: var(--cinza-texto); line-height: 1.7;
+  margin: 24px 0;
+}
+
+/* ===== GRID 2 cols ===== */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* ===== MOBILE ===== */
+#menu-toggle {
+  display: none; position: fixed; top: 16px; left: 16px; z-index: 400;
+  background: var(--brand-dark); border: none; color: var(--branco);
+  width: 40px; height: 40px; border-radius: 4px; font-size: 20px; cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.aberto { transform: translateX(0); }
+  #main { margin-left: 0; }
+  #progresso-bar { left: 0; }
+  .secao { padding: 60px 24px; }
+  .hero-secao { padding: 80px 24px; }
+  .cta-secao { padding: 60px 24px; }
+  #menu-toggle { display: flex; align-items: center; justify-content: center; }
+  .fluxo-step::after { display: none; }
+}
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== RISCOS ===== */
+.risco-grid { display: grid; gap: 10px; }
+.risco-item {
+  background: var(--branco); border: 1px solid var(--cinza-claro); border-radius: 4px;
+  padding: 16px 20px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start;
+}
+.risco-nivel { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.risco-nivel.alto { background: var(--vermelho); }
+.risco-nivel.medio { background: var(--amarelo); }
+.risco-content h5 { font-size: 13px; font-weight: 700; color: var(--brand-dark); margin-bottom: 4px; }
+.risco-content p { font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
+
+/* ===== PARCEIROS TABLE ===== */
+.ddee-emagrecendo .prioridade { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; }
+
+.ddee-emagrecendo .ind-num { font-family: 'Inter', sans-serif; font-size: 80px; font-weight: 900; color: var(--cinza-claro); line-height: 1; letter-spacing: -0.05em; opacity: 0.5; }
+
+.ddee-emagrecendo .nota { background: var(--brand-light); border: 1px solid rgba(21, 101, 192, 0.2); border-radius: var(--radius-sm); padding: 20px 24px; font-size: 14px; color: var(--cinza-texto); line-height: 1.6; margin-top: 24px; }
+.ddee-emagrecendo .nota strong { color: var(--brand); font-weight: 800; }
+
+.ddee-emagrecendo .cta-secao {
+  background: linear-gradient(135deg, var(--brand-dark), var(--brand));
+  padding: 100px 80px; text-align: center;
+  border-radius: var(--radius-lg); margin: 40px 0;
+  box-shadow: var(--shadow-premium);
+}
+
+.ddee-emagrecendo .btn-cta { 
+  padding: 18px 40px; border-radius: 999px; font-family: 'Inter', sans-serif; 
+  font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; 
+  cursor: pointer; transition: all 0.3s; border: 2px solid transparent; 
+}
+.ddee-emagrecendo .btn-cta.primario { background: var(--accent-health); color: var(--brand-dark); }
+.ddee-emagrecendo .btn-cta.primario:hover { background: var(--branco); transform: scale(1.05); }
+
+</style>
+</head>
+<body>
+<div class="ddee-emagrecendo">
+
+<!-- TELA DE ENTRADA -->
+<div id="entrada">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+
+  <img src="../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Brasão de Cajamar" style="max-height: 180px; margin-bottom: 40px; filter: drop-shadow(0 0 30px rgba(0,168,232,0.2));">
+
+  <div class="entrada-logo">
+    <div class="city">Prefeitura de Cajamar</div>
+    <h1>Emagrecendo<br><span style="color:var(--accent-health)">Cajamar</span></h1>
+    <div class="sub">Plano Piloto 2026 · Programa Municipal de Saúde</div>
+  </div>
+
+  <p class="entrada-pergunta">Selecione seu perfil para iniciar</p>
+
+  <div class="entrada-btns">
+    <button class="btn-entrada empresas" onclick="entrar('empresas')">
+      Para Empresas
+    </button>
+    <button class="btn-entrada institucional" onclick="entrar('institucional')">
+      Institucional / Saúde
+    </button>
+    <button class="btn-entrada institucional" onclick="abrirModalDocumentos()" style="background: rgba(255,255,255,0.05);">
+      Veja Documentos
+    </button>
+  </div>
+
+  <div class="entrada-stats">
+    <div class="e-stat"><div class="n">6.928</div><div class="l">Diagnosticados</div></div>
+    <div class="e-stat"><div class="n">350</div><div class="l">No Piloto</div></div>
+    <div class="e-stat"><div class="n">4</div><div class="l">UBS</div></div>
+    <div class="e-stat"><div class="n">7</div><div class="l">Meses</div></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <div class="sidebar-header" style="text-align: center;">
+        <img src="../../assets/logos/logo administração pmc.png" alt="Cajamar Logo" class="logo" style="max-height:80px; width: auto; margin: 0 auto 20px; display: block;"/>
+      <div id="sidebar-badge" class="sidebar-badge empresas">Empresas</div>
+      <div class="sidebar-title">Emagrecendo<br>Cajamar</div>
+      <div class="sidebar-sub">Plano Piloto 2026</div>
+    </div>
+    <div class="sidebar-nav" id="sidebar-nav"></div>
+    <div class="sidebar-footer">
+      <button class="trocar-btn" onclick="voltarEntrada()">⇄ Trocar Perfil</button>
+    </div>
+  </nav>
+
+  <!-- PROGRESSO -->
+  <div id="progresso-bar"><div id="progresso-fill"></div></div>
+
+  <!-- MAIN -->
+  <main id="main" id="conteudo-principal"></main>
+</div>
+
+<!-- CTA FLUTUANTE -->
+<button id="cta-flutuante" onclick="abrirModal()">Quero uma Reunião</button>
+
+<!-- MENU MOBILE -->
+<button id="menu-toggle" onclick="toggleMenu()">☰</button>
+
+<!-- MODAL -->
+<div id="modal-overlay" onclick="fecharModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="fecharModal()">×</button>
+    <h3>Vamos Conversar</h3>
+    <p>Agende uma reunião de apresentação do projeto Emagrecendo Cajamar. Sem compromisso, 30 minutos.</p>
+    <div class="modal-contato">
+      <div><strong>Órgão:</strong> Departamento de Desenvolvimento Econômico e Empreendedorismo</div>
+      <div><strong>Prefeitura:</strong> Cajamar / SP</div>
+      <div><strong>Endereço:</strong> Praça José Rodrigues do Nascimento, 30 — Centro</div>
+      <div><strong>Telefone:</strong> (11) 4446-7699</div>
+      <div><strong>Site:</strong> cajamar.sp.gov.br</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button class="btn-cta primario" onclick="abrirWhatsApp()">WhatsApp</button>
+      <button class="btn-cta secundario" style="background:var(--brand-dark);color:white;border-color:var(--brand-dark)" onclick="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DOCUMENTOS -->
+<div id="modal-documentos" onclick="fecharModalDocumentos(event)" style="display: none; position: fixed; inset: 0; z-index: 1500; background: rgba(10,25,48,0.85); backdrop-filter: blur(4px); align-items: center; justify-content: center;">
+  <div class="modal" style="display:flex; flex-direction:column; gap:12px; border-top-color:var(--cinza-texto);">
+    <button class="modal-close" onclick="fecharModalDocumentos()">×</button>
+    <h3 style="font-family:'Inter',sans-serif; font-size:24px; font-weight:800; color:var(--brand-dark); margin-bottom:8px; letter-spacing:-0.03em;">Documentos do Projeto</h3>
+    <p style="font-size:14px; color:var(--cinza-texto); margin-bottom:16px; line-height:1.6;">Acesse os arquivos complementares relacionados ao plano piloto Emagrecendo Cajamar.</p>
+    <a href="anexos/01-proposta-preliminar.html" target="_blank" class="btn-cta secundario" style="background:var(--brand-dark); color:white; border-color:var(--brand-dark); text-decoration:none; text-align:center;">01 - Proposta Preliminar</a>
+    <a href="anexos/02-minuta-gamificacao.html" target="_blank" class="btn-cta secundario" style="background:var(--brand-dark); color:white; border-color:var(--brand-dark); text-decoration:none; text-align:center;">02 - Minuta Gamificação</a>
+    <a href="anexos/03-mapa-segmentos-parceiros.html" target="_blank" class="btn-cta secundario" style="background:var(--brand-dark); color:white; border-color:var(--brand-dark); text-decoration:none; text-align:center;">03 - Mapa de Parceiros</a>
+    <a href="anexos/04-pitch-deck-empresas.html" target="_blank" class="btn-cta secundario" style="background:var(--brand-dark); color:white; border-color:var(--brand-dark); text-decoration:none; text-align:center;">04 - Pitch Deck Empresas</a>
+  </div>
+</div>
+
+<script>
+// ===== DADOS =====
+const PERFIS = {
+  empresas: {
+    label: 'Empresas',
+    badge: 'empresas',
+    secoes: ['hero','problema','programa','porque','ganhos','tiers','creditos','contrapartidas','seguranca','cta'],
+    nav: [
+      {id:'hero',label:'Apresentação'},
+      {id:'problema',label:'O Desafio'},
+      {id:'programa',label:'O Programa'},
+      {id:'porque',label:'Por que Entrar'},
+      {id:'ganhos',label:'O que Ganha'},
+      {id:'tiers',label:'Tiers'},
+      {id:'creditos',label:'Créditos'},
+      {id:'contrapartidas',label:'Contrapartidas'},
+      {id:'seguranca',label:'Segurança'},
+      {id:'cta',label:'Participar'},
+    ]
+  },
+  institucional: {
+    label: 'Institucional',
+    badge: 'institucional',
+    secoes: ['hero-inst','justificativa','publico','fluxo','cronograma','indicadores','gamificacao','governanca','riscos'],
+    nav: [
+      {id:'hero-inst',label:'Visão Geral'},
+      {id:'justificativa',label:'Justificativa'},
+      {id:'publico',label:'Público-Alvo'},
+      {id:'fluxo',label:'Fluxo de Cuidado'},
+      {id:'cronograma',label:'Cronograma'},
+      {id:'indicadores',label:'Indicadores'},
+      {id:'gamificacao',label:'Gamificação'},
+      {id:'governanca',label:'Governança'},
+      {id:'riscos',label:'Riscos'},
+    ]
+  }
+};
+
+let perfilAtivo = null;
+
+// ===== CONTEÚDO =====
+function renderSecao(id) {
+  const mapa = {
+    // --- EMPRESAS ---
+    'hero': `
+      <section class="hero-secao" data-secao="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-circle c1"></div>
+        <div class="hero-bg-circle c2"></div>
+        <div style="position:relative;z-index:1">
+          <div class="hero-eyebrow">Prefeitura de Cajamar · Plano Piloto 2026</div>
+          <h1 class="hero-title">Emagrecendo<br><span>Cajamar</span></h1>
+          <p class="hero-subtitle">Uma iniciativa real, com números reais — e espaço para sua empresa fazer parte de uma transformação de saúde pública no município.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hn" data-contador="6928">0</div><div class="hl">Diagnosticados</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="978">0</div><div class="hl">Grau 3</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="350">0</div><div class="hl">No Piloto</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="4">0</div><div class="hl">UBS</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="7">0</div><div class="hl">Meses</div></div>
+          </div>
+          <div class="hero-msg">
+            "Esta não é uma ação promocional isolada. É uma oportunidade de participação em um projeto público com propósito, governança e potencial de repercussão positiva para todos os envolvidos."
+          </div>
+        </div>
+      </section>`,
+
+    'problema': `
+      <section class="secao" data-secao="problema">
+        <div class="ind-secao"><div class="ind-num">01</div><div class="ind-info">
+          <div class="secao-label azul">O Desafio</div>
+          <h2>Cajamar Precisa Agir Agora</h2>
+        </div></div>
+        <p class="secao-desc">A obesidade não é um problema abstrato. Em Cajamar, ele tem nome, endereço e número de prontuário — e agora tem um programa municipal estruturado para enfrentá-lo.</p>
+        <div class="stats-block">
+          <div class="stat-card"><div class="sn" data-contador="6928">0</div><div class="sl">Adultos com obesidade graus 1, 2 e 3 (SISVAN)</div></div>
+          <div class="stat-card"><div class="sn" data-contador="978">0</div><div class="sl">Com obesidade grau 3 — foco prioritário</div></div>
+          <div class="stat-card"><div class="sn" data-contador="57">0</div><div class="sl">% dos brasileiros acima do peso (Vigitel/MS)</div></div>
+          <div class="stat-card branco"><div class="sn">2×</div><div class="sl">A obesidade dobrou em 20 anos no Brasil</div></div>
+        </div>
+        <div class="cards-grid">
+          <div class="card"><div class="card-icon"></div><h3>Hipertensão & Diabetes</h3><p>Comorbidades associadas à obesidade pressionam a rede pública de saúde e aumentam custo assistencial per capita.</p></div>
+          <div class="card verde"><div class="card-icon"></div><h3>Saúde Mental</h3><p>O excesso de peso impacta autoestima, ansiedade e depressão. O programa integra psicologia como frente essencial.</p></div>
+          <div class="card amarelo"><div class="card-icon"></div><h3>Produtividade</h3><p>Trabalhadores com obesidade apresentam maior absenteísmo e menor capacidade funcional — dado relevante para empresas da região.</p></div>
+        </div>
+      </section>`,
+
+    'programa': `
+      <section class="secao" data-secao="programa">
+        <div class="ind-secao"><div class="ind-num">02</div><div class="ind-info">
+          <div class="secao-label azul">O Programa</div>
+          <h2>O que é o Emagrecendo Cajamar</h2>
+        </div></div>
+        <p class="secao-desc">Não é campanha. Não é palestra. É o primeiro programa intersetorial de Cajamar com fluxo clínico, dados, metas e parceiros — com potencial de virar política pública permanente.</p>
+        <div class="cards-grid" style="margin-bottom:32px">
+          <div class="card"><div class="card-icon"></div><h3>4 UBS de Referência</h3><p>São Roberto · Jordanésia · Polvilho · ESF Manoel Inácio — cobertura territorial estratégica.</p></div>
+          <div class="card verde"><div class="card-icon"></div><h3>350 Participantes</h3><p>Adultos, gestantes, idosos, adolescentes e crianças — abordagem intergeracional e inclusiva.</p></div>
+          <div class="card"><div class="card-icon"></div><h3>7 Meses de Piloto</h3><p>Com 3 ciclos de 90 dias, avaliações periódicas e escalonamento planejado para política perene.</p></div>
+          <div class="card amarelo"><div class="card-icon"></div><h3>Gamificação</h3><p>Sistema de créditos patrocinados que premia adesão e evolução — engajamento com rigor institucional.</p></div>
+        </div>
+        <div class="secao-label azul">Equipe Multiprofissional</div>
+        <div class="chips">
+          <span class="chip azul">Enfermagem</span><span class="chip azul">Medicina da Família</span>
+          <span class="chip verde">Nutrição</span><span class="chip verde">Psicologia</span>
+          <span class="chip ciano">Fisioterapia</span><span class="chip ciano">Farmácia</span>
+          <span class="chip amarelo">Fonoaudiologia</span><span class="chip amarelo">Odontologia</span>
+        </div>
+      </section>`,
+
+    'porque': `
+      <section class="secao" data-secao="porque">
+        <div class="ind-secao"><div class="ind-num">03</div><div class="ind-info">
+          <div class="secao-label azul">Por que Entrar</div>
+          <h2>O Papel das Empresas</h2>
+        </div></div>
+        <p class="secao-desc">O programa é público. Mas seu potencial de impacto aumenta significativamente com apoio privado em três frentes estratégicas.</p>
+        <div class="tabela-wrapper" style="margin-bottom:32px">
+          <table>
+            <thead><tr><th>Frente</th><th>O que a Empresa Faz</th><th>O que o Programa Ganha</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Estrutura</strong></td><td>Equipamentos, academia funcional adaptada</td><td>Espaço físico para obesidade grau 3</td></tr>
+              <tr><td><strong>Engajamento</strong></td><td>Créditos, premiações, benefícios</td><td>Maior adesão e permanência</td></tr>
+              <tr><td><strong>Rede</strong></td><td>Aceitar créditos, oferecer serviços</td><td>Ecossistema de bem-estar ativo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="quote-block">A empresa não entra para substituir o papel do Estado. Entra para potencializar uma iniciativa pública de alto valor social — com legitimidade, visibilidade e resultado mensurável.</div>
+        <div class="secao-label azul" style="margin-top:32px">Perfis com Maior Aderência</div>
+        <div class="chips" style="margin-top:12px">
+          <span class="chip azul">Grandes CDs Logísticos</span><span class="chip azul">Indústrias de Médio/Grande Porte</span>
+          <span class="chip verde">Suplementação (New Millen, Max Titanium...)</span>
+          <span class="chip ciano">Academias e Estúdios</span>
+          <span class="chip amarelo">Comércio Esportivo</span><span class="chip amarelo">Saúde e Bem-Estar</span>
+        </div>
+      </section>`,
+
+    'ganhos': `
+      <section class="secao" data-secao="ganhos">
+        <div class="ind-secao"><div class="ind-num">04</div><div class="ind-info">
+          <div class="secao-label azul">O que Sua Empresa Ganha</div>
+          <h2>Benefícios por Tipo de Parceiro</h2>
+        </div></div>
+        <p class="secao-desc">Cada perfil de empresa tem uma proposta de valor distinta — não apenas "apoiador", mas uma relação com ganhos concretos e mensuráveis.</p>
+        <div class="grid-2">
+          <div>
+            <div class="secao-label azul" style="margin-bottom:12px">Parceiro Âncora</div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Reputação Institucional</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Associação direta a uma iniciativa de saúde pública com dados reais — não um slogan. Reforço de ESG, responsabilidade social e compromisso territorial.</p></div>
+              </div>
+            </div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Naming e Presença nos Materiais</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Possível vinculação do nome ao programa ou à academia funcional. Presença em 100% dos materiais oficiais por 7 meses.</p></div>
+              </div>
+            </div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Destaque no Portal da Prefeitura</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Reconhecimento institucional público e acesso a relatório de impacto ao final do piloto.</p></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Rede Parceira (Academias, Comércio)</div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Fluxo de Participantes Ativos</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">350 pessoas motivadas, com crédito ativo, direcionadas à sua academia ou loja. Novos clientes com subsídio do programa — custo próximo de zero para entrar na rede.</p></div>
+              </div>
+            </div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Competição Municipal (Academias)</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Troféu "Academia Aliada da Saúde Cajamar", certificado municipal, selo digital e destaque no portal oficial. Geração de microcomunidades de emagrecimento por bairro.</p></div>
+              </div>
+            </div>
+            <div class="accordion">
+              <div class="acc-header" onclick="toggleAcc(this)">
+                <span class="acc-title">Selo de Empresa Parceira</span><span class="acc-arrow">⌄</span>
+              </div>
+              <div class="acc-body">
+                <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Diferenciação local de marca. Uso controlado em site, redes sociais, materiais e pontos físicos. Pertencimento a uma rede com propósito.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>`,
+
+    'tiers': `
+      <section class="secao" data-secao="tiers">
+        <div class="ind-secao"><div class="ind-num">05</div><div class="ind-info">
+          <div class="secao-label azul">Modelos de Participação</div>
+          <h2>Tiers de Parceria</h2>
+        </div></div>
+        <p class="secao-desc">Há espaço para diferentes perfis de empresa — do parceiro âncora com naming rights à academia local que integra a rede de créditos.</p>
+        <div class="tier-grid">
+          <div class="tier-card">
+            <div class="tier-header t1">
+              <div class="tier-tag">Tier 1</div>
+              <div class="tier-name">Parceiro Âncora</div>
+              <div class="tier-sub">Máxima visibilidade institucional</div>
+            </div>
+            <div class="tier-body">
+              <ul>
+                <li>Apoio à academia funcional (equipamentos ou estrutura)</li>
+                <li>Naming associado ao programa ou ao espaço</li>
+                <li>Presença em 100% dos materiais oficiais (7 meses)</li>
+                <li>Destaque no portal da Prefeitura</li>
+                <li>Reuniões institucionais com secretarias</li>
+                <li>Relatório de impacto ao final do piloto</li>
+                <li>Selo "Parceiro Âncora Emagrecendo Cajamar"</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tier-card">
+            <div class="tier-header t2">
+              <div class="tier-tag">Tier 2</div>
+              <div class="tier-name">Engajamento</div>
+              <div class="tier-sub">Suplementação, nutrição, bem-estar</div>
+            </div>
+            <div class="tier-body">
+              <ul>
+                <li>Presença nos kits de premiação dos 3 ciclos (D+30/60/90)</li>
+                <li>Destaque em campanhas de engajamento</li>
+                <li>Inclusão nos materiais de comunicação</li>
+                <li>Créditos patrocinados vinculados à marca</li>
+                <li>Selo de Parceiro de Engajamento</li>
+              </ul>
+              <div class="nota"><strong>Investimento:</strong> fornecimento de produtos ou créditos para premiações</div>
+            </div>
+          </div>
+          <div class="tier-card">
+            <div class="tier-header t3">
+              <div class="tier-tag">Tier 3</div>
+              <div class="tier-name">Rede Parceira</div>
+              <div class="tier-sub">Academias, comércio, serviços</div>
+            </div>
+            <div class="tier-body">
+              <ul>
+                <li>Inclusão na rede oficial de aceite de créditos</li>
+                <li>Fluxo de participantes com crédito ativo</li>
+                <li>Divulgação nos canais do projeto</li>
+                <li>Competição Municipal entre Academias</li>
+                <li>Selo de Empresa Parceira</li>
+              </ul>
+              <div class="nota"><strong>Custo:</strong> próximo de zero — a empresa oferece seus serviços como benefício</div>
+            </div>
+          </div>
+        </div>
+      </section>`,
+
+    'creditos': `
+      <section class="secao" data-secao="creditos">
+        <div class="ind-secao"><div class="ind-num">06</div><div class="ind-info">
+          <div class="secao-label azul">Sistema de Incentivos</div>
+          <h2>Créditos Patrocinados</h2>
+        </div></div>
+        <p class="secao-desc">Os participantes acumulam créditos conforme adesão e evolução. Esses créditos só podem ser usados na rede parceira oficial — criando um ecossistema de engajamento controlado.</p>
+        <div class="grid-2" style="margin-bottom:32px">
+          <div>
+            <div class="secao-label azul" style="margin-bottom:12px">Como se Acumula</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Ação do Participante</th><th>Créditos</th></tr></thead>
+                <tbody>
+                  <tr class="cred-highlight"><td>Presença em atividade física</td><td class="td-pts">10</td></tr>
+                  <tr><td>Meta semanal (150 min atividade)</td><td class="td-pts">10</td></tr>
+                  <tr class="cred-highlight"><td>Participação em grupo quinzenal</td><td class="td-pts">10</td></tr>
+                  <tr><td>Comparecimento a avaliações</td><td class="td-pts">10</td></tr>
+                  <tr class="cred-highlight"><td>Redução de 2 cm de cintura ✓</td><td class="td-pts">20</td></tr>
+                  <tr><td>Perda de 5% do peso ✓</td><td class="td-pts">30</td></tr>
+                  <tr class="cred-highlight"><td>Perda de 10% do peso ✓</td><td class="td-pts">60</td></tr>
+                  <tr><td>Perda de 20% do peso ✓</td><td class="td-pts">100</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Como se Usa</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Benefício</th><th>Créditos</th></tr></thead>
+                <tbody>
+                  <tr><td>Kit esportivo (sorteio)</td><td class="td-pts">30</td></tr>
+                  <tr class="cred-highlight"><td>1 mês de academia parceira</td><td class="td-pts">200</td></tr>
+                  <tr><td>Voucher comércio esportivo</td><td class="td-pts">100–150</td></tr>
+                  <tr class="cred-highlight"><td>3 meses de academia parceira</td><td class="td-pts">500</td></tr>
+                  <tr><td>Bicicleta (Faixa 4)</td><td class="td-pts">700</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="nota" style="margin-top:16px"><strong>Para a empresa parceira:</strong> cada participante com crédito ativo é um cliente potencial direcionado — motivado, ativo e em jornada de transformação.</div>
+          </div>
+        </div>
+        <div class="secao-label azul" style="margin-bottom:16px">Faixas de Progressão</div>
+        <div class="accordion">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-title">Faixa 1 — Participação Ativa</span>
+            <span class="acc-badge t1">Entrada</span>
+            <span class="acc-arrow">⌄</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Presença mínima nos encontros e avaliações, manutenção do vínculo. <strong>Benefícios:</strong> sorteio de kit esportivo, créditos iniciais, certificado digital de participação.</p></div>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-title">Faixa 2 — Evolução Inicial (−5% peso)</span>
+            <span class="acc-badge t2">Evolução</span>
+            <span class="acc-arrow">⌄</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Perda mínima de 5% do peso corporal validada pela equipe. <strong>Benefícios:</strong> 1 mês de academia parceira, voucher em comércio esportivo.</p></div>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-title">Faixa 3 — Meta Piso (−10% em 6 meses)</span>
+            <span class="acc-badge t3">Meta</span>
+            <span class="acc-arrow">⌄</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Referência de 10% de perda de peso em 6 meses. <strong>Benefícios:</strong> 3 meses de academia parceira, acesso a experiências especiais, crédito ampliado.</p></div>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class="acc-title">Faixa 4 — Destaque do Programa (−20%)</span>
+            <span class="acc-badge t4">Destaque</span>
+            <span class="acc-arrow">⌄</span>
+          </div>
+          <div class="acc-body">
+            <div class="acc-content"><p style="font-size:14px;color:var(--cinza-texto);line-height:1.6">Evolução excepcional validada pela equipe clínica. <strong>Benefícios:</strong> bicicleta ou item esportivo de alto valor, reconhecimento institucional, potencial de embaixador do programa.</p></div>
+          </div>
+        </div>
+      </section>`,
+
+    'contrapartidas': `
+      <section class="secao" data-secao="contrapartidas">
+        <div class="ind-secao"><div class="ind-num">07</div><div class="ind-info">
+          <div class="secao-label azul">Transparência</div>
+          <h2>Contrapartidas Mensuradas</h2>
+        </div></div>
+        <p class="secao-desc">Não pedimos que sua empresa confie às cegas. Oferecemos métricas reais e presença mensurável durante todo o piloto.</p>
+        <div class="stats-block">
+          <div class="stat-card branco"><div class="sn" data-contador="350">0</div><div class="sl">Participantes expostos à marca</div></div>
+          <div class="stat-card branco"><div class="sn" data-contador="4">0</div><div class="sl">UBS com presença do programa</div></div>
+          <div class="stat-card branco"><div class="sn" data-contador="7">0</div><div class="sl">Meses de exposição contínua</div></div>
+          <div class="stat-card branco"><div class="sn" data-contador="3">0</div><div class="sl">Ciclos de ativação de marca</div></div>
+        </div>
+        <div class="tabela-wrapper">
+          <table>
+            <thead><tr><th>Indicador</th><th>Referência</th><th>Tier</th></tr></thead>
+            <tbody>
+              <tr><td>Participantes diretos no piloto</td><td><strong>350</strong></td><td><span class="td-badge alto">T1,T2,T3</span></td></tr>
+              <tr><td>Unidades de saúde com presença</td><td><strong>4 UBS</strong></td><td><span class="td-badge alto">T1,T2</span></td></tr>
+              <tr><td>Duração da exposição</td><td><strong>7 meses contínuos</strong></td><td><span class="td-badge alto">T1</span></td></tr>
+              <tr><td>Ciclos de premiação / ativação</td><td><strong>3 ciclos (D+30/60/90)</strong></td><td><span class="td-badge medio">T1,T2</span></td></tr>
+              <tr><td>Relatório de impacto final</td><td><strong>Incluso</strong></td><td><span class="td-badge medio">T1,T2</span></td></tr>
+              <tr><td>Comunicação digital (redes/portal)</td><td><strong>A definir</strong></td><td><span class="td-badge baixo">T1,T2,T3</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>`,
+
+    'seguranca': `
+      <section class="secao" data-secao="seguranca">
+        <div class="ind-secao"><div class="ind-num">08</div><div class="ind-info">
+          <div class="secao-label azul">Governança</div>
+          <h2>Segurança Institucional</h2>
+        </div></div>
+        <p class="secao-desc">O projeto não busca patrocínio desordenado. Busca parceria séria, organizada e legitimada pelo poder público municipal.</p>
+        <div class="cards-grid">
+          <div class="card"><div class="card-icon">⚖️</div><h3>Instrumento Jurídico</h3><p>Formato de parceria definido pela Procuradoria Municipal. Limites claros de exposição de marca, contrapartidas e compliance.</p></div>
+          <div class="card verde"><div class="card-icon">🔒</div><h3>Finalidade Pública Preservada</h3><p>Empresas parceiras não influenciam critérios clínicos, pontuação ou decisões do programa. Separação clara entre apoio e gestão.</p></div>
+          <div class="card"><div class="card-icon">📊</div><h3>Prestação de Contas</h3><p>Relatório de impacto ao final do piloto. Transparência sobre resultados, adesão e uso dos créditos patrocinados.</p></div>
+          <div class="card amarelo"><div class="card-icon">🛡️</div><h3>Prevenção de Conflito</h3><p>Empresas da rede parceira não acessam dados individuais dos participantes nem participam de decisões sobre elegibilidade.</p></div>
+        </div>
+        <div class="quote-block" style="margin-top:32px">"Cajamar está estruturando uma linha de cuidado municipal sobre obesidade — e o Emagrecendo Cajamar é o ponto de partida. Empresas que entram agora tornam-se parceiras fundadoras e ganham visibilidade máxima antes da fase de escala."</div>
+      </section>`,
+
+    'cta': `
+      <div class="cta-secao" data-secao="cta">
+        <div style="position:relative;z-index:1">
+          <div class="hero-bg-pattern"></div>
+          <p style="font-size:11px;font-weight:700;letter-spacing:3px;color:var(--accent-health);text-transform:uppercase;margin-bottom:12px">Próximo Passo</p>
+          <h2 style="font-family:'Inter',sans-serif;font-size:clamp(36px,5vw,64px);font-weight:900;color:white;text-transform:uppercase;margin-bottom:16px">Vamos<br>Conversar</h2>
+          <p style="font-size:17px;color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 40px;line-height:1.6">Reunião de apresentação: 30 minutos, sem compromisso. Mostramos os dados, o projeto e como sua empresa pode participar.</p>
+          <div class="cta-btns">
+            <button class="btn-cta primario" onclick="abrirModal()">📅 Agendar Reunião</button>
+            <button class="btn-cta secundario" onclick="abrirModal()">💬 Contato DDEE</button>
+          </div>
+          <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:700px;margin-left:auto;margin-right:auto">
+            <div style="background:rgba(255,255,255,0.08);padding:20px;border:1px solid rgba(255,255,255,0.1);border-radius:4px">
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Passo 1</div>
+              <div style="font-size:14px;color:white;font-weight:600">Reunião de apresentação</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);padding:20px;border:1px solid rgba(255,255,255,0.1);border-radius:4px">
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Passo 2</div>
+              <div style="font-size:14px;color:white;font-weight:600">Definição de tier e escopo</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.08);padding:20px;border:1px solid rgba(255,255,255,0.1);border-radius:4px">
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Passo 3</div>
+              <div style="font-size:14px;color:white;font-weight:600">Alinhamento jurídico</div>
+            </div>
+            <div style="background:rgba(0,168,232,0.2);padding:20px;border:1px solid rgba(0,168,232,0.3);border-radius:4px">
+              <div style="font-size:11px;color:var(--accent-health);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Passo 4</div>
+              <div style="font-size:14px;color:white;font-weight:600">Parceria ativa ✓</div>
+            </div>
+          </div>
+        </div>
+      </div>`,
+
+    // --- INSTITUCIONAL ---
+    'hero-inst': `
+      <section class="hero-secao" data-secao="hero-inst">
+        <div class="hero-bg-pattern"></div>
+        <div class="hero-bg-circle c1"></div>
+        <div class="hero-bg-circle c2"></div>
+        <div style="position:relative;z-index:1">
+          <div class="hero-eyebrow">Secretaria de Saúde · Plano Piloto 2026</div>
+          <h1 class="hero-title">Emagrecendo<br><span>Cajamar</span></h1>
+          <p class="hero-subtitle">Programa intersetorial de acompanhamento ao emagrecimento saudável — 350 participantes, 4 UBS, 7 meses, abordagem multiprofissional.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><div class="hn" data-contador="6928">0</div><div class="hl">Diagnosticados SISVAN</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="978">0</div><div class="hl">Obesidade Grau 3</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="350">0</div><div class="hl">Participantes do Piloto</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="4">0</div><div class="hl">UBS Referência</div></div>
+            <div class="hero-stat"><div class="hn" data-contador="7">0</div><div class="hl">Meses de Piloto</div></div>
+          </div>
+          <div class="hero-msg">
+            "O piloto não deve ser tratado como ação pontual. A intenção é que sirva como base para um programa perene, passível de institucionalização, compondo a linha de cuidado municipal sobre sobrepeso e obesidade."
+          </div>
+        </div>
+      </section>`,
+
+    'justificativa': `
+      <section class="secao" data-secao="justificativa">
+        <div class="ind-secao"><div class="ind-num">01</div><div class="ind-info">
+          <div class="secao-label verde">Contexto</div>
+          <h2>Justificativa e Contexto</h2>
+        </div></div>
+        <p class="secao-desc">O projeto nasce da leitura da Secretaria de Saúde sobre o universo já diagnosticado no município, com ancoragem nos dados do SISVAN e na linha de cuidado municipal em elaboração.</p>
+        <div class="stats-block">
+          <div class="stat-card"><div class="sn" data-contador="6928">0</div><div class="sl">Adultos diagnosticados (graus 1, 2 e 3)</div></div>
+          <div class="stat-card"><div class="sn" data-contador="978">0</div><div class="sl">Obesidade grau 3 — foco prioritário do piloto</div></div>
+          <div class="stat-card"><div class="sn" data-contador="350">0</div><div class="sl">Amostra do piloto (~5% do universo)</div></div>
+        </div>
+        <div class="cards-grid">
+          <div class="card"><div class="card-icon">📋</div><h3>Base de Dados Existente</h3><p>Os dados do SISVAN já estão organizados. O piloto parte de informação real — não de estimativa.</p></div>
+          <div class="card verde"><div class="card-icon">🔗</div><h3>Linha de Cuidado Municipal</h3><p>A Secretaria está finalizando a linha de cuidado para sobrepeso e obesidade. O Emagrecendo Cajamar será parte desse arcabouço.</p></div>
+          <div class="card amarelo"><div class="card-icon">🏛️</div><h3>Potencial de Institucionalização</h3><p>O piloto foi concebido como embrião de política pública perene, independente de ciclos de gestão.</p></div>
+        </div>
+      </section>`,
+
+    'publico': `
+      <section class="secao" data-secao="publico">
+        <div class="ind-secao"><div class="ind-num">02</div><div class="ind-info">
+          <div class="secao-label verde">Público-Alvo</div>
+          <h2>Participantes e Distribuição</h2>
+        </div></div>
+        <p class="secao-desc">A abordagem intergeracional reconhece que o enfrentamento da obesidade em Cajamar demanda olhar ampliado — não restrito ao adulto geral.</p>
+        <div class="grid-2">
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Distribuição por Grupo</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Grupo</th><th>%</th><th>Estimativa</th></tr></thead>
+                <tbody>
+                  <tr><td>Adultos em geral</td><td>60%</td><td><strong>~210</strong></td></tr>
+                  <tr><td>Gestantes</td><td>10%</td><td><strong>~35</strong></td></tr>
+                  <tr><td>Idosos</td><td>10%</td><td><strong>~35</strong></td></tr>
+                  <tr><td>Adolescentes</td><td>10%</td><td><strong>~35</strong></td></tr>
+                  <tr><td>Crianças</td><td>10%</td><td><strong>~35</strong></td></tr>
+                  <tr style="background:var(--off-white)"><td><strong>Total</strong></td><td><strong>100%</strong></td><td><strong>~350</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Distribuição por UBS</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Unidade</th><th>Vagas</th></tr></thead>
+                <tbody>
+                  <tr><td>UBS Parque São Roberto</td><td><strong>~90</strong></td></tr>
+                  <tr><td>UBS Jordanésia</td><td><strong>~90</strong></td></tr>
+                  <tr><td>UBS Polvilho</td><td><strong>~85</strong></td></tr>
+                  <tr><td>ESF Manoel Inácio</td><td><strong>~85</strong></td></tr>
+                  <tr style="background:var(--off-white)"><td><strong>Total</strong></td><td><strong>~350</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="nota" style="margin-top:24px"><strong>Atenção clínica:</strong> Os critérios de acompanhamento para gestantes, adolescentes e crianças serão definidos e adaptados exclusivamente pela equipe técnica da Secretaria de Saúde, com foco em saúde e crescimento adequado — não em emagrecimento.</div>
+      </section>`,
+
+    'fluxo': `
+      <section class="secao" data-secao="fluxo">
+        <div class="ind-secao"><div class="ind-num">03</div><div class="ind-info">
+          <div class="secao-label verde">Assistência</div>
+          <h2>Fluxo do Cuidado</h2>
+        </div></div>
+        <p class="secao-desc">O desenho do fluxo fortalece o papel da enfermagem na Atenção Primária, amplia acesso e reduz dependência exclusiva de consultas médicas para início do acompanhamento.</p>
+        <div class="fluxo-steps">
+          <div class="fluxo-step"><div class="fs-num">1</div><div class="fs-icon">📏</div><div class="fs-title">Antropometria Inicial</div><div class="fs-desc">Peso, altura, IMC, circunferência abdominal</div></div>
+          <div class="fluxo-step"><div class="fs-num">2</div><div class="fs-icon">👩‍⚕️</div><div class="fs-title">Consulta Enfermagem</div><div class="fs-desc">Anamnese e solicitação de exames</div></div>
+          <div class="fluxo-step"><div class="fs-num">3</div><div class="fs-icon">🩺</div><div class="fs-title">Consulta Médica</div><div class="fs-desc">2º mês — exames, comorbidades, medicamentos</div></div>
+          <div class="fluxo-step"><div class="fs-num">4</div><div class="fs-icon">👥</div><div class="fs-title">Grupos Quinzenais</div><div class="fs-desc">Educação em saúde com eMulti</div></div>
+          <div class="fluxo-step"><div class="fs-num">5</div><div class="fs-icon">📊</div><div class="fs-title">Avaliações D+30/60/90</div><div class="fs-desc">Reavaliação antropométrica e clínica</div></div>
+          <div class="fluxo-step"><div class="fs-num">6</div><div class="fs-icon">🏁</div><div class="fs-title">Encerramento</div><div class="fs-desc">Avaliação final e definição de continuidade</div></div>
+        </div>
+        <div class="divisor"></div>
+        <div class="secao-label verde" style="margin-bottom:16px">Temas dos Grupos Quinzenais (eMulti)</div>
+        <div class="chips">
+          <span class="chip verde">Mastigação e Dentição</span><span class="chip verde">Leitura de Rótulos</span>
+          <span class="chip verde">Escolha Alimentar</span><span class="chip verde">Macronutrientes</span>
+          <span class="chip azul">Exercício e Saúde Mental</span><span class="chip azul">Adesão a Hábitos</span>
+          <span class="chip amarelo">Uso de Medicamentos</span><span class="chip amarelo">Saúde Emocional</span>
+        </div>
+      </section>`,
+
+    'cronograma': `
+      <section class="secao" data-secao="cronograma">
+        <div class="ind-secao"><div class="ind-num">04</div><div class="ind-info">
+          <div class="secao-label verde">Planejamento</div>
+          <h2>Cronograma Operacional</h2>
+        </div></div>
+        <p class="secao-desc">7 meses, com marcos claros por período. Clique em cada mês para ver os detalhes das ações previstas.</p>
+        <div class="timeline">
+          ${[
+            ['Mês 1','Entrada e Avaliação Inicial',['Antropometria inicial','Consulta de enfermagem','Solicitação de exames laboratoriais','Inscrição e registro no programa','1º grupo quinzenal']],
+            ['Mês 2','Avaliação Clínica e Início do Cuidado',['Consulta médica','Análise de exames e comorbidades','Continuidade dos grupos quinzenais','Aferição antropométrica']],
+            ['Mês 3','Estabilização e Engajamento',['Grupos quinzenais temáticos','Aferição antropométrica','Validação de créditos (Faixa 1)','Reforço de adesão']],
+            ['Mês 4','Reavaliação Intermediária (D+90)',['Avaliação antropométrica e clínica completa','Retorno de enfermagem','Premiação/reconhecimento Ciclo 1','Ajustes no plano individual']],
+            ['Mês 5','Consolidação de Hábitos',['Grupos quinzenais com novos temas','Aferição antropométrica','Validação de créditos (Faixas 2 e 3)']],
+            ['Mês 6','Avaliação de Metas',['Reavaliação clínica e antropométrica','Consulta médica de seguimento','Reconhecimento de evolução','Ajustes finais']],
+            ['Mês 7','Encerramento e Avaliação Final',['Avaliação final completa','Premiação e reconhecimento','Coleta de indicadores do piloto','Definição de continuidade']]
+          ].map(([mes,titulo,acoes])=>`
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-header" onclick="toggleTl(this)">
+              <span class="tl-mes">${mes}</span>
+              <span class="tl-titulo">${titulo}</span>
+              <span style="font-size:14px;color:var(--accent-health)">+</span>
+            </div>
+            <div class="tl-body">
+              <ul>${acoes.map(a=>`<li>${a}</li>`).join('')}</ul>
+            </div>
+          </div>`).join('')}
+        </div>
+      </section>`,
+
+    'indicadores': `
+      <section class="secao" data-secao="indicadores">
+        <div class="ind-secao"><div class="ind-num">05</div><div class="ind-info">
+          <div class="secao-label verde">Monitoramento</div>
+          <h2>Indicadores de Sucesso</h2>
+        </div></div>
+        <p class="secao-desc">O piloto dialoga com indicadores institucionais do Ministério da Saúde e define metas próprias de adesão e evolução clínica.</p>
+        <div class="grid-2">
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Indicadores Institucionais</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Indicador</th><th>Fonte</th></tr></thead>
+                <tbody>
+                  <tr><td>Ações eMulti</td><td>MS / e-SUS</td></tr>
+                  <tr><td>Diabetes</td><td>MS / e-SUS</td></tr>
+                  <tr><td>Hipertensão Arterial</td><td>MS / e-SUS</td></tr>
+                  <tr><td>Acesso à Atenção Primária</td><td>MS / e-SUS</td></tr>
+                  <tr><td>Cuidado com Gestantes</td><td>MS / e-SUS</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="secao-label verde" style="margin-bottom:12px">Indicadores Específicos do Piloto</div>
+            <div class="tabela-wrapper">
+              <table>
+                <thead><tr><th>Indicador</th><th>Meta</th></tr></thead>
+                <tbody>
+                  <tr><td>Taxa de permanência</td><td><strong>≥ 80%</strong></td></tr>
+                  <tr><td>Comparecimento às avaliações</td><td><strong>≥ 75%</strong></td></tr>
+                  <tr><td>Perda ≥ 5% do peso</td><td>A validar</td></tr>
+                  <tr><td>Perda ≥ 10% (meta piso)</td><td>A validar</td></tr>
+                  <tr><td>Perda ≥ 20% (aspiracional)</td><td>A validar</td></tr>
+                  <tr><td>Redução circ. abdominal</td><td>Baseline M1</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="nota" style="margin-top:24px"><strong>Nota metodológica:</strong> As metas específicas de perda de peso são referências aspiracionais preliminares, sujeitas à definição e validação técnica pela equipe clínica da Secretaria de Saúde, que estabelecerá os valores adequados conforme perfil dos participantes.</div>
+      </section>`,
+
+    'gamificacao': `
+      <section class="secao" data-secao="gamificacao">
+        <div class="ind-secao"><div class="ind-num">06</div><div class="ind-info">
+          <div class="secao-label verde">Engajamento</div>
+          <h2>Sistema de Gamificação</h2>
+        </div></div>
+        <p class="secao-desc">O sistema de créditos patrocinados aumenta adesão, permanência e motivação sem descaracterizar a finalidade pública do programa.</p>
+        <div class="tabela-wrapper" style="margin-bottom:24px">
+          <table>
+            <thead><tr><th>Ação</th><th>Pontos</th></tr></thead>
+            <tbody>
+              <tr class="cred-highlight"><td>Presença em atividade física supervisionada</td><td class="td-pts">10 pts</td></tr>
+              <tr><td>Meta semanal de atividade (150 min)</td><td class="td-pts">10 pts</td></tr>
+              <tr class="cred-highlight"><td>Participação em grupo quinzenal de educação</td><td class="td-pts">10 pts</td></tr>
+              <tr><td>Comparecimento a avaliação/consulta</td><td class="td-pts">10 pts</td></tr>
+              <tr class="cred-highlight"><td>Redução de 2 cm de circunferência abdominal ✓</td><td class="td-pts">20 pts</td></tr>
+              <tr><td>Perda de 5% do peso corporal ✓</td><td class="td-pts">30 pts</td></tr>
+              <tr class="cred-highlight"><td>Perda de 10% do peso corporal ✓</td><td class="td-pts">60 pts</td></tr>
+              <tr><td>Perda de 20% do peso corporal ✓</td><td class="td-pts">100 pts</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="accordion">
+          <div class="acc-header" onclick="toggleAcc(this)"><span class="acc-title">Modelo de Operação — Fase Piloto</span><span class="acc-arrow">⌄</span></div>
+          <div class="acc-body"><div class="acc-content">
+            <p style="font-size:14px;color:var(--cinza-texto);line-height:1.6;margin-bottom:12px"><strong>Modelo A (recomendado para o piloto):</strong> Controle manual em planilha ou Google Sheets. Custo próximo de zero. Responsável: DDEE + Secretaria de Tecnologia.</p>
+            <p style="font-size:14px;color:var(--cinza-texto);line-height:1.6;margin-bottom:12px"><strong>Modelo B (futuro):</strong> QR Code + código do participante. Confirmação de uso em rede parceira.</p>
+            <p style="font-size:14px;color:var(--cinza-texto);line-height:1.6"><strong>Modelo C (escala):</strong> Plataforma digital com automação e integração com rede parceira.</p>
+          </div></div>
+        </div>
+        <div class="nota" style="margin-top:16px"><strong>Grupos vulneráveis:</strong> Gestantes, crianças, adolescentes e idosos terão critérios adaptados pela equipe clínica — foco em adesão, hábitos saudáveis e crescimento adequado, não em emagrecimento.</div>
+      </section>`,
+
+    'governanca': `
+      <section class="secao" data-secao="governanca">
+        <div class="ind-secao"><div class="ind-num">07</div><div class="ind-info">
+          <div class="secao-label verde">Estrutura</div>
+          <h2>Governança Intersecretarial</h2>
+        </div></div>
+        <p class="secao-desc">O programa só existe porque é transversal. A força está na integração das quatro secretarias atuando como um único organismo.</p>
+        <div class="sec-grid">
+          <div class="sec-card s1">
+            <h4>🏥 Secretaria de Saúde</h4>
+            <ul>
+              <li>Coordenação clínica e antropométrica</li>
+              <li>Definição de critérios técnicos e metas</li>
+              <li>Operação das UBS</li>
+              <li>Indicadores do e-SUS</li>
+              <li>Linha de cuidado municipal</li>
+            </ul>
+          </div>
+          <div class="sec-card s2">
+            <h4>⚽ Secretaria de Esportes</h4>
+            <ul>
+              <li>Atividades físicas e treinos guiados</li>
+              <li>Validação de presença</li>
+              <li>Apoio às academias parceiras</li>
+              <li>Eventos comunitários</li>
+            </ul>
+          </div>
+          <div class="sec-card s3">
+            <h4>💼 Desenvolvimento Econômico</h4>
+            <ul>
+              <li>Captação de parceiros</li>
+              <li>Mobilização de academias e comércio</li>
+              <li>Modelagem de gamificação</li>
+              <li>Material executivo e pitch deck</li>
+            </ul>
+          </div>
+          <div class="sec-card s4">
+            <h4>💻 Secretaria de Tecnologia</h4>
+            <ul>
+              <li>Suporte digital (WhatsApp, chatbot)</li>
+              <li>Organização de dados e automações</li>
+              <li>Painéis executivos (BI)</li>
+              <li>Controle de créditos</li>
+            </ul>
+          </div>
+        </div>
+        <div class="divisor"></div>
+        <div class="secao-label verde" style="margin-bottom:16px">Interfaces Adicionais</div>
+        <div class="chips">
+          <span class="chip azul">Procuradoria / Jurídico</span>
+          <span class="chip azul">Gabinete</span>
+          <span class="chip verde">Comunicação</span>
+          <span class="chip amarelo">Coordenadores das UBS</span>
+        </div>
+      </section>`,
+
+    'riscos': `
+      <section class="secao" data-secao="riscos">
+        <div class="ind-secao"><div class="ind-num">08</div><div class="ind-info">
+          <div class="secao-label verde">Gestão</div>
+          <h2>Riscos e Mitigações</h2>
+        </div></div>
+        <p class="secao-desc">Os principais riscos operacionais estão mapeados com mitigações previstas — garantindo que o piloto possa ser executado com segurança.</p>
+        <div class="risco-grid">
+          <div class="risco-item">
+            <div class="risco-nivel alto"></div>
+            <div class="risco-content">
+              <h5>Alta Taxa de Evasão de Participantes</h5>
+              <p><strong>Prob: Média</strong> — Gamificação e créditos reduzem evasão; grupos quinzenais mantêm vínculo; contato ativo por WhatsApp; abordagem positiva sem estigma de peso.</p>
+            </div>
+          </div>
+          <div class="risco-item">
+            <div class="risco-nivel medio"></div>
+            <div class="risco-content">
+              <h5>Sobrecarga das Equipes de Enfermagem e eMulti</h5>
+              <p><strong>Prob: Média</strong> — Distribuição entre 4 unidades; cronograma escalonado; apoio da gestão das UBS; grupos online reduzem carga de deslocamento.</p>
+            </div>
+          </div>
+          <div class="risco-item">
+            <div class="risco-nivel alto"></div>
+            <div class="risco-content">
+              <h5>Dificuldade de Mobilizar Público com Obesidade Grau 3</h5>
+              <p><strong>Prob: Alta</strong> — Busca ativa via SISVAN; parceria com equipes de saúde da família; comunicação acessível e sem estigma; abordagem presencial nas UBS.</p>
+            </div>
+          </div>
+          <div class="risco-item">
+            <div class="risco-nivel medio"></div>
+            <div class="risco-content">
+              <h5>Atraso na Validação Jurídica das Parcerias</h5>
+              <p><strong>Prob: Média</strong> — Início imediato do processo com a Procuradoria; separar fase clínica da fase de parcerias para não bloquear o piloto; modelo A (planilha) não depende de parceiros.</p>
+            </div>
+          </div>
+        </div>
+        <div class="divisor"></div>
+        <div class="secao-label verde" style="margin-bottom:16px">Próximos Passos</div>
+        <div class="tabela-wrapper">
+          <table>
+            <thead><tr><th>Etapa</th><th>Prazo</th><th>Responsável</th></tr></thead>
+            <tbody>
+              <tr><td>Entrega da proposta preliminar</td><td><strong>09/04/2026</strong></td><td>DDEE</td></tr>
+              <tr><td>Devolutiva da Saúde</td><td><strong>14/04/2026</strong></td><td>Sec. Saúde</td></tr>
+              <tr><td>Análise jurídica de parcerias</td><td>14–18/04</td><td>Procuradoria</td></tr>
+              <tr><td>Início das abordagens a empresas</td><td><strong>20/04/2026</strong></td><td>DDEE</td></tr>
+              <tr><td>1ª rodada de reuniões</td><td>20/04–09/05</td><td>DDEE</td></tr>
+              <tr><td>Consolidação de parceiros</td><td>Até 30/05</td><td>DDEE + Jurídico</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>`
+  };
+  return mapa[id] || `<section class="secao" data-secao="${id}"><h2>${id}</h2></section>`;
+}
+
+// ===== LÓGICA =====
+function entrar(perfil) {
+  perfilAtivo = perfil;
+  const entrada = document.getElementById('entrada');
+  entrada.classList.add('saindo');
+  setTimeout(() => {
+    entrada.style.display = 'none';
+    iniciarApp(perfil);
+  }, 600);
+}
+
+function iniciarApp(perfil) {
+  const app = document.getElementById('app');
+  const main = document.getElementById('main');
+  const nav = document.getElementById('sidebar-nav');
+  const badge = document.getElementById('sidebar-badge');
+  const cfg = PERFIS[perfil];
+
+  badge.className = 'sidebar-badge ' + cfg.badge;
+  badge.textContent = cfg.label;
+
+  // Build nav
+  nav.innerHTML = cfg.nav.map((item, i) => `
+    <div class="nav-item" data-target="${item.id}" onclick="scrollParaSecao('${item.id}',this)">
+      <span class="nav-num">${String(i+1).padStart(2,'0')}</span>
+      ${item.label}
+    </div>`).join('');
+
+  // Build main
+  main.innerHTML = cfg.secoes.map(id => renderSecao(id)).join('');
+
+  app.style.display = 'flex';
+  requestAnimationFrame(() => app.classList.add('visivel'));
+
+  if (perfil === 'empresas') {
+    document.getElementById('cta-flutuante').style.display = 'block';
+  }
+
+  setupObservers();
+  updateProgress();
+  window.addEventListener('scroll', () => { updateProgress(); updateActiveNav(); });
+}
+
+function scrollParaSecao(id, el) {
+  const el2 = document.querySelector(`[data-secao="${id}"]`);
+  if (el2) el2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateActiveNav() {
+  const items = document.querySelectorAll('[data-secao]');
+  let current = null;
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top <= 200) current = item.dataset.secao;
+  });
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('ativo', n.dataset.target === current);
+  });
+}
+
+function updateProgress() {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (scrolled / total) * 100 : 0;
+  document.getElementById('progresso-fill').style.width = pct + '%';
+}
+
+function setupObservers() {
+  // Fade in sections
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visivel');
+        animarContadores(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.secao').forEach(s => obs.observe(s));
+
+  // Hero sections immediately visible
+  document.querySelectorAll('.hero-secao,.cta-secao').forEach(s => {
+    s.style.opacity = '1'; s.style.transform = 'none';
+    animarContadores(s);
+  });
+}
+
+function animarContadores(container) {
+  container.querySelectorAll('[data-contador]').forEach(el => {
+    if (el.dataset.animado) return;
+    el.dataset.animado = '1';
+    const target = parseInt(el.dataset.contador);
+    const duration = 1800;
+    const start = performance.now();
+    const update = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(ease * target).toLocaleString('pt-BR');
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  });
+}
+
+function toggleAcc(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('aberto');
+  header.classList.toggle('aberto', !isOpen);
+  body.classList.toggle('aberto', !isOpen);
+}
+
+function toggleTl(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('aberto');
+}
+
+function voltarEntrada() {
+  const app = document.getElementById('app');
+  const entrada = document.getElementById('entrada');
+  app.classList.remove('visivel');
+  app.style.display = 'none';
+  document.getElementById('main').innerHTML = '';
+  document.getElementById('cta-flutuante').style.display = 'none';
+  entrada.classList.remove('saindo');
+  entrada.style.display = 'flex';
+  perfilAtivo = null;
+  window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+  document.getElementById('sidebar').classList.toggle('aberto');
+}
+
+function abrirModal() {
+  document.getElementById('modal-overlay').classList.add('aberto');
+}
+
+function fecharModal(e) {
+  if (!e || e.target === document.getElementById('modal-overlay') || e.type === 'click') {
+    document.getElementById('modal-overlay').classList.remove('aberto');
+  }
+}
+
+function abrirModalDocumentos() {
+  document.getElementById('modal-documentos').style.display = 'flex';
+}
+
+function fecharModalDocumentos(e) {
+  if (!e || e.target === document.getElementById('modal-documentos') || e.type === 'click') {
+    document.getElementById('modal-documentos').style.display = 'none';
+  }
+}
+
+function abrirWhatsApp() {
+  window.open('https://wa.me/551144467699?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20projeto%20Emagrecendo%20Cajamar', '_blank');
+}
+</script>
+</div> <!-- FIM .ddee-emagrecendo -->
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Segmentos e Parceiros — Emagrecendo Cajamar</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #1565C0;
+    --brand-dark: #0D47A1;
+    --accent-health: #00A8E8;
+    --accent-health-light: #E6F6FD;
+    --verde-saude: #1B8A4E;
+    --verde-saude-light: #E8F5EE;
+    --notificacao: #E63329;
+    --alerta: #F5A623;
+    --alerta-light: #FFF8EC;
+    --off-white: #F5F7FA;
+    --text-main: #1A2535;
+    --text-muted: #4A5568;
+    --border-light: #E2E8F2;
+    --shadow-premium: 0 4px 20px rgba(0,0,0,0.08);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Open Sans',sans-serif; background:#CBD5E0; color:var(--text-main); }
+
+  .page { width:210mm; min-height:297mm; background:#FFF; margin:12mm auto; position:relative; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,.15); display:flex; flex-direction:column; border-radius: 4px; }
+
+  .print-bar { position:fixed; top:0; left:0; right:0; z-index:999; background:var(--brand-dark); padding:10px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .print-bar span { color:rgba(255,255,255,.7); font-size:13px; font-weight:500; }
+  .btn-print { background:var(--accent-health); color:var(--brand-dark); border:none; padding:8px 22px; font-family:'Inter',sans-serif; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; cursor:pointer; border-radius:var(--radius-sm); text-decoration:none; display:inline-block; transition: all 0.2s ease; }
+  .btn-print:hover { background:white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+
+  @media print { body{background:white;} .print-bar{display:none;} .page{margin:0;box-shadow:none;page-break-after:always;} .page:last-child{page-break-after:auto;} }
+
+  .ph { background:var(--brand-dark); padding:6mm 8mm; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+  .ph-left { display:flex; align-items:center; gap:4mm; }
+  .ph-brasao { width:12mm; height:12mm; display: flex; align-items: center; justify-content: center; }
+  .ph-brasao img { max-height: 100%; width: auto; }
+  .ph-title { font-family:'Inter',sans-serif; font-size:12pt; font-weight:800; color:white; text-transform:uppercase; letter-spacing:.5px; line-height:1; }
+  .ph-sub { font-size:7pt; color:rgba(255,255,255,.55); margin-top:1mm; letter-spacing:.3px; }
+  .ph-badge { background:var(--accent-health); color:var(--brand-dark); padding:1.5mm 4mm; font-size:7pt; font-weight:800; text-transform:uppercase; letter-spacing:1px; border-radius:var(--radius-sm); }
+  .ph-strip { height:1.5mm; background:var(--accent-health); flex-shrink:0; }
+
+  .pf { background:var(--brand-dark); padding:3mm 8mm; display:flex; align-items:center; justify-content:space-between; margin-top:auto; flex-shrink:0; }
+  .pf span { font-size:6.5pt; color:rgba(255,255,255,.45); }
+  .pf-page { font-family:'JetBrains Mono',monospace; font-size:7pt; color:rgba(255,255,255,.4); }
+
+  .pb { padding:7mm 8mm 5mm; flex:1; display:flex; flex-direction:column; gap:5mm; }
+
+  .sec-title { display:flex; align-items:center; gap:3mm; margin-bottom:3mm; }
+  .sec-title .bar { width:2mm; height:7mm; background:var(--accent-health); border-radius:1mm; flex-shrink:0; }
+  .sec-title h2 { font-family:'Inter',sans-serif; font-size:13pt; font-weight:800; text-transform:uppercase; color:var(--brand-dark); letter-spacing:.3px; }
+  .sec-divider { height:.5mm; background:var(--border-light); margin-bottom:3mm; }
+
+  .g2 { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3.5mm; }
+  .g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; }
+
+  .tbl { width:100%; border-collapse:collapse; font-size:8pt; }
+  .tbl thead tr { background:var(--brand-dark); }
+  .tbl thead th { padding:2.5mm 3mm; text-align:left; font-family:'Inter',sans-serif; font-size:7.5pt; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--accent-health); }
+  .tbl tbody tr:nth-child(even) { background:var(--off-white); }
+  .tbl tbody td { padding:2mm 3mm; border-bottom:.2mm solid var(--border-light); color:var(--text-main); line-height:1.4; }
+  .tbl tbody td strong { color:var(--brand); }
+  .tbl .p1 { font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--notificacao); font-size:8pt; }
+  .tbl .p2 { font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--alerta); font-size:8pt; }
+  .tbl .p3 { font-family:'JetBrains Mono',monospace; font-weight:700; color:var(--verde-saude); font-size:8pt; }
+
+  .badge { display:inline-block; padding:.8mm 2.5mm; border-radius:20mm; font-size:6pt; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+  .badge.azul { background:#DBEAFE; color:var(--brand); }
+  .badge.verde { background:var(--verde-saude-light); color:var(--verde-saude); }
+  .badge.vermelho { background:#FEE2E2; color:#991B1B; }
+  .badge.amarelo { background:var(--alerta-light); color:#7A4100; }
+  .badge.ciano { background:var(--accent-health-light); color:#005A8A; }
+
+  .card { background:var(--off-white); border-radius:var(--radius-sm); padding:4mm; border-left:1.5mm solid var(--verde-saude); }
+  .card.azul { border-left-color:var(--brand); }
+  .card.amarelo { border-left-color:var(--alerta); }
+  .card.ciano { border-left-color:var(--accent-health); }
+  .card h4 { font-family:'Inter',sans-serif; font-size:9.5pt; font-weight:800; text-transform:uppercase; color:var(--brand-dark); margin-bottom:1.5mm; }
+  .card p { font-size:8pt; color:var(--text-muted); line-height:1.55; }
+
+  .quote { border-left:2mm solid var(--verde-saude); padding:4mm 5mm; background:var(--verde-saude-light); border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:8.5pt; color:var(--text-muted); font-style:italic; line-height:1.6; }
+  .nota { background:var(--verde-saude-light); border:.3mm solid rgba(27,138,78,.25); border-radius:var(--radius-sm); padding:3mm 4mm; font-size:7.5pt; color:var(--text-muted); line-height:1.5; }
+  .nota strong { color:var(--verde-saude); }
+
+  .script-box { background:var(--brand-dark); border-radius:var(--radius-sm); padding:4mm; margin-bottom:3mm; }
+  .script-box .s-label { font-size:6.5pt; font-weight:700; color:var(--accent-health); text-transform:uppercase; letter-spacing:1px; margin-bottom:1.5mm; }
+  .script-box .s-text { font-size:7.5pt; color:rgba(255,255,255,.8); line-height:1.6; font-style:italic; }
+
+  .cal-item { display:grid; grid-template-columns:32mm 1fr; gap:3mm; align-items:start; padding:2mm 0; border-bottom:.2mm solid var(--border-light); }
+  .cal-item:last-child { border-bottom:none; }
+  .cal-data { font-family:'JetBrains Mono',monospace; font-size:7.5pt; font-weight:700; color:var(--brand); }
+  .cal-data.destaque { color:var(--verde-saude); }
+  .cal-acao { font-size:7.5pt; color:var(--text-main); line-height:1.4; }
+  .cal-acao strong { color:var(--verde-saude); }
+
+  /* CAPA */
+  .pg-capa { background:linear-gradient(155deg,var(--brand-dark) 0%,var(--brand) 50%,#0E5C38 100%); min-height:297mm; position:relative; overflow:hidden; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:20mm 16mm; }
+  .capa-pattern { position:absolute; inset:0; pointer-events:none; background-image:repeating-linear-gradient(55deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 32px),repeating-linear-gradient(-55deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 32px); }
+  .capa-glow { position:absolute; width:120mm; height:120mm; background:radial-gradient(circle,rgba(27,138,78,.2) 0%,transparent 70%); right:-20mm; top:-20mm; pointer-events:none; }
+  .capa-accent { position:absolute; left:0; top:0; bottom:0; width:3mm; background:linear-gradient(to bottom,var(--verde-saude),var(--accent-health)); }
+  .capa-eyebrow { font-size:8pt; font-weight:700; letter-spacing:3px; color:rgba(161,230,197,0.9); text-transform:uppercase; margin-bottom:8mm; }
+  .capa-h1 { font-family:'Inter',sans-serif; font-size:38pt; font-weight:900; color:white; text-transform:uppercase; line-height:.95; margin-bottom:6mm; }
+  .capa-h1 span { color:rgba(161,230,197,0.95); }
+  .capa-tag { display:inline-block; background:rgba(255,255,255,.1); border:.3mm solid rgba(255,255,255,.25); padding:2.5mm 6mm; border-radius:var(--radius-sm); font-size:9pt; color:rgba(255,255,255,.8); margin-bottom:14mm; }
+  .capa-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:3mm; width:100%; max-width:160mm; margin-bottom:14mm; }
+  .capa-stat { background:rgba(255,255,255,.08); border:.3mm solid rgba(255,255,255,.12); padding:5mm 2mm; text-align:center; border-radius: var(--radius-sm); }
+  .capa-stat .cn { font-family:'Inter',sans-serif; font-size:24pt; font-weight:900; color:rgba(161,230,197,.95); line-height:1; }
+  .capa-stat .cl { font-size:6pt; color:rgba(255,255,255,.45); text-transform:uppercase; letter-spacing:.8px; margin-top:2mm; }
+  .capa-footer { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,.4); padding:4mm 8mm; display:flex; justify-content:space-between; }
+  .capa-footer span { font-size:6.5pt; color:rgba(255,255,255,.4); }
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div style="display:flex;gap:12px;align-items:center;">
+    <a href="../index.html" style="color:var(--accent-health);text-decoration:none;font-weight:700;font-size:13px;display:flex;align-items:center;gap:4px;">← Início</a>
+    <span style="color:rgba(255,255,255,.3);">|</span>
+    <span style="color:rgba(255,255,255,.7);font-size:13px;font-weight:500;">Emagrecendo Cajamar — Mapa de Segmentos e Parceiros Potenciais</span>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center;">
+    <select onchange="if(this.value) window.location.href=this.value" style="background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2);padding:6px 12px;border-radius:4px;font-size:12px;font-family:'Inter',sans-serif;outline:none;cursor:pointer;">
+      <option value="" disabled selected>Navegar para...</option>
+      <option value="01-proposta-preliminar.html">01 - Proposta Preliminar</option>
+      <option value="02-minuta-gamificacao.html">02 - Minuta Gamificação</option>
+      <option value="03-mapa-segmentos-parceiros.html">03 - Mapa de Parceiros</option>
+      <option value="04-pitch-deck-empresas.html">04 - Pitch Deck Empresas</option>
+    </select>
+    <a class="btn-print" href="../../../assets/pdf/Mapa de Segmentos e Parceiros — Emagrecendo Cajamar.pdf" download>Baixar PDF</a>
+  </div>
+</div>
+
+<!-- CAPA -->
+<div class="page">
+  <div class="pg-capa">
+    <div class="capa-pattern"></div><div class="capa-glow"></div><div class="capa-accent"></div>
+    <img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Brasão de Cajamar" style="max-height: 40mm; margin-bottom: 10mm; filter: drop-shadow(0 0 20px rgba(27,138,78,0.3));">
+    <div class="capa-eyebrow">Prefeitura Municipal de Cajamar · DDEE · 09/04/2026</div>
+    <h1 class="capa-h1">Mapa de Segmentos<br><span>e Parceiros Potenciais</span></h1>
+    <div class="capa-tag">Inteligência de mercado para prospecção institucional</div>
+    <div class="capa-stats">
+      <div class="capa-stat"><div class="cn">4</div><div class="cl">Camadas de Parceiros</div></div>
+      <div class="capa-stat"><div class="cn">5+</div><div class="cl">Empresas Nominadas</div></div>
+      <div class="capa-stat"><div class="cn">3</div><div class="cl">Scripts Prontos</div></div>
+      <div class="capa-stat"><div class="cn">20/04</div><div class="cl">Início da Prospecção</div></div>
+    </div>
+    <div class="capa-footer">
+      <span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span>
+      <span>Início das abordagens: 20/04/2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- PÁG 2: CONTEXTO + CAMADAS 1 e 2 -->
+<div class="page">
+  <div class="ph"><div class="ph-left"><div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div><div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div></div><div class="ph-badge">Parceiros</div></div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <!-- Contexto Territorial -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>01 · Contexto Territorial — Por que Cajamar é Estratégico</h2></div>
+      <div class="sec-divider"></div>
+      <div class="quote" style="margin-bottom:3mm">Cajamar abriga um dos maiores polos logísticos e industriais do Estado de SP. Há empresas de alto potencial de apoio a menos de 15km das UBS onde o piloto ocorrerá — vantagem estratégica única para parceria territorial.</div>
+      <div class="g3">
+        <div class="card azul"><h4>Indústria</h4><p>Empresas de médio e grande porte com agenda de ESG e programas de saúde corporativa ao trabalhador.</p></div>
+        <div class="card ciano"><h4>Logística</h4><p>Centros de distribuição de grandes varejistas e e-commerces (Mercado Livre, Amazon, Shopee e outros).</p></div>
+        <div class="card"><h4>Suplementação</h4><p>New Millen, Max Titanium, Integral Médica e Growth Supplements — segmento diretamente alinhado ao objetivo do programa.</p></div>
+      </div>
+    </div>
+
+    <!-- CAMADA 1 -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>02 · Camada 1 — Parceiro Âncora</h2></div>
+      <div class="sec-divider"></div>
+      <p style="font-size:7.5pt;color:var(--cinza-t);margin-bottom:3mm;line-height:1.55"><strong>Perfil buscado:</strong> empresa de grande porte com capacidade de apoio relevante à academia funcional, visibilidade institucional e interesse em ESG ou saúde corporativa.</p>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:28%">Empresa</th>
+            <th style="width:22%">Segmento</th>
+            <th style="width:30%">Apoio Potencial</th>
+            <th style="width:20%">Observação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>New Millen</strong></td>
+            <td><span class="badge verde">Suplementação (Cajamar)</span></td>
+            <td>Créditos, premiações, kit suplementação</td>
+            <td class="p1">PRIORITÁRIA</td>
+          </tr>
+          <tr>
+            <td><strong>Max Titanium</strong></td>
+            <td><span class="badge verde">Suplementação</span></td>
+            <td>Créditos, kits, campanhas de engajamento</td>
+            <td class="p2">Segunda Prioridade</td>
+          </tr>
+          <tr>
+            <td><strong>Integral Médica</strong></td>
+            <td><span class="badge verde">Suplementação</span></td>
+            <td>Créditos, experiências, patrocínio ciclo</td>
+            <td class="p2">Segunda Prioridade</td>
+          </tr>
+          <tr>
+            <td><strong>Growth Supplements</strong></td>
+            <td><span class="badge verde">Suplementação / ESG</span></td>
+            <td>Créditos, kits, campanhas ESG</td>
+            <td class="p2">Segunda Prioridade</td>
+          </tr>
+          <tr>
+            <td><strong>Grandes CDs (Cajamar)</strong></td>
+            <td><span class="badge ciano">Logística / e-commerce</span></td>
+            <td>Estrutura física, saúde do trabalhador</td>
+            <td class="p2">Terceira Prioridade</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="nota" style="margin-top:2.5mm"><strong>New Millen:</strong> por ter sede em Cajamar, representa a abordagem de maior aderência territorial e menor fricção institucional. Recomendada como primeira visita da fase de prospecção (20/04).</div>
+    </div>
+
+    <!-- CAMADA 2 -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>03 · Camada 2 — Rede de Serviços Aderentes (Academias)</h2></div>
+      <div class="sec-divider"></div>
+      <table class="tbl">
+        <thead>
+          <tr><th style="width:32%">Tipo</th><th style="width:35%">Potencial de Parceria</th><th style="width:33%">Benefício Percebido pela Academia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Academia de bairro</strong></td><td>Aceite de créditos · vagas para participantes</td><td>Novos alunos + selo municipal</td></tr>
+          <tr><td><strong>Estúdio funcional</strong></td><td>Aulas experimentais vinculadas ao programa</td><td>Visibilidade e diferenciação local</td></tr>
+          <tr><td><strong>Academia de médio porte</strong></td><td>Parceira da Competição entre Academias</td><td>Troféu + certificado municipal + destaque digital</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pf"><span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span><span class="pf-page">02 / 04</span></div>
+</div>
+
+<!-- PÁG 3: CAMADAS 3 e 4 + MATRIZ -->
+<div class="page">
+  <div class="ph"><div class="ph-left"><div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div><div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div></div><div class="ph-badge">Parceiros</div></div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <!-- CAMADA 3 -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>04 · Camada 3 — Rede de Comércio e Experiências</h2></div>
+      <div class="sec-divider"></div>
+      <table class="tbl">
+        <thead><tr><th style="width:25%">Segmento</th><th style="width:35%">Produtos / Serviços</th><th style="width:40%">Benefício Percebido</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Lojas de artigos esportivos</strong></td><td>Tênis, roupas fitness, acessórios</td><td>Fluxo de clientes qualificados e motivados</td></tr>
+          <tr><td><strong>Bicicletarias</strong></td><td>Bicicletas, acessórios, manutenção</td><td>Associação a estilo de vida saudável</td></tr>
+          <tr><td><strong>Farmácias</strong></td><td>Suplementos básicos, vitaminas, autocuidado</td><td>Vínculo com programa de saúde pública</td></tr>
+          <tr><td><strong>Alimentação saudável</strong></td><td>Sucos naturais, restaurantes fit, feiras</td><td>Posicionamento de marca como parceiro da saúde</td></tr>
+          <tr><td><strong>Serviços de bem-estar</strong></td><td>Fisioterapia, massagem, relaxamento</td><td>Novos clientes via programa + selo municipal</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- MATRIZ -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>05 · Matriz de Prioridade para Prospecção</h2></div>
+      <div class="sec-divider"></div>
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:35%">Empresa / Segmento</th>
+            <th style="width:10%">Camada</th>
+            <th style="width:15%">Urgência</th>
+            <th style="width:15%">Impacto</th>
+            <th style="width:15%">Facilidade</th>
+            <th style="width:10%">Rank</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>New Millen (Cajamar)</strong></td><td style="text-align:center">1</td><td><span class="badge vermelho">Alta</span></td><td><span class="badge vermelho">Alto</span></td><td><span class="badge verde">Alta</span></td><td class="p1">RANK 1</td></tr>
+          <tr><td><strong>Max / Integral / Growth</strong></td><td style="text-align:center">1</td><td><span class="badge vermelho">Alta</span></td><td><span class="badge vermelho">Alto</span></td><td><span class="badge amarelo">Média</span></td><td class="p2">RANK 2</td></tr>
+          <tr><td><strong>Grandes CDs Logísticos</strong></td><td style="text-align:center">1</td><td><span class="badge amarelo">Média</span></td><td><span class="badge vermelho">Alto</span></td><td><span class="badge amarelo">Média</span></td><td class="p2">RANK 3</td></tr>
+          <tr><td><strong>Academias locais (rede)</strong></td><td style="text-align:center">2</td><td><span class="badge vermelho">Alta</span></td><td><span class="badge amarelo">Médio</span></td><td><span class="badge verde">Alta</span></td><td class="p3">RANK 4</td></tr>
+          <tr><td><strong>Lojas esportivas e bem-estar</strong></td><td style="text-align:center">3</td><td><span class="badge amarelo">Média</span></td><td><span class="badge amarelo">Médio</span></td><td><span class="badge verde">Alta</span></td><td class="p3">RANK 5</td></tr>
+          <tr><td><strong>Tecnologia / comunicação</strong></td><td style="text-align:center">4</td><td><span class="badge amarelo">Média</span></td><td><span class="badge amarelo">Médio</span></td><td><span class="badge amarelo">Média</span></td><td class="p3">RANK 6</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Critérios -->
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>06 · Critérios de Priorização</h2></div>
+      <div class="sec-divider"></div>
+      <div class="g2">
+        <div>
+          <table class="tbl">
+            <thead><tr><th>Critério</th><th style="width:30%">Peso</th></tr></thead>
+            <tbody>
+              <tr><td>Alinhamento com os objetivos do programa</td><td><span class="badge vermelho">Alto</span></td></tr>
+              <tr><td>Capacidade concreta de apoio</td><td><span class="badge vermelho">Alto</span></td></tr>
+              <tr><td>Presença local ou regional em Cajamar</td><td><span class="badge vermelho">Alto</span></td></tr>
+              <tr><td>Aderência institucional e baixo risco jurídico</td><td><span class="badge vermelho">Alto</span></td></tr>
+              <tr><td>Facilidade de operacionalização</td><td><span class="badge amarelo">Médio</span></td></tr>
+              <tr><td>Relacionamento pré-existente com a Prefeitura</td><td><span class="badge amarelo">Médio</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="nota" style="margin-bottom:3mm"><strong>Nota sobre conflito de interesse:</strong> empresas da rede parceira (ex.: academias que recebem participantes via créditos) não poderão influenciar critérios de pontuação ou elegibilidade do programa.</div>
+          <div class="nota"><strong>Validação jurídica:</strong> todos os formatos de parceria e exposição de marca devem ser validados pela Procuradoria Municipal antes da formalização. Iniciar processo paralelamente à prospecção.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span><span class="pf-page">03 / 04</span></div>
+</div>
+
+<!-- PÁG 4: SCRIPTS + CALENDÁRIO -->
+<div class="page">
+  <div class="ph"><div class="ph-left"><div class="ph-brasao"><img src="../../../assets/logos/cropped-sem_titulo-1_prancheta_1.png" alt="Logo"></div><div><div class="ph-title">Emagrecendo Cajamar</div><div class="ph-sub">Prefeitura Municipal de Cajamar · Plano Piloto 2026</div></div></div><div class="ph-badge">Parceiros</div></div>
+  <div class="ph-strip"></div>
+
+  <div class="pb">
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>07 · Scripts de Abordagem por Perfil</h2></div>
+      <div class="sec-divider"></div>
+
+      <div class="script-box" style="margin-bottom:3mm">
+        <div class="s-label">Para Parceiro Âncora (Grande Empresa)</div>
+        <div class="s-text">"Cajamar está estruturando o Emagrecendo Cajamar — programa municipal de saúde com 350 participantes em 4 UBS. Há espaço para uma empresa âncora que queira associar sua marca a uma iniciativa pública séria, com impacto mensurável, presença nos materiais oficiais e reconhecimento institucional. Poderíamos apresentar a proposta pessoalmente, em uma reunião de 30 minutos?"</div>
+      </div>
+
+      <div class="script-box" style="margin-bottom:3mm">
+        <div class="s-label">Para Academia (Rede Parceira)</div>
+        <div class="s-text">"Estamos montando a rede oficial do Emagrecendo Cajamar. Participantes que evoluem no programa acumulam créditos que só podem ser usados em academias credenciadas. Sua academia recebe alunos motivados com subsídio do programa, ganha o selo municipal e participa da Competição Municipal entre Academias de Cajamar. Custo zero para entrar — quer saber como funciona?"</div>
+      </div>
+
+      <div class="script-box">
+        <div class="s-label">Para Comércio Local (Camada 3)</div>
+        <div class="s-text">"O Emagrecendo Cajamar vai distribuir créditos para 350 participantes usarem em comércios cadastrados. Queremos incluir sua loja na rede. É simples, tem custo próximo de zero e posiciona sua marca junto a um programa de saúde da Prefeitura de Cajamar."</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sec-title"><div class="bar"></div><h2>08 · Calendário de Prospecção</h2></div>
+      <div class="sec-divider"></div>
+
+      <div class="cal-item">
+        <div class="cal-data">Até 14/04/2026</div>
+        <div class="cal-acao">Validação executiva deste mapa (DDEE + Saúde) · Levantamento de contatos nas empresas prioritárias</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-data">Até 18/04/2026</div>
+        <div class="cal-acao">Preparação do material executivo (pitch deck) · Validação jurídica preliminar dos formatos de parceria</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-data destaque">20/04/2026</div>
+        <div class="cal-acao"><strong>INÍCIO DAS ABORDAGENS EXTERNAS</strong> — primeiro contato com empresas Camada 1 (New Millen prioritária)</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-data">20/04–09/05</div>
+        <div class="cal-acao">1ª rodada de reuniões com Camadas 1 e 2 · Registro de resultados em planilha de CRM simples</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-data">Até 30/05/2026</div>
+        <div class="cal-acao">Consolidação dos parceiros confirmados · Formalização com Jurídico · Inclusão nos materiais do programa</div>
+      </div>
+
+      <div class="nota" style="margin-top:4mm">
+        <strong>Próximo passo imediato:</strong> validar este mapa com Saúde e gestão do DDEE → confirmar contatos nas empresas nominadas → vincular à validação jurídica dos instrumentos de parceria → usar o pitch deck como material de suporte em todas as abordagens.
+      </div>
+    </div>
+  </div>
+  <div class="pf"><span>Departamento de Desenvolvimento Econômico e Empreendedorismo — Cajamar/SP</span><span class="pf-page">04 / 04</span></div>
+</div>
+
+</body>
+</html>
